@@ -1,0 +1,23 @@
+@CHARSET "UTF-8";
+
+.menu {
+	background-color: #8d8ed4;
+}
+
+.menu1 {
+	width: 30%;
+	margin-left: 20%;
+}
+.hh{
+	width: 30%;
+}
+.registring{
+	padding-left: 33%;
+	height: 420px;
+	
+}
+.homing{
+	width:80%;
+	padding-left: 5%;
+	height: 420px;
+}
