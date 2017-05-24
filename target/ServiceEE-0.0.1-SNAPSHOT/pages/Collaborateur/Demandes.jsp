@@ -25,13 +25,11 @@
 
 			<sj:tabbedpanel id="localtabs" cssStyle="max-height:450px">
 				<sj:tab id="tab1" target="tone" label="Effectuer une demande" />
-				<sj:tab id="tab2" target="ttwo" onclick="action"
-					label="Liste de mes demandes" />
-
+				
 				<div id="tone" style="overflow: scroll; align-text: center;">
 					Vous pouvez ajouter un message à votre demande :
-					<s:form>
-						<s:textfield label="Message " name="message" size="70px"></s:textfield>
+					<s:form action="ajouterDemande">
+						<s:textfield label="Message " name="demande.message" size="70px"></s:textfield>
 
 						<s:submit value="Demander d'etre responsable"></s:submit>
 
@@ -42,16 +40,7 @@
 					Si vous rencontrez des problèmes , contactez votre responsable de
 					ressource humaine.
 				</div>
-				<div id="ttwo" style="overflow: scroll;">
-
-					<d:table name="listDemande" export="true" requestURI="/listAction"
-						pagesize="20">
-						<d:column property="id" title="ISBN" />
-						<d:column property="Message" title="Titre" />
-						<d:column property="Etat" title="Description" />
-					</d:table>
-
-				</div>
+				
 			</sj:tabbedpanel>
 
 		</div>

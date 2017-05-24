@@ -3,11 +3,9 @@
 	<div>
 		<div >
 			<ul class="nav nav-tabs nav-stacked"> 
-				<li><a href="listAction" >Entretiens</a></li>
 				<li><a href="showForm" >Evaluation</a></li>
-				<li><a href="showSearchForm" >Demandes d'ajout</a></li>
-				<li><a href="showSearchForm" >Demandes d'etre responsable</a></li>
-				<li><a href="showSearchForm" >Rendez-vous</a></li>
+				<li><a href="showSearchForm" >Collaborateur</a></li>
+				<li><a href="showSearchForm" >Responsable</a></li>
 
 			</ul>
 		</div>

@@ -25,12 +25,16 @@
 				
 				<div id="ttwo" style="overflow: scroll;">
 
-					<d:table name="listEntretien" export="true"
-						requestURI="/listAction" pagesize="20">
-						<d:column property="id" title="ISBN" />
-						<d:column property="Message" title="Titre" />
-						<d:column property="Etat" title="Description" />
+					<d:table name="listEntretien" export="true" style="html" cellspacing="50px"
+					decorator="com.web.CollaborateurEntretienDecorator"
+						requestURI="/listAction" pagesize="30">
+						<d:column property="responsable.nom" title="Collaborateur"></d:column>
+						<d:column property="responsable.email" title="Responsable"></d:column>
+						<d:column property="dateEntretien" title="Date" />
+						<d:column property="label" title="Description " />
+						<d:column property="aj" title="Action"></d:column>
 					</d:table>
+
 
 				</div>
 			</sj:tabbedpanel>

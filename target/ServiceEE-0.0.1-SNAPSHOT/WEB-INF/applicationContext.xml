@@ -25,14 +25,18 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 
 	<bean id="sessionFactory"
 		class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
-		<property name="dataSource" ref="dataSource">
-
-		</property>
-		<property name="mappingResources">
+		<property name="dataSource" ref="dataSource"/>
+		<property name="annotatedClasses">
 			<list>
-<!-- 				<value>com/app/business/dao/hbm/Personnel.hbm.xml</value> -->
+				<value>com.app.business.bo.User</value>
+				<value>com.app.business.bo.Entretien</value>
+				<value>com.app.business.bo.Objectif</value>
+				<value>com.app.business.bo.Demande</value>
+				<value>com.app.business.bo.RendezVous</value>
+				<value>com.app.business.bo.Evaluation</value>		
 			</list>
 		</property>
+
 
 		<property name="hibernateProperties">
 			<props>
@@ -54,7 +58,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 
 	<bean id="transactionManager"
 		class="org.springframework.orm.hibernate4.HibernateTransactionManager">
-		<property name="sessionFactory" >
+		<property name="sessionFactory">
 			<ref bean="sessionFactory" />
 		</property>
 
@@ -64,15 +68,14 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 
 	<tx:advice id="defaultTxAdvice" transaction-manager="transactionManager">
 		<tx:attributes>
-			<tx:method name="create*" propagation="REQUIRED" />
-			<tx:method name="add*" propagation="REQUIRED" />
-			<tx:method name="save*" propagation="REQUIRED" />
-			<tx:method name="update*" propagation="REQUIRED" />
-			<tx:method name="edit*" propagation="REQUIRED" />
-			<tx:method name="delete*" propagation="REQUIRED" />
-			<tx:method name="remove*" propagation="REQUIRED" />
-			<tx:method name="restore*" propagation="REQUIRED" />
-			<tx:method name="loadUserByUsername*" propagation="REQUIRED" />
+			<tx:method name="envoyer*" propagation="REQUIRED" />
+			<tx:method name="ajouter*" propagation="REQUIRED" />
+			<tx:method name="get*" propagation="REQUIRED" />
+			<tx:method name="go*" propagation="REQUIRED" />
+			<tx:method name="modifier*" propagation="REQUIRED" />
+			<tx:method name="accepter*" propagation="REQUIRED" />
+			<tx:method name="find*" propagation="REQUIRED" />
+			
 			<tx:method name="*" read-only="true" />
 		</tx:attributes>
 	</tx:advice>
@@ -85,5 +88,33 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 	</aop:config>
 
 
-	
+	<bean id="demandeDao" class="com.app.business.dao.impl.DemandeDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="rendezVousDao" class="com.app.business.dao.impl.RendezVousDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="userDao" class="com.app.business.dao.impl.UserDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+	<bean id="entretienDao" class="com.app.business.dao.impl.EntretienDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+<bean id="objectifDao" class="com.app.business.dao.impl.ObjectifDaoImpl">
+		<property name="sessionFactory" ref="sessionFactory" />
+	</bean>
+
+	<bean id="collaborateurService" class="com.app.business.service.impl.CollaborateurServiceImpl">
+		<property name="demandeDao" ref="demandeDao" />
+		<property name="rendezVousDao" ref="rendezVousDao"></property>
+		<property name="userDao" ref="userDao"></property>
+		<property name="entretienDao" ref="entretienDao"></property>
+		<property name="objectifDao" ref="objectifDao"></property>
+	</bean>
+	<bean id="CollaborateurAction" class="com.web.CollaborateurController"
+		scope="prototype">
+		<property name="collaborateurService" ref="collaborateurService" />
+	</bean>
+
+
 </beans>

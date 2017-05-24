@@ -34,7 +34,7 @@
 
 					<div id="tone" style="overflow: scroll; align-text: center;">
 						Vous pouvez ajouter un entretien d'evaluation :
-						<s:form>
+						<s:form action="">
 							<br>
 
 							<s:label>Date d'entretien  : </s:label>

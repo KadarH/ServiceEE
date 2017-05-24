@@ -28,7 +28,7 @@
 				
 				<div id="tone" style="overflow: scroll; align-text: center;">
 					Vous pouvez ajouter un message à votre demande :
-					<s:form>
+					<s:form action="ajouterDemande">
 						<s:textfield label="Message " name="demande.message" size="70px"></s:textfield>
 
 						<s:submit value="Demander d'etre responsable"></s:submit>

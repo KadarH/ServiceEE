@@ -1,0 +1,70 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE struts PUBLIC
+	"-//Apache Software Foundation//DTD Struts Configuration 2.3//EN"
+		"http://struts.apache.org/dtds/struts-2.0.dtd">
+
+<struts>
+	<constant name="struts.devMode" value="true" />
+
+	<package name="default" namespace="/" extends="struts-default">
+
+		<!-- ************************* Exercice 1 ******************************** -->
+
+		<action name="goToHome" class="CollaborateurAction" method="goToHome">
+			<result name="success">/pages/Collaborateur/Home.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<action name="ajouterDemande" class="CollaborateurAction"
+			method="ajouterDemandeResp">
+			<result name="success">/pages/Collaborateur/Home.jsp</result>
+			<result name="input">/error1.jsp</result>
+		</action>
+		
+		<action name="ajouterRendezVous" class="CollaborateurAction"
+			method="ajouterRendezVous">
+			<result name="success">/pages/Collaborateur/Home.jsp</result>
+			<result name="input">/error1.jsp</result>
+		</action>
+		
+		<action name="goToRendezVous" class="CollaborateurAction"
+			method="goToRendezVous">
+			<result name="success">/pages/Collaborateur/RendezVous.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<action name="accepterRendezVous" class="CollaborateurAction"
+			method="accepterRendezVous">
+			<result name="success" type="redirect">goToRendezVous</result>
+			<result name="input">/error1.jsp</result>
+		</action>
+
+		<action name="goToEntretien" class="CollaborateurAction"
+			method="goToEntretien">
+			<result name="success">/pages/Collaborateur/Entretien.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<action name="goToObjectifEntretien" class="CollaborateurAction"
+			method="goToObjectifEntretien">
+			<result name="success">/pages/Collaborateur/Objectifs.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<action name="goToEvaluationObjectif" class="CollaborateurAction"
+			method="goToEvaluationObjectif">
+			<result name="success">/pages/Collaborateur/Evaluation.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<action name="modifierProfil" class="CollaborateurAction"
+			method="modifierProfil">
+			<result name="success">/pages/Collaborateur/Home.jsp</result>
+			<result name="input">/error1.jsp</result>
+		</action>
+
+	</package>
+
+
+
+</struts>

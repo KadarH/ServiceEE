@@ -31,10 +31,6 @@
 			
 		</div>
 		
-		
-
-		</div>
-	
 	<!-- end of column four -->
 </div>
 <jsp:include page="/pages/include/footer.jsp" />

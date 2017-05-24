@@ -1,13 +1,36 @@
 package com.app.business.bo;
 
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.Table;
+
+
+@Entity
+ @Table(name="RENDEZVOUS")
 public class RendezVous {
 
+	@Id
+	@GeneratedValue
+	@Column(name = "idRendezVous")
 	private Long id;
+	
 	private String message;
 	private String etat;
+
+	private String dateRendezVous;
+
+	@ManyToOne
+	@JoinColumn(name = "idUser_dem", nullable = false)
 	private User userdem;
+
+	@ManyToOne
+	@JoinColumn(name = "idUser_rec", nullable = false)
 	private User userrec;
-	
+
 	public RendezVous() {
 		super();
 	}
@@ -41,7 +64,8 @@ public class RendezVous {
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
-
+	
+	
 	public User getUserdem() {
 		return userdem;
 	}
@@ -57,5 +81,13 @@ public class RendezVous {
 	public void setUserrec(User userrec) {
 		this.userrec = userrec;
 	}
-	
+
+	public String getDateRendezVous() {
+		return dateRendezVous;
+	}
+
+	public void setDateRendezVous(String dateRendezVous) {
+		this.dateRendezVous = dateRendezVous;
+	}
+
 }

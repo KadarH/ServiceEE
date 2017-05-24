@@ -4,13 +4,44 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="d"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-<jsp:include page="/pages/Responsable/includeResp/headerResp.jsp"
+<jsp:include page="/pages/Responsable/includeResp/headerColl.jsp"
 	flush="true" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
 	href="/ServiceEE/css/w3.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
 	href="/ServiceEE/css/Style.css" />
+<script type="text/javascript">
+	$(document).ready(function() {
+		$.subscribe('autocompleteChange', function(event, data) {
+			var ui = event.originalEvent.ui;
+			if (ui.item) {
+				var message = ui.item.value;
+				if (ui.item.key) {
+					message = '( ' + ui.item.key + ' ) ' + message;
+				}
+				$('#topics').html('<b>' + message + '</b>');
+			}
+		});
 
+		$.subscribe('autocompleteFocus', function(event, data) {
+			var ui = event.originalEvent.ui;
+			var message = ui.item.value;
+			if (ui.item.key) {
+				message = '( ' + ui.item.key + ' ) ' + message;
+			}
+			$('#topics').html('<u>' + message + '</u>');
+		});
+
+		$.subscribe('autocompleteSelect', function(event, data) {
+			var ui = event.originalEvent.ui;
+			var message = ui.item.value;
+			if (ui.item.key) {
+				message = '( ' + ui.item.key + ' ) ' + message;
+			}
+			$('#topics').html('<i>' + message + '</i>');
+		});
+	});
+</script>
 <div class="w3-card-12 w3-blue-grey w3-animate-opacity w3-padding">
 
 	<div style="display: flex;">
@@ -20,83 +51,74 @@
 
 		<div class=" homing contact_tab w3-card-12  w3-animate-bottom">
 
-		
-				<sj:tabbedpanel id="localtabs" cssStyle="max-height:450px">
-					<sj:tab id="tab1" target="tone" label="Ajouter un entretien" />
-					<sj:tab id="tab2" target="ttwo" onclick="action"
-						label="Liste de mes entretiens" />
 
-					<sj:tab id="tab3" target="tthree" onclick="action"
-						label="Ajouter une evaluation" />
+			<sj:tabbedpanel id="localtabs" cssStyle="max-height:400px">
+				<sj:tab id="tab1" target="tone" label="Ajouter un entretien" />
+				<sj:tab id="tab2" target="ttwo" onclick="action"
+					label="Mes entretiens (Collaborateur)" />
 
-					<sj:tab id="tab4" target="tthree" onclick="action"
-						label="Liste de mes Evaluation" />
+				<sj:tab id="tab3" target="tthree" onclick="action"
+					label="Mes entretiens (Responsable)" />
 
-					<div id="tone" style="overflow: scroll; align-text: center;">
-						Vous pouvez ajouter un entretien d'evaluation :
-						<s:form>
-							<br>
+				<div id="tone" style="overflow: scroll; align-text: center;">
+					Vous pouvez ajouter un entretien d'evaluation : Vous pouvez ajouter
+					un message à votre demande de rendez-vous : <br />
+					<s:form action="ajouterEntretienResponsable">
+						<sj:datepicker name="entretien.dateEntretien" zindex="2006"
+							timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
+							timepickerFormat="HH:mm" timepickerShowSecond="true"
+							duration="fast" readonly="true" required="true"
+							label="Date de l'entretien"></sj:datepicker>
 
-							<s:label>Date d'entretien  : </s:label>
-							<sj:datepicker name="e.dateE" parentTheme="simple" zindex="2006"
-								timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
-								timepickerFormat="HH:mm" timepickerShowSecond="true"
-								duration="fast" readonly="true" required="true"></sj:datepicker>
+						<s:textfield label="Description" name="entretien.label"
+							size="70px"></s:textfield>
+						<sj:autocompleter id="languages" name="x" list="listCollaborateur"
+							required="true" selectBox="true" selectBoxIcon="true"
+							onChangeTopics="autocompleteChange"
+							onFocusTopics="autocompleteFocus"
+							onSelectTopics="autocompleteSelect" label="Collaborateur" />
+						
+						<s:submit value="Ajouter l'entretien"></s:submit>
 
-							<s:textfield label="Titre" name="e.titre"></s:textfield>
-							<s:select list="#{'tiw':'tiw','alpha':'alpha','beta':'beta' }"
-								label="Collabrorateur à evaluer"></s:select>
-							<s:submit value="Ajouter"></s:submit>
+					</s:form>
+					<h2>Renseignement</h2>
+					Aprés avoir ajouter un entretien , il va falloir completer des
+					formulaire en but de definir les objectifs et les missions associés
+					à cet entretien .
 
-						</s:form>
-
-					</div>
-
-					<div id="ttwo" style="overflow: scroll;">
-						<div>
-							<h2>Mes entretiens en tant que collaborateur :</h2>
-							<d:table name="listEntretienColl" export="true"
-								requestURI="/listAction" pagesize="20">
-								<d:column property="id" title="ISBN" />
-								<d:column property="Message" title="Titre" />
-								<d:column property="Etat" title="Description" />
-							</d:table>
-						</div>
-
-
-						<div>
-							<h2>Mes entretiens en tant que responsable:</h2>
-
-							<d:table name="listEntretienRes" export="true"
-								requestURI="/listAction" pagesize="20">
-								<d:column property="id" title="ISBN" />
-								<d:column property="Message" title="Titre" />
-								<d:column property="Etat" title="Description" />
-							</d:table>
-
-						</div>
-					</div>
-					<div id="tthree" style="overflow: scroll; align-text: center;">
-						Vous pouvez ajouter un entretien d'evaluation :
-						<s:form>
-							<br>
-
-							<s:label>Date d'entretien  : </s:label>
-							<sj:datepicker name="e.dateE" parentTheme="simple" zindex="2006"
-								timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
-								timepickerFormat="HH:mm" timepickerShowSecond="true"
-								duration="fast" readonly="true" required="true"></sj:datepicker>
-
-							<s:textfield label="Titre" name="e.titre"></s:textfield>
-							<s:select list="#{'tiw':'tiw','alpha':'alpha','beta':'beta' }"
-								label="Collabrorateur à evaluer"></s:select>
-							<s:submit value="Ajouter"></s:submit>
-
-						</s:form>
-
-					</div>
-				</sj:tabbedpanel>
 				</div>
+
+				<div id="ttwo" style="overflow: scroll;height: 350px;">
+
+					<d:table name="listEntretienCollaborateur" export="true"
+						style="html" cellspacing="50px"
+						decorator="com.web.responsable.CollaborateurEntretienDecorator"
+						requestURI="/listAction" pagesize="30">
+						<d:column property="responsable.nom" title="Nom du responsable"></d:column>
+						<d:column property="responsable.email" title="Email"></d:column>
+						<d:column property="dateEntretien" title="Date" />
+						<d:column property="label" title="Description " />
+						<d:column property="aj" title="Action"></d:column>
+					</d:table>
+
+
+				</div>
+				<div id="tthree" style="overflow: scroll; height: 350px;align-text: center;">
+
+					<d:table name="listEntretienResponsable" export="true" style="html"
+						cellspacing="50px"
+						decorator="com.web.responsable.CollaborateurEntretienDecorator"
+						requestURI="/listAction" pagesize="20">
+						<d:column property="responsable.nom" title="Nom du responsable"></d:column>
+						<d:column property="responsable.email" title="Email"></d:column>
+						<d:column property="dateEntretien" title="Date" />
+						<d:column property="label" title="Description " />
+						<d:column property="aj" title="Action"></d:column>
+					</d:table>
+
+				</div>
+			</sj:tabbedpanel>
+		</div>
 
 	</div>
 

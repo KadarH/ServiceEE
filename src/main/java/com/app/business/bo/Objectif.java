@@ -1,14 +1,37 @@
 package com.app.business.bo;
 
-import java.util.List;
+import java.util.Date;
 
+import javax.persistence.CascadeType;
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
+import javax.persistence.OneToOne;
+import javax.persistence.Table;
+
+@Entity
+@Table(name="OBJECTIF")
 public class Objectif {
 
+	@Id
+	@GeneratedValue
+	@Column(name="idOjectif")
 	private Long id;
 	private String label;
+	private String indicateur;
+	private Date delaiRealisation;
+	private String conditionReussite;
 	private String etat;
-
-	private List<Evaluation> listEvaluation;
+	
+	@ManyToOne
+	@JoinColumn(name="idEntretien")
+	private Entretien entretien ;
+	
+	@OneToOne(cascade=CascadeType.ALL)
+	private Evaluation evaluation;
 
 	
 	public Objectif() {
@@ -45,12 +68,47 @@ public class Objectif {
 		this.etat = etat;
 	}
 
-	public List<Evaluation> getListEvaluation() {
-		return listEvaluation;
+	public Evaluation getEvaluation() {
+		return evaluation;
 	}
 
-	public void setListEvaluation(List<Evaluation> listEvaluation) {
-		this.listEvaluation = listEvaluation;
+	public void setEvaluation(Evaluation evaluation) {
+		this.evaluation = evaluation;
 	}
+
+	public Entretien getEntretien() {
+		return entretien;
+	}
+
+	public void setEntretien(Entretien entretien) {
+		this.entretien = entretien;
+	}
+
+	public String getIndicateur() {
+		return indicateur;
+	}
+
+	public void setIndicateur(String indicateur) {
+		this.indicateur = indicateur;
+	}
+
+	public Date getDelaiRealisation() {
+		return delaiRealisation;
+	}
+
+	public void setDelaiRealisation(Date delaiRealisation) {
+		this.delaiRealisation = delaiRealisation;
+	}
+
+	public String getConditionReussite() {
+		return conditionReussite;
+	}
+
+	public void setConditionReussite(String conditionReussite) {
+		this.conditionReussite = conditionReussite;
+	}
+
+	
+	
 
 }

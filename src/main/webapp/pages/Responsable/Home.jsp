@@ -4,7 +4,7 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="d"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-<jsp:include page="/pages/Responsable/includeResp/headerResp.jsp" flush="true" />
+<jsp:include page="/pages/Responsable/includeResp/headerColl.jsp" flush="true" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
 	href="/ServiceEE/css/w3.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print"

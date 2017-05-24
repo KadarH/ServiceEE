@@ -1,20 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<!DOCTYPE log4j:configuration SYSTEM "log4j.dtd" >
-<log4j:configuration>
 
-
-	<!--Journalisation dans un fichier -->
-
-	<appender name="file" class="org.apache.log4j.RollingFileAppender">
-	<param name="maxFileSize" value="10000KB" />
-	<param name="maxBackupIndex" value="1" />
-	<param name="File" value="/home/kadar/Desktop/ServiceEE.log" />
-	<param name="threshold" value="debug" />
-	<layout class="org.apache.log4j.PatternLayout">
-	<param name="ConversionPattern" value="%d{ISO8601} %5p [%c{1}] %m%n" 
-		/> 
-	</layout>
-	</appender>
+<!DOCTYPE log4j:configuration SYSTEM 
+          "http://logging.apache.org/log4j/1.2/apidocs/org/apache/log4j/xml/doc-files/log4j.dtd"><log4j:configuration>
 
 
 
@@ -54,6 +41,5 @@
 		<priority value="debug"></priority>
 		
 		<appender-ref ref="stdout" />
-		<appender-ref ref="file" />
 	</root>
 </log4j:configuration>

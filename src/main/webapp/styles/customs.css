@@ -1,0 +1,22 @@
+body {
+	width: 1300px;
+	margin: auto;
+}
+
+.normalText {
+	color: black;
+	font-size: 12px;
+	font-weight: normal;
+	font-style: italic;
+}
+
+
+.tdLabel label{
+	color: black;
+	font-size: 12px;
+	font-weight: normal;
+	font-style: italic;
+	background-color: white;
+	text-align:left;
+}
+

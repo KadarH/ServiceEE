@@ -60,7 +60,9 @@ public class GenericDaoImpl<T, PK extends Serializable> extends
 		getHibernateTemplate().save(pObject);
 		return pObject;
 	}
-
+	
+	
+	
 	/**
 	 * {@inheritDoc}
 	 */
