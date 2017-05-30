@@ -16,7 +16,7 @@
 		<div class="w3-animate-zoom  w3-light-grey">
 			<jsp:include page="includeColl/menu.jsp" />
 		</div>
-		<div class=" homing contact_tab w3-card-12 w3-animate-bottom">
+		<div id="divdt" class=" homing contact_tab w3-card-12 w3-animate-bottom">
 
 			<sj:tabbedpanel id="localtabs" cssStyle="max-height:450px">
 				<sj:tab id="tab2" target="ttwo" onclick="action"
@@ -25,9 +25,9 @@
 				
 				<div id="ttwo" style="overflow: scroll;">
 
-					<d:table name="listObjectif" export="true" style="html" cellspacing="50px"
+					<d:table name="listObjectif" export="true" style="html" 
 					decorator="com.web.collaborateur.CollaborateurObjectifDecorator"
-						requestURI="/listAction" pagesize="30">
+						requestURI="/private/Collaborateur/listObjectif" pagesize="30">
 						<d:column property="label" title="Description de l'objectif"></d:column>
 						<d:column property="etat" title="Etat de l'objectif"></d:column>
 						<d:column property="aj" title="Show Evaluation"></d:column>

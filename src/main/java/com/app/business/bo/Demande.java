@@ -9,24 +9,23 @@ import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
-
 @Entity
-@Table(name="DEMANDE")
+@Table(name = "DEMANDE")
 public class Demande {
-	
+
 	@Id
 	@GeneratedValue
 	@Column(name = "idDemande")
 	private Long id;
-	
+
 	private String message;
 
-
-	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="idUser")
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name = "idUser")
 	private User user;
 	private String type;
 	private Boolean etat;
+	private String date;
 
 	public Long getId() {
 		return id;
@@ -74,8 +73,7 @@ public class Demande {
 	public void setEtat(Boolean etat) {
 		this.etat = etat;
 	}
-	
-	
+
 	public User getUser() {
 		return user;
 	}
@@ -91,5 +89,13 @@ public class Demande {
 	public void setType(String type) {
 		this.type = type;
 	}
-	
+
+	public String getDate() {
+		return date;
+	}
+
+	public void setDate(String date) {
+		this.date = date;
+	}
+
 }

@@ -13,8 +13,8 @@ import com.app.business.service.CollaborateurService;
 import com.app.business.service.ResponsableService;
 import com.web.BaseAction;
 
-public class ResponsableController extends BaseAction{
-	
+public class ResponsableController extends BaseAction {
+
 	User user = new User();
 	private CollaborateurService collaborateurService;
 	private ResponsableService responsableService;
@@ -35,9 +35,7 @@ public class ResponsableController extends BaseAction{
 
 	public String goToResponsableHome() {
 
-		user = collaborateurService.findUserByEmail(user.getEmail());
-
-		getSession().setAttribute("user", user);
+		user = (User) getSession().getAttribute("user");
 
 		return SUCCESS;
 	}
@@ -53,7 +51,6 @@ public class ResponsableController extends BaseAction{
 			return SUCCESS;
 		}
 	}
-	
 
 	public Entretien getEntretien() {
 		return entretien;
@@ -91,19 +88,17 @@ public class ResponsableController extends BaseAction{
 		listCollaborateur = collaborateurService.getListCollaborateur();
 		return SUCCESS;
 	}
-	
-	
-	
-	public String accepterRendezVous() throws NumberFormatException, EntityNotFoundException{
+
+	public String accepterRendezVous() throws NumberFormatException, EntityNotFoundException {
 		String id = getRequest().getParameter("idRendezVous");
 		collaborateurService.accepterRendezVous(new Long(Integer.parseInt(id)));
 		return SUCCESS;
 	}
-	
+
 	public String ajouterRendezVous() {
 		user = (User) getSession().getAttribute("user");
-		System.out.println(user+"*********"+user.getEmail());
-		
+		System.out.println(user + "*********" + user.getEmail());
+
 		User y = (User) collaborateurService.findUserByEmail(x);
 		System.out.println(y.getEmail());
 		rendezVous.setUserdem(user);
@@ -112,29 +107,48 @@ public class ResponsableController extends BaseAction{
 		collaborateurService.ajouterRendezVous(rendezVous);
 		return SUCCESS;
 	}
-	
+
 	public String ajouterEntretien() {
-		System.out.println("papapa");
-		
+		user = (User) getSession().getAttribute("user");
+
+		User y = (User) collaborateurService.findUserByEmail(x);
+		entretien.setCollaborateur(y);
+		entretien.setEtat("En cours");
+		entretien.setResponsable(user);
+		responsableService.ajouterEntretien(entretien);
+		getSession().setAttribute("entretien", entretien);
 		return SUCCESS;
 	}
-	
-	public String ajouterObjectifEntretien() throws EntityNotFoundException{
-		System.out.println("hihihihihih");
-		
+
+	public String ajouterObjectifEntretien() throws EntityNotFoundException {
+
 		user = (User) getSession().getAttribute("user");
 		entretien = (Entretien) getSession().getAttribute("entretien");
-		
+
 		objectif.setEntretien(entretien);
-		
-			responsableService.ajouterModifierObjectif(objectif);
-			return SUCCESS;
-		
-		
+		objectif.setEtat("En cours");
+		responsableService.ajouterModifierObjectif(objectif);
+		return SUCCESS;
+
 	}
-	
-	public String goToAjouterObjectif(){
-		
+
+	public String goToProfil() {
+		user = (User) getSession().getAttribute("user");
+		return SUCCESS;
+	}
+
+	public String modifierProfil() {
+		user = (User) getSession().getAttribute("user");
+
+		collaborateurService.modifierMonProfil(user);
+		getSession().setAttribute("user", user);
+		System.out.println(user);
+		return SUCCESS;
+
+	}
+
+	public String goToAjouterObjectif() {
+
 		return SUCCESS;
 	}
 	// *****************************************************************
@@ -268,7 +282,5 @@ public class ResponsableController extends BaseAction{
 	public void setX(String x) {
 		this.x = x;
 	}
-
-	
 
 }

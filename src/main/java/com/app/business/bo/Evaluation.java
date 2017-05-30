@@ -16,7 +16,7 @@ public class Evaluation {
 	private Long id;
 	private String label;
 	private String note;
-	private String cibleVisée;
+	private String cibleVisee;
 	private String resultatAnnee;
 	private int niveauAtteintObjectif;
 	
@@ -57,12 +57,12 @@ public class Evaluation {
 		this.note = note;
 	}
 
-	public String getCibleVisée() {
-		return cibleVisée;
+	public String getCibleVisee() {
+		return cibleVisee;
 	}
 
-	public void setCibleVisée(String cibleVisée) {
-		this.cibleVisée = cibleVisée;
+	public void setCibleVisee(String cibleVisée) {
+		this.cibleVisee = cibleVisée;
 	}
 
 	public String getResultatAnnee() {

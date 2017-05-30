@@ -12,10 +12,6 @@
 
 
 
-<link rel="stylesheet" type="text/css" media="screen,projection,print"
-	href=<%out.print(request.getContextPath() + "/styles/style.css");%> />
-
-
 
 
 
@@ -73,20 +69,33 @@ li a:hover:not(.active) {
 
 <title>page d'inscription</title>
 
-</head>
-<body>
+<link rel="stylesheet" type="text/css" media="screen,projection,print"
+	href="/ServiceEE/css/w3.css" />
+<link rel="stylesheet" type="text/css" media="screen,projection,print"
+	href="/ServiceEE/css/Style.css" />
 
-	<div style="margin-bottom:170px; text-align:center">
+</head>
+<body style="background-color: black; color: white">
+
+	<div style="margin-bottom:2%; text-align:center">
 		<div style="float: left">
-			<p class="logo">
-				<img src="img/ensah.jpg" alt="header" />
+		
+			<p class="w3-animate-zoom w3-margin w3-card-16 " >
+				<img src="/ServiceEE/img/logo1.png" alt="header" height="120px" width="150px" />
 			</p>
 		</div>
-		<div style="margin-top:20px; ">
-			<p class="siteTitle " >
-				ServiceEE <br /> <span
-					class="normalText">Service Entretien Evaluation   
-					</span>
+		<div>
+			<p>
+				 <br /> <h1>
+					Service Entretien Evaluation   
+					</h1>
 			</p>
 		</div>
 	</div>
+	
+<div style="display:flex;" class="w3-card-4 w3-grey"  >
+<div style="margin-left:15%" class="w3-hover-blue w3-padding "><a href="#" >Page d'acceuil</a></div>
+<div style="margin-left:15%" class="w3-hover-blue w3-padding" ><a href="#">Page d'aide</a></div>
+<div style="margin-left:15%" class="w3-hover-blue w3-padding"><a href="#">Se connecter</a></div>
+
+</div>

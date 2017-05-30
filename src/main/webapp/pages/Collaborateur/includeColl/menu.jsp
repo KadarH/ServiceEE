@@ -5,36 +5,38 @@
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 
 
-	  <div  style="float: left;">
+<div style="float: left;">
 	<div>
-		<div >
-			<ul class="nav nav-tabs nav-stacked menu2 w3-card-12"> 
-				<li><a href="#" onclick="document.getElementById('formDemande').submit();"  class="w3-margin">Mes Demandes </a></li>
-				<li><a href="#" onclick="document.getElementById('formRendezVous').submit();" class="w3-margin">Mes Rendez - vous </a></li>
-				<li><a href="#" onclick="document.getElementById('formEntretien').submit();" class="w3-margin" >Mes Entretiens</a></li>
-				<li><a href="/ServiceEE/pages/Collaborateur/Profil.jsp" class="w3-margin" >Mes Informations</a></li>
-				
+		<div>
+			<ul class="nav nav-tabs nav-stacked menu2 w3-card-12">
+				<li><a href="#"
+					onclick="document.getElementById('formDemande').submit();"
+					class="w3-margin">Mes Demandes </a></li>
+				<li><a href="#"
+					onclick="document.getElementById('formRendezVous').submit();"
+					class="w3-margin">Mes Rendez - vous </a></li>
+				<li><a href="#"
+					onclick="document.getElementById('formEntretien').submit();"
+					class="w3-margin">Mes Entretiens</a></li>
+				<li><a href="#"
+					onclick="document.getElementById('formProfil').submit();"
+					class="w3-margin">Mes Informations</a></li>
+
 			</ul>
 		</div>
-	</div></div>
-	
-
+	</div>
+</div>
 
 
 
 <s:hidden>
-<form action="goToRendezVous" id="formRendezVous" >
 
 
-</form>
-<form action="goToEntretien" id="formEntretien">
-
-
-</form>
-<form action="goToDemande" id="formDemande">
-
-
-</form>
+<s:form action="goToDemande"  id="formDemande"></s:form>
+<s:form action="goToRendezVous"  id="formRendezVous"></s:form>
+<s:form action="goToEntretien"  id="formEntretien"></s:form>
+<s:form action="goToProfil"  id="formProfil"></s:form>
+	
 
 </s:hidden>
 

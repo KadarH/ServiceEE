@@ -4,9 +4,19 @@
 		"http://struts.apache.org/dtds/struts-2.0.dtd">
 
 <struts>
+
+
+	<constant name="struts.objectFactory" value="spring" />
+	<constant name="struts.enable.DynamicMethodInvocation" value="false" />
+
 	<constant name="struts.devMode" value="true" />
 
-	<package name="default" namespace="/" extends="struts-default">
+
+	<!-- ************************************************************** -->
+
+	<package name="privatePackage" namespace="/private" extends="struts-default">
+
+
 
 		<action name="logout" class="CollaborateurAction" method="logout">
 			<result name="success">/index.jsp</result>
@@ -14,23 +24,38 @@
 		</action>
 
 		<action name="goToHome" class="CollaborateurAction" method="goToHome">
-			<result name="success" type="redirect">goToResponsableHome</result>
+			<result name="success" type="redirect">Admin/goToHomeAdmin</result>
 			<result name="input">/index.jsp</result>
 		</action>
 
+	</package>
 
+	<!-- ************************************************************** -->
 
-		<!-- ************************* ******************************** -->
+	<package name="privateCollaborateurPackage" namespace="/private/Collaborateur"
+		extends="struts-default">
+
+		<action name="goToHomeCollaborateur" class="CollaborateurAction"
+			method="goToHomeCollaborateur">
+			<result name="success">Home.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
 
 		<action name="ajouterDemande" class="CollaborateurAction"
 			method="ajouterDemandeResp">
-			<result name="success">/pages/Collaborateur/Home.jsp</result>
+			<result name="success">Home.jsp</result>
 			<result name="input">/Error.jsp</result>
 		</action>
 
 		<action name="goToDemande" class="CollaborateurAction" method="goToDemande">
-			<result name="success">/pages/Collaborateur/Demandes.jsp</result>
-			<result name="input">/pages/Collaborateur/Error2.jsp</result>
+			<result name="success">Demandes.jsp</result>
+			<result name="input">Error2.jsp</result>
+		</action>
+
+
+		<action name="goToProfil" class="CollaborateurAction" method="goToProfil">
+			<result name="success">Profil.jsp</result>
+			<result name="input">Error2.jsp</result>
 		</action>
 
 
@@ -38,13 +63,12 @@
 
 		<action name="ajouterRendezVous" class="CollaborateurAction"
 			method="ajouterRendezVous">
-			<result name="success">/pages/Collaborateur/Home.jsp</result>
+			<result name="success">RendezVous.jsp</result>
 			<result name="input">/Error.jsp</result>
 		</action>
-
 		<action name="goToRendezVous" class="CollaborateurAction"
 			method="goToRendezVous">
-			<result name="success">/pages/Collaborateur/RendezVous.jsp</result>
+			<result name="success">RendezVous.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
 
@@ -56,45 +80,79 @@
 
 		<action name="goToEntretien" class="CollaborateurAction"
 			method="goToEntretien">
-			<result name="success">/pages/Collaborateur/Entretien.jsp</result>
-			<result name="input">/pages/Collaborateur/Error3.jsp</result>
+			<result name="success">Entretien.jsp</result>
+			<result name="input">Error3.jsp</result>
 		</action>
 
 		<action name="goToObjectifEntretien" class="CollaborateurAction"
 			method="goToObjectifEntretien">
-			<result name="success">/pages/Collaborateur/Objectifs.jsp</result>
+			<result name="success">Objectifs.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
 
 		<action name="goToEvaluationObjectif" class="CollaborateurAction"
 			method="goToEvaluationObjectif">
-			<result name="success">/pages/Collaborateur/Evaluation.jsp</result>
+			<result name="success">Evaluation.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
 
 		<action name="modifierProfil" class="CollaborateurAction"
 			method="modifierProfil">
-			<result name="success">/pages/Collaborateur/Home.jsp</result>
+			<result name="success" type="redirect">goToProfil</result>
 			<result name="input">/Error.jsp</result>
 		</action>
-		<!-- ************************************************************************ -->
+
+
+
+
+
+	</package>
+
+	<!-- ************************************************************** -->
+
+	<package name="privateResponsablePackage" namespace="/private/Responsable"
+		extends="struts-default">
+
+
+		<action name="goToEntretienResponsable" class="responsableAction"
+			method="goToEntretien">
+			<result name="success">Entretien.jsp</result>
+			<result name="input">Error3.jsp</result>
+		</action>
+
+		<action name="ajouterEntretienResponsable" class="responsableAction"
+			method="ajouterEntretien">
+			<result name="success">EntretienObjectif.jsp</result>
+			<result name="input">/Error1.jsp</result>
+		</action>
+
+		<action name="goToAjouterObjectif" class="responsableAction"
+			method="goToAjouterObjectif">
+			<result name="success">EntretienObjectif.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		<action name="ajouterObjectifEntretien" class="responsableAction"
+			method="ajouterObjectifEntretien">
+			<result name="success" type="redirect">goToAjouterObjectif</result>
+			<result name="input">/index.jsp</result>
+		</action>
 
 
 		<action name="goToHomeResponsable" class="responsableAction"
 			method="goToResponsableHome">
-			<result name="success">/pages/Responsable/Home.jsp</result>
+			<result name="success">Home.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
 
 		<action name="ajouterRendezVousResponsable" class="responsableAction"
 			method="ajouterRendezVous">
-			<result name="success">/pages/Responsable/Home.jsp</result>
+			<result name="success">RendezVous.jsp</result>
 			<result name="input">/Error.jsp</result>
 		</action>
-		
+
 		<action name="goToRendezVousResponsable" class="responsableAction"
 			method="goToRendezVous">
-			<result name="success">/pages/Responsable/RendezVous.jsp</result>
+			<result name="success">RendezVous.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
 
@@ -107,44 +165,88 @@
 
 
 		<!-- ****************************************************** -->
-		
-		<action name="goToEntretienResponsable" class="responsableAction"
-			method="goToEntretien">
-			<result name="success">/pages/Responsable/Entretien.jsp</result>
-			<result name="input">/pages/Responsable/Error3.jsp</result>
-		</action>
-		
-		<action name="ajouterEntretienResponsable" class="responsableAction"
-			method="ajouterEntretien">
-			<result name="success">/pages/Responsable/EntretienObjectif.jsp</result>
-			<result name="input">/Error1.jsp</result>
-		</action>
-		
-		<action name="goToAjouterObjectif" class="responsableAction"
-			method="goToAjouterObjectif">
-			<result name="success">/pages/Responsable/EntretienObjectif.jsp</result>
+
+		<action name="goToObjectifEntretienResponsable" class="responsableAction"
+			method="goToObjectifEntretien">
+			<result name="success">Objectifs.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
-<!-- 		<action name="ajouterObjectifEntretien" class="responsableAction" -->
-<!-- 			method="ajouterObjectifEntretien"> -->
-<!-- 			<result name="success" type="redirect">goToAjouterObjectif</result> -->
-<!-- 			<result name="input">/index.jsp</result> -->
-<!-- 		</action> -->
 
-<!-- 		<action name="goToObjectifEntretienResponsable" class="responsableAction" -->
-<!-- 			method="goToObjectifEntretien"> -->
-<!-- 			<result name="success">/pages/Responsable/Objectifs.jsp</result> -->
-<!-- 			<result name="input">/index.jsp</result> -->
-<!-- 		</action> -->
+		<action name="goToEvaluationObjectifResponsable" class="responsableAction"
+			method="goToEvaluationObjectif">
+			<result name="success">Evaluation.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
 
-<!-- 		<action name="goToEvaluationObjectifResponsable" class="responsableAction" -->
-<!-- 			method="goToEvaluationObjectif"> -->
-<!-- 			<result name="success">/pages/Responsable/Evaluation.jsp</result> -->
-<!-- 			<result name="input">/index.jsp</result> -->
-<!-- 		</action> -->
+		<action name="goToProfil" class="responsableAction" method="goToProfil">
+			<result name="success">Profil.jsp</result>
+			<result name="input">Error2.jsp</result>
+		</action>
+
+		<action name="modifierProfil" class="responsableAction"
+			method="modifierProfil">
+			<result name="success" type="redirect">goToProfil</result>
+			<result name="input">/Error.jsp</result>
+		</action>
 
 	</package>
 
+	<!-- ************************************************************** -->
+
+	<package name="privateAdminPackage" namespace="/private/Admin"
+		extends="struts-default">
+		
+	
+		<action name="goToHomeAdmin" class="adminAction"
+			method="goToHomeAdmin">
+			<result name="success">Home.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		
+		<action name="goToAdminDemande" class="adminAction" method="goToAdminDemande">
+			<result name="success">Demande.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		<action name="accepterDemandeAjout" class="adminAction"
+			method="accepterDemandeAjout">
+			<result name="success">Demande.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		<action name="accepterDemandeResp" class="adminAction" method="accepterDemandeResp">
+			<result name="success">Demande.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<action name="goToAdminEntretien" class="adminAction" method="goToAdminEntretien">
+			<result name="success">Entretien.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<action name="goToSupprimerEntretien" class="adminAction"
+			method="goToSupprimerEntretien">
+			<result name="success" type="redirect">goToAdminEntretien</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+
+		<action name="goToObjectifEntretienAdmin" class="adminAction"
+			method="goToObjectifEntretien">
+			<result name="success">Objectifs.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<action name="goToEvaluationObjectifAdmin" class="CollaborateurAction"
+			method="goToEvaluationObjectif">
+			<result name="success">Evaluation.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+
+	</package>
+
+	<!-- ************************************************************** -->
+
+	
 
 
 </struts>

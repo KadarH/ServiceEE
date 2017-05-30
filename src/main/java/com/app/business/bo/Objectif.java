@@ -1,7 +1,5 @@
 package com.app.business.bo;
 
-import java.util.Date;
-
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,15 +16,15 @@ public class Objectif {
 
 	@Id
 	@GeneratedValue
-	@Column(name="idOjectif")
+	@Column(name="idObjectif")
 	private Long id;
 	private String label;
 	private String indicateur;
-	private Date delaiRealisation;
+	private String delaiRealisation;
 	private String conditionReussite;
 	private String etat;
 	
-	@ManyToOne
+	@ManyToOne(cascade=CascadeType.ALL)
 	@JoinColumn(name="idEntretien")
 	private Entretien entretien ;
 	
@@ -92,11 +90,13 @@ public class Objectif {
 		this.indicateur = indicateur;
 	}
 
-	public Date getDelaiRealisation() {
+	
+
+	public String getDelaiRealisation() {
 		return delaiRealisation;
 	}
 
-	public void setDelaiRealisation(Date delaiRealisation) {
+	public void setDelaiRealisation(String delaiRealisation) {
 		this.delaiRealisation = delaiRealisation;
 	}
 

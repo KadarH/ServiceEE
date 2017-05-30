@@ -11,6 +11,14 @@
 	href=<%out.print(request.getContextPath() + "/styles/displaytag.css");%> />
 
 
+<link rel="stylesheet" type="text/css" media="screen,projection,print"
+	href=<%out.print(request.getContextPath() + "/css/w3.css");%>  />
+<link rel="stylesheet" type="text/css" media="screen,projection,print"
+	href=<%out.print(request.getContextPath() + "/css/Style.css");%>  />
+	
+
+<link rel="stylesheet" type="text/css" media="screen,projection,print"
+	href=<%out.print(request.getContextPath() + "/Exercice6/styles/bootstrap.css");%> />
 
 
 
@@ -66,11 +74,6 @@ li a:hover:not (.active ) {
 </style>
 
 <title>page d'inscription</title>
-
-<link rel="stylesheet" type="text/css" media="screen,projection,print"
-	href="/ServiceEE/css/w3.css" />
-<link rel="stylesheet" type="text/css" media="screen,projection,print"
-	href="/ServiceEE/css/Style.css" />
 
 </head>
 <body style="background-color: black; color: white">

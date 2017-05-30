@@ -129,7 +129,8 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 
 	@Override
 	public void modifierMonProfil(User user) {
-		userDao.create(user);
+		userDao.update(user);
+		
 	}
 
 	@Override

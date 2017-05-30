@@ -38,13 +38,8 @@ public class ResponsableServiceImpl implements ResponsableService {
 	@Override
 	public void ajouterModifierObjectif(Objectif o) throws EntityNotFoundException {
 
-		if(entretienDao.findById(o.getId()) != null){
-			objectifDao.update(o);
-			
-		}
-		else{
+		
 			objectifDao.create(o);
-		}
 		
 		
 	}

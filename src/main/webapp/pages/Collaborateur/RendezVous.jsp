@@ -5,45 +5,7 @@
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
 <jsp:include page="includeColl/headerColl.jsp" flush="true" />
-<head>
-<link rel="stylesheet" type="text/css" media="screen,projection,print"
-	href="/ServiceEE/css/w3.css" />
-<link rel="stylesheet" type="text/css" media="screen,projection,print"
-	href="/ServiceEE/css/Style.css" />
 
-<script type="text/javascript">
-	$(document).ready(function() {
-		$.subscribe('autocompleteChange', function(event, data) {
-			var ui = event.originalEvent.ui;
-			if (ui.item) {
-				var message = ui.item.value;
-				if (ui.item.key) {
-					message = '( ' + ui.item.key + ' ) ' + message;
-				}
-				$('#topics').html('<b>' + message + '</b>');
-			}
-		});
-
-		$.subscribe('autocompleteFocus', function(event, data) {
-			var ui = event.originalEvent.ui;
-			var message = ui.item.value;
-			if (ui.item.key) {
-				message = '( ' + ui.item.key + ' ) ' + message;
-			}
-			$('#topics').html('<u>' + message + '</u>');
-		});
-
-		$.subscribe('autocompleteSelect', function(event, data) {
-			var ui = event.originalEvent.ui;
-			var message = ui.item.value;
-			if (ui.item.key) {
-				message = '( ' + ui.item.key + ' ) ' + message;
-			}
-			$('#topics').html('<i>' + message + '</i>');
-		});
-	});
-</script>
-</head>
 <div class="w3-card-12 w3-blue-grey w3-animate-opacity">
 
 	<div style="display: flex;">
@@ -53,7 +15,7 @@
 
 
 
-		<div class=" homing contact_tab w3-card-12  w3-animate-bottom">
+		<div id="divdt" class=" homing contact_tab w3-card-12  w3-animate-bottom">
 
 
 
@@ -64,13 +26,13 @@
 				<sj:tab id="tab3" target="tthree" onclick="action"
 					label="Liste des rendez vous àcceptés" />
 
-				<div id="tone">
+				<div id="tone" style="overflow-y: scroll; height: 350px;">
 					Vous pouvez ajouter un message à votre demande de rendez-vous : <br />
-					<s:form action="ajouterRendezVous">
+					<s:form action="/private/Collaborateur/ajouterRendezVous">
 						<sj:datepicker name="rendezVous.dateRendezVous" zindex="2006"
 							timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
 							timepickerFormat="HH:mm" timepickerShowSecond="true"
-							duration="fast" readonly="true" required="true"
+							duration="fast" readonly="true" required="true" 
 							label="Date du rendez vous"></sj:datepicker>
 
 						<s:textfield label="Message" name="rendezVous.message" size="70px"></s:textfield>
@@ -91,10 +53,10 @@
 				</div>
 				<div id="ttwo" style="overflow-y: scroll; height: 350px;">
 
-					<d:table name="listRendezVous" export="true" style="html"
-						cellspacing="60px"
+					<d:table name="listRendezVous" export="true"
+						 id="appStatus"
 						decorator="com.web.collaborateur.CollaborateurActionDecorator"
-						requestURI="/listAction" pagesize="30">
+						requestURI="/private/Collaborateur/listRendezVous" pagesize="30">
 						<d:column property="userdem.nom" title="Nom"></d:column>
 						<d:column property="userdem.prenom" title="Prenom"></d:column>
 						<d:column property="message" title="Message" />
@@ -106,9 +68,9 @@
 				</div>
 				<div id="tthree" style="overflow-y: scroll; height: 350px;">
 
-					<d:table name="listRendezVousAcceptee" export="true" style="html"
-						cellspacing="60px"
-						requestURI="/listAction" pagesize="30">
+					<d:table name="listRendezVousAcceptee" export="true" 
+						 id="appStatus" cellpadding="100px" 
+						requestURI="/private/Collaborateur/listRendezVousAcceptee" pagesize="30">
 						<d:column property="userdem.nom" title="Nom"></d:column>
 						<d:column property="userdem.prenom" title="Prenom"></d:column>
 						<d:column property="message" title="Message" />

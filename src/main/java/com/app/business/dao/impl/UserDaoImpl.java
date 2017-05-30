@@ -17,5 +17,4 @@ public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao{
 		
 		
 	}
-
 }

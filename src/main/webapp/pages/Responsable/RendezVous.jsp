@@ -10,6 +10,8 @@
 	href="/ServiceEE/css/w3.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
 	href="/ServiceEE/css/Style.css" />
+<link rel="stylesheet" type="text/css" media="screen,projection,print"
+	href="/ServiceEE/styles/displaytag.css" />
 
 <script type="text/javascript">
 	$(document).ready(function() {
@@ -99,7 +101,7 @@
 						<d:column property="userdem.prenom" title="Prenom"></d:column>
 						<d:column property="message" title="Message" />
 						<d:column property="dateRendezVous" title="Date " />
-						<d:column property="aj" title="Action"> </d:column>
+						<d:column property="aj" title="Accepter"> </d:column>
 					</d:table>
 
 

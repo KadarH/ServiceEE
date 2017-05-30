@@ -9,6 +9,8 @@
 	href="/ServiceEE/css/w3.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
 	href="/ServiceEE/css/Style.css" />
+<link rel="stylesheet" type="text/css" media="screen,projection,print"
+	href="/ServiceEE/styles/displaytag.css" />
 
 <div class="w3-card-12 w3-blue-grey w3-animate-opacity w3-padding">
 
@@ -23,13 +25,15 @@
 					label="Liste des objectifs" />
 						
 				
-				<div id="ttwo" style="overflow: scroll;">
+				<div id="ttwo" style="overflow: scroll;height: 350px;">
 
-					<d:table name="listObjectif" export="true" style="html" cellspacing="50px"
+					<d:table name="listObjectif" export="true" style="html" cellspacing="30px"
 					decorator="com.web.responsable.CollaborateurObjectifDecorator"
 						requestURI="/listAction" pagesize="30">
-						<d:column property="label" title="Description de l'objectif"></d:column>
-						<d:column property="etat" title="Etat de l'objectif"></d:column>
+						<d:column property="label" title="Description "></d:column>
+						<d:column property="etat" title="Etat "></d:column>
+						<d:column property="delaiRealisation" title="Delai de realisation"></d:column>
+						<d:column property="conditionReussite" title="Condition de reussite"></d:column>
 						<d:column property="aj" title="Show Evaluation"></d:column>
 					</d:table>
 

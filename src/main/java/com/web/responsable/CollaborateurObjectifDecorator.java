@@ -13,7 +13,7 @@ public class CollaborateurObjectifDecorator extends TableDecorator{
 		Objectif pro = (Objectif) getCurrentRowObject();
 		Long id = pro.getId();
 
-		this.aj = "<a href=\"goToEvaluationObjectifResponsable?idObjectif=" + id + "\">Show Evaluation</a>";
+		this.aj = "<a href=\"goToEvaluationObjectifResponsable?idObjectif=" + id + "\"><img width='80' height='80' src='/ServiceEE/img/Search.jpg'></a>";
 
 		return this.aj;
 	}

@@ -12,7 +12,7 @@ public class CollaborateurEntretienDecorator extends TableDecorator{
 		Entretien pro = (Entretien) getCurrentRowObject();
 		Long id = pro.getId();
 
-		this.aj = "<a href=\"goToObjectifEntretien?idEntretien=" + id + "\">Show</a>";
+		this.aj = "<a href=\"goToObjectifEntretien?idEntretien=" + id + "\"><img width='50' height='50' src='/ServiceEE/img/showIcon.png'></a>";
 
 		return this.aj;
 	}

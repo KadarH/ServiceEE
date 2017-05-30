@@ -26,7 +26,8 @@ public class Entretien {
 	private String label;
 	// autres
 	private String etat;
-	private Date dateEntretien;
+	private String dateEntretien;
+	
 	@Column
 	@ElementCollection(targetClass=Objectif.class)
 	private List<Objectif> listObjectif;
@@ -76,7 +77,7 @@ public class Entretien {
 		this.etat = etat;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "entretien")
+	@OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL, mappedBy = "entretien")
 	public List<Objectif> getListObjectif() {
 		return listObjectif;
 	}
@@ -105,11 +106,11 @@ public class Entretien {
 		this.responsable = responsable;
 	}
 
-	public Date getDateEntretien() {
+	public String getDateEntretien() {
 		return dateEntretien;
 	}
 
-	public void setDateEntretien(Date dateEntretien) {
+	public void setDateEntretien(String dateEntretien) {
 		this.dateEntretien = dateEntretien;
 	}
 

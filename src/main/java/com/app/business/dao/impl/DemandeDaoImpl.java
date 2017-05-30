@@ -16,13 +16,15 @@ public class DemandeDaoImpl extends GenericDaoImpl<Demande, Long> implements Dem
 	
 	@Override
 	public List<Demande> getListDemandeAjout() {
+
+		return this.getEntityByColumn("Demande", "type","ajout" );
 		
-		return null;
 	}
 
 	@Override
 	public List<Demande> getListDemandeResp() {
-		return null;
+		return this.getEntityByColumn("Demande", "type","resp");
+		
 	}
 
 }

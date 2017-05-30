@@ -30,7 +30,7 @@
 				<div id="tone">
 
 
-					<s:form action="modifierProfil">
+					<s:form action="/private/Collaborateur/modifierProfil">
 						<s:textfield label="Nom" name="user.nom" size="70px"></s:textfield>
 						<s:textfield label="Prenom" name="user.prenom" size="70px"></s:textfield>
 						<s:textfield label="Adresse" name="user.adresse" size="70px"></s:textfield>
@@ -43,7 +43,7 @@
 				<div id="ttwo">
 
 
-					<s:form action="">
+					<s:form action="/private/Collaborateur/modifierProfil">
 						<s:textfield label="Ancien Mot de passe " name="ancienPass" size="70px"></s:textfield>
 						<s:textfield label="Nouveau Mot de passe " name="pass" size="70px"></s:textfield>
 						<s:textfield label="Confimer le nv mot-passe " name="newPass" size="70px"></s:textfield>

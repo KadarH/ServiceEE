@@ -14,7 +14,7 @@ public class CollaborateurActionDecorator extends TableDecorator {
 		Long id = pro.getId();
 
 		this.aj = "<a href=\"accepterRendezVous?idRendezVous=" + id
-				+ "\">Accepter</a>";
+				+ "\"><img width='50' height='50' src='/ServiceEE/img/accept.png'></a>";
 
 		return this.aj;
 	}

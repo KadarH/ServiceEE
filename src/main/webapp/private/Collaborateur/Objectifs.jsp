@@ -4,7 +4,7 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="d"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-<jsp:include page="includeAdmin/header.jsp" flush="true" />
+<jsp:include page="includeColl/headerColl.jsp" flush="true" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
 	href="/ServiceEE/css/w3.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
@@ -14,24 +14,25 @@
 
 	<div style="display: flex;">
 		<div class="w3-animate-zoom  w3-light-grey">
-			<jsp:include page="includeAdmin/menu.jsp" />
+			<jsp:include page="includeColl/menu.jsp" />
 		</div>
-		<div class=" homing contact_tab w3-card-12 w3-animate-bottom">
+		<div id="divdt" class=" homing contact_tab w3-card-12 w3-animate-bottom">
 
 			<sj:tabbedpanel id="localtabs" cssStyle="max-height:450px">
 				<sj:tab id="tab2" target="ttwo" onclick="action"
-					label="Liste de mes entretiens" />
-
+					label="Liste des objectifs" />
+						
 				
 				<div id="ttwo" style="overflow: scroll;">
 
-					<d:table name="listEntretien" export="true"
-						requestURI="/listAction" pagesize="20">
-						<d:column property="id" title="ISBN" />
-						<d:column property="Message" title="Titre" />
-						<d:column property="Etat" title="Description" />
-						
+					<d:table name="listObjectif" export="true" style="html" 
+					decorator="com.web.collaborateur.CollaborateurObjectifDecorator"
+						requestURI="/private/Collaborateur/listObjectif" pagesize="30">
+						<d:column property="label" title="Description de l'objectif"></d:column>
+						<d:column property="etat" title="Etat de l'objectif"></d:column>
+						<d:column property="aj" title="Show Evaluation"></d:column>
 					</d:table>
+
 
 				</div>
 			</sj:tabbedpanel>

@@ -16,7 +16,7 @@
 		<div class="w3-animate-zoom  w3-light-grey">
 			<jsp:include page="includeColl/menu.jsp" />
 		</div>
-		<div class=" homing contact_tab w3-card-12 w3-animate-bottom">
+		<div id="divdt" class=" homing contact_tab w3-card-12 w3-animate-bottom">
 
 			<sj:tabbedpanel id="localtabs" cssStyle="max-height:450px">
 				<sj:tab id="tab2" target="ttwo" onclick="action"
@@ -24,12 +24,27 @@
 
 
 				<div id="ttwo" style="overflow: scroll;">
-
+<h3>Nom de l'Objectif</h3>
 					<p><s:property value="objectif.label"  /></p>
-					<p><s:property value="evaluation.label"  /></p>
-					<p><s:property value="evaluation.note"  /></p>
-					
+<h3>Evaluation annuelle :</h3>
 
+					<p>
+					<h4>Mission :</h4>
+					<s:property value="evaluation.label"  />
+					</p>
+					<p>
+					<h4>Cible Visée :</h4>
+					<s:property value="evaluation.cibleVisee"  />
+					</p>
+					<p>
+					<h4>Resultat de l'année ecoulée :</h4>
+					<s:property value="evaluation.resultatAnnee"  />
+					</p>
+					<p>
+					<h4>Note :</h4>
+					<s:property value="evaluation.note"  />
+					</p>
+					
 				</div>
 			</sj:tabbedpanel>
 

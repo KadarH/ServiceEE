@@ -34,6 +34,8 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 				<value>com.app.business.bo.Demande</value>
 				<value>com.app.business.bo.RendezVous</value>
 				<value>com.app.business.bo.Evaluation</value>
+				<value>com.app.business.bo.Role</value>
+
 			</list>
 		</property>
 
@@ -44,7 +46,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 					org.hibernate.dialect.MySQL5Dialect
 				</prop>
 				<prop key="hibernate.hbm2ddl.auto">update</prop>
-
+				<prop key="hibernate.enable_lazy_load_no_trans">true</prop>
 				<prop key="hibernate.transaction.factory_class">
 					org.hibernate.transaction.JDBCTransactionFactory
 				</prop>
@@ -75,6 +77,7 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 			<tx:method name="modifier*" propagation="REQUIRED" />
 			<tx:method name="accepter*" propagation="REQUIRED" />
 			<tx:method name="find*" propagation="REQUIRED" />
+			<tx:method name="supprimer*" propagation="REQUIRED" />
 
 			<tx:method name="*" read-only="true" />
 		</tx:attributes>
@@ -118,6 +121,15 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 		<property name="entretienDao" ref="entretienDao"></property>
 		<property name="objectifDao" ref="objectifDao"></property>
 	</bean>
+	<bean id="adminService" class="com.app.business.service.impl.AdminServiceImpl">
+
+		<property name="rendezVousDao" ref="rendezVousDao"></property>
+		<property name="userDao" ref="userDao"></property>
+		<property name="entretienDao" ref="entretienDao"></property>
+		<property name="objectifDao" ref="objectifDao"></property>
+		<property name="demandeDao" ref="demandeDao" />
+
+	</bean>
 	<bean id="CollaborateurAction" class="com.web.collaborateur.CollaborateurController"
 		scope="prototype">
 		<property name="collaborateurService" ref="collaborateurService" />
@@ -126,6 +138,14 @@ http://www.springframework.org/schema/aop http://www.springframework.org/schema/
 		scope="prototype">
 		<property name="collaborateurService" ref="collaborateurService" />
 		<property name="responsableService" ref="responsableService" />
+	</bean>
+	
+	
+	
+	<bean id="adminAction" class="com.web.admin.AdminController"
+		scope="prototype">
+		<property name="adminService" ref="adminService" />
+		<property name="collaborateurService" ref="collaborateurService" />
 	</bean>
 
 

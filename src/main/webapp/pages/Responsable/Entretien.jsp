@@ -6,10 +6,6 @@
 
 <jsp:include page="/pages/Responsable/includeResp/headerColl.jsp"
 	flush="true" />
-<link rel="stylesheet" type="text/css" media="screen,projection,print"
-	href="/ServiceEE/css/w3.css" />
-<link rel="stylesheet" type="text/css" media="screen,projection,print"
-	href="/ServiceEE/css/Style.css" />
 <script type="text/javascript">
 	$(document).ready(function() {
 		$.subscribe('autocompleteChange', function(event, data) {

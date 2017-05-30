@@ -1,6 +1,7 @@
 package com.web.collaborateur;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
@@ -33,97 +34,95 @@ public class CollaborateurController extends BaseAction {
 	private String newPass;
 	private String pass;
 	private String x;
-	
+
 	// ************************************************************************************
 
 	public CollaborateurController() {
 		TRACER.debug("collaborateur action instancié");
 	}
 
-	
-	
-	public String logout(){
+	public String logout() {
 		getSession().invalidate();
-		
-		
+
 		return SUCCESS;
 	}
+
 	// ************************************************************************************
 	public String goToHome() {
-		
+
 		user = collaborateurService.findUserByEmail(user.getEmail());
-		
+
 		getSession().setAttribute("user", user);
 		return SUCCESS;
-		
-	}
-	
-	
-	
-	public String goToDemande(){
-		user = (User) getSession().getAttribute("user");
-		System.out.println(" findIfUserDemande a retourner true , c a d la liste n est pas vide ");
 
-		if (collaborateurService.findIfUserDemande(user)){
-			return INPUT ;
+	}
+
+	public String goToHomeCollaborateur() {
+		user = (User) getSession().getAttribute("user");
+		return SUCCESS;
+
+	}
+
+	public String goToDemande() {
+		user = (User) getSession().getAttribute("user");
+
+		if (collaborateurService.findIfUserDemande(user)) {
+			return INPUT;
 		}
-		
+
 		return SUCCESS;
 	}
+
 	public String goToRendezVous() {
 		user = (User) getSession().getAttribute("user");
 		TRACER.debug("Methode goToHome appelée");
 		System.out.println(user.getId() + "**********" + user.getEmail());
-		
+
 		listRendezVous = collaborateurService.getListRendezVous(user);
 		listRendezVousAcceptee = collaborateurService.getListRendezVousAcceptee(user);
 		listCollaborateur = collaborateurService.getListCollaborateur();
 		System.out.println(listCollaborateur.get(0));
 		return SUCCESS;
 	}
-	
-	public String accepterRendezVous() throws NumberFormatException, EntityNotFoundException{
+
+	public String accepterRendezVous() throws NumberFormatException, EntityNotFoundException {
 		String id = getRequest().getParameter("idRendezVous");
 		collaborateurService.accepterRendezVous(new Long(Integer.parseInt(id)));
 		return SUCCESS;
 	}
-	public String goToEntretien(){
+
+	public String goToEntretien() {
 		user = (User) getSession().getAttribute("user");
-		
+
 		try {
 			listEntretien = collaborateurService.getListEntretienCollaborateur(user);
-			 return SUCCESS;
+			return SUCCESS;
 		} catch (Exception e) {
 			return SUCCESS;
 		}
-		
-		
+
 	}
-	
-	public String goToObjectifEntretien() throws NumberFormatException, EntityNotFoundException{
+
+	public String goToObjectifEntretien() throws NumberFormatException, EntityNotFoundException {
 		user = (User) getSession().getAttribute("user");
 		String id = getRequest().getParameter("idEntretien");
-		
-		 listObjectif=  collaborateurService.getListObjectif(new Long(Integer.parseInt(id)));
-		
-		
-		
+
+		listObjectif = collaborateurService.getListObjectif(new Long(Integer.parseInt(id)));
+
 		return SUCCESS;
 	}
-	public String goToEvaluationObjectif() throws NumberFormatException, EntityNotFoundException{
+
+	public String goToEvaluationObjectif() throws NumberFormatException, EntityNotFoundException {
 		user = (User) getSession().getAttribute("user");
 		String id = getRequest().getParameter("idObjectif");
-		
-				 
-				 objectif =collaborateurService.getObjectif(new Long(Integer.parseInt(id)));
 
-				 evaluation = objectif.getEvaluation();
-		 
+		objectif = collaborateurService.getObjectif(new Long(Integer.parseInt(id)));
+
+		evaluation = objectif.getEvaluation();
+
 		return SUCCESS;
 	}
-	
-	
-	
+
 	public String ajouterDemandeResp() throws EntityNotFoundException {
 
 		user = (User) getSession().getAttribute("user");
@@ -131,16 +130,14 @@ public class CollaborateurController extends BaseAction {
 		demande.setUser(user);
 		demande.setType("resp");
 		demande.setEtat(false);
+		demande.setDate(new Date().toString());
 		collaborateurService.envoyerDemandeResp(demande);
 		return SUCCESS;
 	}
 
-	
-	
 	public String ajouterRendezVous() {
 		user = (User) getSession().getAttribute("user");
-		System.out.println(user+"*********"+user.getEmail());
-		
+
 		User y = (User) collaborateurService.findUserByEmail(x);
 		System.out.println(y.getEmail());
 		rendezVous.setUserdem(user);
@@ -150,16 +147,24 @@ public class CollaborateurController extends BaseAction {
 		return SUCCESS;
 	}
 
+	public String goToProfil() {
+		user = (User) getSession().getAttribute("user");
+		return SUCCESS;
+	}
+
 	public String modifierProfil() {
-		TRACER.debug("Methode modfierProfil appelée");
-		user = collaborateurService.findUserByEmail("kadar@gmail.com");
-		System.out.println(user.getEmail() + user.getId() + user.getNom());
+		user = (User) getSession().getAttribute("user");
+		
 		collaborateurService.modifierMonProfil(user);
+		getSession().setAttribute("user", user);
+		System.out.println(user);
 		return SUCCESS;
 
 	}
 
 	public String modifierPass() {
+		user = (User) getSession().getAttribute("user");
+		
 		if (user.getPassword().equals(ancienPass)) {
 			if (pass.equals(newPass)) {
 				collaborateurService.modifierMonProfil(user);
@@ -285,7 +290,6 @@ public class CollaborateurController extends BaseAction {
 	public void setEvaluation(Evaluation evaluation) {
 		this.evaluation = evaluation;
 	}
-	
 
 	public Objectif getObjectif() {
 		return objectif;
@@ -299,17 +303,12 @@ public class CollaborateurController extends BaseAction {
 		return TRACER;
 	}
 
-
-
 	public List<RendezVous> getListRendezVousAcceptee() {
 		return listRendezVousAcceptee;
 	}
 
-
-
 	public void setListRendezVousAcceptee(List<RendezVous> listRendezVousAcceptee) {
 		this.listRendezVousAcceptee = listRendezVousAcceptee;
 	}
-	
 
 }

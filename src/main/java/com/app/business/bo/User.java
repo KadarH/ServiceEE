@@ -1,19 +1,12 @@
 package com.app.business.bo;
 
-import java.util.ArrayList;
-import java.util.List;
-
-import javax.persistence.CascadeType;
 import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
-import javax.persistence.JoinTable;
-import javax.persistence.ManyToMany;
-import javax.persistence.OneToMany;
+import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
 @Entity
@@ -32,29 +25,13 @@ public class User {
 	private String prenom;
 	private String Adresse;
 
+	@ManyToOne
+	private Role role;
+	
+	
 	@Column(name = "email", unique = true, nullable = false, length = 100)
 	private String email;
 	
-	@Column
-    @ElementCollection(targetClass=Entretien.class,fetch = FetchType.LAZY)
-	private List<Entretien> listEntretienColl;
-	
-	@Column
-    @ElementCollection(targetClass=Entretien.class,fetch = FetchType.LAZY)
-	private List<Entretien> listEntretienResp;
-	
-	@Column
-    @ElementCollection(targetClass=RendezVous.class,fetch = FetchType.EAGER)
-	private List<RendezVous> listRendezVous;
-
-	@Column
-    @ElementCollection(targetClass=RendezVous.class)
-	private List<User> responsables     = new ArrayList<User>();
-	
-	@Column
-    @ElementCollection(targetClass=RendezVous.class)
-	private List<User> collaborateurs   = new ArrayList<User>();
-
 	public User(String username, String password) {
 		super();
 		this.username = username;
@@ -89,25 +66,6 @@ public class User {
 		this.password = password;
 	}
 	
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "collaborateur",cascade=CascadeType.ALL)
-	public List<Entretien> getListEntretienColl() {
-		return listEntretienColl;
-	}
-
-	public void setListEntretienColl(List<Entretien> listEntretien) {
-		this.listEntretienColl = listEntretien;
-	}
-
-	@OneToMany(fetch = FetchType.EAGER, mappedBy = "userdem",cascade=CascadeType.ALL)
-	public List<RendezVous> getListRendezVous() {
-		return listRendezVous;
-	}
-
-	public void setListRendezVous(List<RendezVous> listRendezVous) {
-		this.listRendezVous = listRendezVous;
-	}
-
-	
 	public String getNom() {
 		return nom;
 	}
@@ -139,36 +97,25 @@ public class User {
 		this.email = email;
 	}
 	
-	@OneToMany(fetch = FetchType.LAZY, mappedBy = "responsable")
-	public List<Entretien> getListEntretienResp() {
-		return listEntretienResp;
-	}
-
-	public void setListEntretienResp(List<Entretien> listEntretienResp) {
-		this.listEntretienResp = listEntretienResp;
-	}
-
 	
-	@ManyToMany( cascade = CascadeType.ALL )
-    @JoinTable( name = "COLLABORATEUR_RESPONSABLE",
-            joinColumns = { @JoinColumn( name = "collaborateur_id" ) },
-            inverseJoinColumns = { @JoinColumn( name = "responsable_id" ) } )
-	public List<User> getResponsables() {
-		return responsables;
+    @ManyToOne( fetch = FetchType.LAZY )
+    @JoinColumn( name = "role_id", nullable = false )
+	public Role getRole() {
+		return role;
 	}
 
-	public void setResponsables(List<User> responsables) {
-		this.responsables = responsables;
+	public void setRole(Role role) {
+		this.role = role;
 	}
 
-	@ManyToMany( mappedBy = "responsables",cascade=CascadeType.ALL)
-	public List<User> getCollaborateurs() {
-		return collaborateurs;
+	@Override
+	public String toString() {
+		return "User [id=" + id + ", username=" + username + ", password=" + password + ", nom=" + nom + ", prenom="
+				+ prenom + ", Adresse=" + Adresse + ", role=" + role + ", email=" + email + "]";
 	}
-
-	public void setCollaborateurs(List<User> collaborateurs) {
-		this.collaborateurs = collaborateurs;
-	}
+	
+	
+	
 	
 	
 }
