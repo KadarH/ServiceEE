@@ -47,11 +47,10 @@ http://www.springframework.org/schema/security/spring-security-4.2.xsd">
 	</http>
 
 	<authentication-manager>
-		<authentication-provider user-service-ref="CollaborateurService">
+		<authentication-provider user-service-ref="UserService">
 			<password-encoder hash="sha">
 				<salt-source user-property="username" />
 			</password-encoder>
-
 		</authentication-provider>
 	</authentication-manager>
 
