@@ -4,7 +4,7 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="d"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-<jsp:include page="includeAdmin/headerColl.jsp" flush="true" />
+<jsp:include page="/private/include/headerColl.jsp"/>
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
 	href="/ServiceEE/css/w3.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
@@ -28,8 +28,8 @@
 					<d:table name="listEntretien" export="true" style="html" 
 					decorator="com.web.admin.AdminEntretienActionDecorator"
 						requestURI="/private/Admin/listEntretien" pagesize="20">
-						<d:column property="responsable.email" title="Email"></d:column>
-						<d:column property="collaborateur.email" title="Email du Collaborateur"></d:column>
+						<d:column property="responsable.email" title="Email Responsable"></d:column>
+						<d:column property="collaborateur.email" title="Email Collaborateur"></d:column>
 						<d:column property="dateEntretien" title="Date de l'entretien" />
 						<d:column property="label" title="Description" />
 						<d:column property="aj" title="Action"></d:column>
@@ -46,4 +46,4 @@
 
 	<!-- end of column four -->
 </div>
-<jsp:include page="/pages/include/footer.jsp" />
+<jsp:include page="/private/include/footer.jsp" />

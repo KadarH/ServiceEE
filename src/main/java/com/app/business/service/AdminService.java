@@ -13,11 +13,11 @@ public interface AdminService {
 
 	public List<Demande> getListDemandeAjout();
 
-	public void confirmerDemandeAjout(String idDemande);
+	public void confirmerDemandeAjout(String idDemande)throws NumberFormatException, EntityNotFoundException ;
 
 	public List<Demande> getListDemandeResponsable();
 
-	public void confirmerDemandeResponsable(String idDemande);
+	public void confirmerDemandeResponsable(String idDemande)throws NumberFormatException, EntityNotFoundException ;
 
 	// *******************************************************
 
@@ -30,6 +30,7 @@ public interface AdminService {
 	public List<User> getListResponsable();
 
 	public void supprimerUser(Long idUser) throws EntityNotFoundException ;
+	
 	public void supprimerEntretien(Long idEntretien) throws EntityNotFoundException ;
 
 }

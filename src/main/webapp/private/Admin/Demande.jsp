@@ -4,7 +4,7 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="d"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-<jsp:include page="includeAdmin/headerColl.jsp" flush="true" />
+<jsp:include page="/private/include/headerColl.jsp"/>
 
 <div class="w3-card-12 w3-blue-grey w3-animate-opacity">
 
@@ -71,4 +71,4 @@
 	<!-- end of column four -->
 </div>
 
-<jsp:include page="/pages/include/footer.jsp" />
+<jsp:include page="/private/include/footer.jsp" />

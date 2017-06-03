@@ -13,19 +13,27 @@
 
 
 	<!-- ************************************************************** -->
-
-	<package name="privatePackage" namespace="/private" extends="struts-default">
-
+	<package name="pub" namespace="/" extends="struts-default">
 
 
 		<action name="logout" class="CollaborateurAction" method="logout">
 			<result name="success">/index.jsp</result>
 			<result name="input">/Error.jsp</result>
 		</action>
+	</package>
+
+	<package name="privatePackage" namespace="/private" extends="struts-default">
+
 
 		<action name="goToHome" class="CollaborateurAction" method="goToHome">
-			<result name="success" type="redirect">Admin/goToHomeAdmin</result>
+			<result name="successCollaborateur" type="redirect">Collaborateur/goToHomeCollaborateur
+			</result>
+			<result name="successResponsable" type="redirect">Responsable/goToHomeResponsable
+			</result>
+			<result name="successAdmin" type="redirect">Admin/goToHomeAdmin</result>
 			<result name="input">/index.jsp</result>
+			<result name="error">/index.jsp</result>
+
 		</action>
 
 	</package>
@@ -57,9 +65,6 @@
 			<result name="success">Profil.jsp</result>
 			<result name="input">Error2.jsp</result>
 		</action>
-
-
-
 
 		<action name="ajouterRendezVous" class="CollaborateurAction"
 			method="ajouterRendezVous">
@@ -183,8 +188,7 @@
 			<result name="input">Error2.jsp</result>
 		</action>
 
-		<action name="modifierProfil" class="responsableAction"
-			method="modifierProfil">
+		<action name="modifierProfil" class="responsableAction" method="modifierProfil">
 			<result name="success" type="redirect">goToProfil</result>
 			<result name="input">/Error.jsp</result>
 		</action>
@@ -195,25 +199,24 @@
 
 	<package name="privateAdminPackage" namespace="/private/Admin"
 		extends="struts-default">
-		
-	
-		<action name="goToHomeAdmin" class="adminAction"
-			method="goToHomeAdmin">
+
+
+		<action name="goToHomeAdmin" class="adminAction" method="goToHomeAdmin">
 			<result name="success">Home.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
-		
+
 		<action name="goToAdminDemande" class="adminAction" method="goToAdminDemande">
 			<result name="success">Demande.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
 		<action name="accepterDemandeAjout" class="adminAction"
 			method="accepterDemandeAjout">
-			<result name="success">Demande.jsp</result>
+			<result name="success" type="redirect">goToAdminDemande</result>
 			<result name="input">/index.jsp</result>
 		</action>
 		<action name="accepterDemandeResp" class="adminAction" method="accepterDemandeResp">
-			<result name="success">Demande.jsp</result>
+			<result name="success" type="redirect">goToAdminDemande</result>
 			<result name="input">/index.jsp</result>
 		</action>
 
@@ -240,13 +243,27 @@
 			<result name="success">Evaluation.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
+		<action name="goToCollaborateurs" class="adminAction" method="goToCollaborateurs">
+			<result name="success">Collaborateur.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
+		<action name="goToResponsables" class="adminAction" method="goToResponsables">
+			<result name="success">Responsable.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		<action name="goToSupprimerUser" class="adminAction" method="goToSupprimerUser">
+			<result name="success" type="redirect">goToCollaborateurs</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
 
 
 	</package>
 
 	<!-- ************************************************************** -->
 
-	
+
 
 
 </struts>

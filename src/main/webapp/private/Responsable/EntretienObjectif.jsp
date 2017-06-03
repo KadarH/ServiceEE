@@ -4,8 +4,7 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="d"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-<jsp:include page="/pages/Responsable/includeResp/headerColl.jsp"
-	flush="true" />
+<jsp:include page="/private/include/headerColl.jsp"/>
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
 	href="/ServiceEE/css/w3.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
@@ -15,7 +14,7 @@
 
 	<div style="display: flex;">
 		<div class="w3-animate-zoom  w3-light-grey">
-			<jsp:include page="/pages/Responsable/includeResp/menu.jsp" />
+			<jsp:include page="/private/Responsable/includeResp/menu.jsp" />
 		</div>
 
 		<div class=" homing contact_tab w3-card-12  w3-animate-bottom">
@@ -56,4 +55,4 @@
 
 	<!-- end of column four -->
 </div>
-<jsp:include page="/pages/include/footer.jsp" />
+<jsp:include page="/private/include/footer.jsp" />

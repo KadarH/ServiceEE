@@ -49,12 +49,26 @@ public class CollaborateurController extends BaseAction {
 
 	// ************************************************************************************
 	public String goToHome() {
+try {
+	user = collaborateurService.findUserByEmail(user.getEmail());
+	getSession().setAttribute("user", user);
+	if(user.getRole().getId() == 1){
+		return "successCollaborateur";
+	}
+	if(user.getRole().getId() == 2){
+		return "successResponsable";
 
-		user = collaborateurService.findUserByEmail(user.getEmail());
+	}
+	if(user.getRole().getId() == 3){
+		return "successAdmin";
+	}
+	return "problem";
+} catch (Exception e) {
 
-		getSession().setAttribute("user", user);
-		return SUCCESS;
-
+	return ERROR;
+}
+		
+		
 	}
 
 	public String goToHomeCollaborateur() {

@@ -10,13 +10,6 @@ public class Test {
 
 	public static void main(String[] args) {
 		
-		AdminService adminService = new AdminServiceImpl();
-		
-		
-		List<User> lista =  adminService.getListCollaborateur();
-		for(User i : lista){
-			System.out.println(i + "************");
-		}
 		
 		
 	}

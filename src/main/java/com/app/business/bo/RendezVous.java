@@ -1,5 +1,6 @@
 package com.app.business.bo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
@@ -24,11 +25,12 @@ public class RendezVous {
 	private String dateRendezVous;
 
 	@ManyToOne
-	@JoinColumn(name = "idUser_dem", nullable = false)
+	@JoinColumn(name = "idUser_dem")
 	private User userdem;
-
+	
+	
 	@ManyToOne
-	@JoinColumn(name = "idUser_rec", nullable = false)
+	@JoinColumn(name = "idUser_rec")
 	private User userrec;
 
 	public RendezVous() {

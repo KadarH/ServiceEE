@@ -5,11 +5,13 @@ import java.util.List;
 import com.app.boudaa.dao.exceptions.EntityNotFoundException;
 import com.app.business.bo.Demande;
 import com.app.business.bo.Entretien;
+import com.app.business.bo.Role;
 import com.app.business.bo.User;
 import com.app.business.dao.DemandeDao;
 import com.app.business.dao.EntretienDao;
 import com.app.business.dao.ObjectifDao;
 import com.app.business.dao.RendezVousDao;
+import com.app.business.dao.RoleDao;
 import com.app.business.dao.UserDao;
 import com.app.business.service.AdminService;
 
@@ -20,7 +22,7 @@ public class AdminServiceImpl implements AdminService {
 	private EntretienDao entretienDao;
 	private ObjectifDao objectifDao;
 	private UserDao userDao;
-
+	private RoleDao roleDao;
 	
 //	***********************************************
 	public DemandeDao getDemandeDao() {
@@ -70,19 +72,31 @@ public class AdminServiceImpl implements AdminService {
 	}
 
 	@Override
-	public void confirmerDemandeAjout(String idDemande) {
+	public void confirmerDemandeAjout(String idDemande) throws NumberFormatException, EntityNotFoundException {
 		
+		demandeDao.delete(new Long(idDemande));
 		
 	}
 
 	@Override
 	public List<Demande> getListDemandeResponsable() {
 		return demandeDao.getListDemandeResp();
-		
+		 
 	}
 
 	@Override
-	public void confirmerDemandeResponsable(String idDemande) {
+	public void confirmerDemandeResponsable(String idDemande) throws NumberFormatException, EntityNotFoundException {
+		
+		User u = demandeDao.findById(new Long(idDemande)).getUser();
+		System.out.println(u.getRole().getLabel());
+		Role x = roleDao.findById(new Long(2));
+		System.out.println("piw");
+		u.setRole(x);
+		System.out.println("piwa");
+		userDao.update(u);
+		System.out.println(u.getRole().getLabel());
+		
+		demandeDao.delete(new Long(idDemande));
 		
 	}
 
@@ -91,7 +105,6 @@ public class AdminServiceImpl implements AdminService {
 		return entretienDao.getAll();
 	}
 
-	
 
 	@Override
 	public List<User> getListCollaborateur() {
@@ -117,6 +130,14 @@ public class AdminServiceImpl implements AdminService {
 		
 		
 		
+	}
+
+	public RoleDao getRoleDao() {
+		return roleDao;
+	}
+
+	public void setRoleDao(RoleDao roleDao) {
+		this.roleDao = roleDao;
 	}
 
 	

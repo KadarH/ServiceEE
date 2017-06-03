@@ -1,5 +1,6 @@
 package com.app.business.bo;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.FetchType;
@@ -25,7 +26,7 @@ public class User {
 	private String prenom;
 	private String Adresse;
 
-	@ManyToOne
+	@ManyToOne(cascade = CascadeType.ALL)
 	private Role role;
 	
 	
@@ -98,7 +99,7 @@ public class User {
 	}
 	
 	
-    @ManyToOne( fetch = FetchType.LAZY )
+    @ManyToOne( fetch = FetchType.LAZY,cascade= CascadeType.ALL )
     @JoinColumn( name = "role_id", nullable = false )
 	public Role getRole() {
 		return role;

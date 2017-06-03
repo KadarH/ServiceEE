@@ -4,7 +4,7 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="d"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-<jsp:include page="includeResp/headerColl.jsp" flush="true" />
+<jsp:include page="/private/include/headerColl.jsp"/>
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
 	href="/ServiceEE/css/w3.css" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
@@ -55,4 +55,4 @@
 
 	<!-- end of column four -->
 </div>
-<jsp:include page="/pages/include/footer.jsp" />
+<jsp:include page="/private/include/footer.jsp" />

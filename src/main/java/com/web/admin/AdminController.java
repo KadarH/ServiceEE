@@ -15,7 +15,7 @@ import com.web.BaseAction;
 
 public class AdminController extends BaseAction {
 	private User user = new User();
-	
+
 	private AdminService adminService;
 	private List<Entretien> listEntretien = new ArrayList<Entretien>();
 	private List<User> listCollaborateur = new ArrayList<User>();
@@ -28,24 +28,30 @@ public class AdminController extends BaseAction {
 	private CollaborateurService collaborateurService;
 
 	// *********************************************************
-	public String goToHomeAdmin(){
+	public String goToHomeAdmin() {
 		user = (User) getSession().getAttribute("user");
-		
-		
+
 		return SUCCESS;
 	}
+
 	public String goToAdminDemande() {
+		try {
+			listDemandeAjout = adminService.getListDemandeAjout();
 
-		listDemandeAjout = adminService.getListDemandeAjout();
+		} catch (Exception e) {
+			listDemandeAjout = new ArrayList<>();
+		}
+		try {
+			listDemandeResp = adminService.getListDemandeResponsable();
 
-		if (listDemandeAjout == null)
-			System.out.println("ok");
-		listDemandeResp = adminService.getListDemandeResponsable();
+		} catch (Exception e) {
+			listDemandeResp = new ArrayList<>();
+		}
 
 		return SUCCESS;
 	}
 
-	public String accepterDemandeAjout() {
+	public String accepterDemandeAjout() throws NumberFormatException, EntityNotFoundException {
 
 		String id = getRequest().getParameter("idDemande");
 
@@ -54,7 +60,7 @@ public class AdminController extends BaseAction {
 		return SUCCESS;
 	}
 
-	public String accepterDemandeResp() {
+	public String accepterDemandeResp() throws NumberFormatException, EntityNotFoundException {
 
 		String id = getRequest().getParameter("idDemande");
 
@@ -74,7 +80,7 @@ public class AdminController extends BaseAction {
 
 	// *********************************************************
 
-	public String goToAdminColl() {
+	public String goToCollaborateurs() {
 
 		listCollaborateur = adminService.getListCollaborateur();
 
@@ -83,44 +89,47 @@ public class AdminController extends BaseAction {
 
 	// *********************************************************
 
-	public String goToAdminResp() {
+	public String goToResponsables() {
 
 		listResponsable = adminService.getListResponsable();
 
 		return SUCCESS;
 	}
 
-	public String goToObjectifEntretien() throws NumberFormatException, EntityNotFoundException{
+	public String goToObjectifEntretien() throws NumberFormatException, EntityNotFoundException {
 		user = (User) getSession().getAttribute("user");
 		String id = getRequest().getParameter("idEntretien");
-		
-		 listObjectif=  collaborateurService.getListObjectif(new Long(Integer.parseInt(id)));
-		
-		
-		
+
+		listObjectif = collaborateurService.getListObjectif(new Long(Integer.parseInt(id)));
+
 		return SUCCESS;
 	}
-	public String goToEvaluationObjectif() throws NumberFormatException, EntityNotFoundException{
+
+	public String goToEvaluationObjectif() throws NumberFormatException, EntityNotFoundException {
 		user = (User) getSession().getAttribute("user");
 		String id = getRequest().getParameter("idObjectif");
-		
-				 
-				 objectif =collaborateurService.getObjectif(new Long(Integer.parseInt(id)));
 
-				 evaluation = objectif.getEvaluation();
-		 
+		objectif = collaborateurService.getObjectif(new Long(Integer.parseInt(id)));
+
+		evaluation = objectif.getEvaluation();
+
 		return SUCCESS;
 	}
-	public String goToSupprimerEntretien() throws NumberFormatException, EntityNotFoundException{
+
+	public String goToSupprimerEntretien() throws NumberFormatException, EntityNotFoundException {
 		user = (User) getSession().getAttribute("user");
 		Long id = Long.valueOf(getRequest().getParameter("idEntretien"));
 		adminService.supprimerEntretien(id);
 		return SUCCESS;
 	}
-	
-	
-	
-	
+
+	public String goToSupprimerUser() throws NumberFormatException, EntityNotFoundException {
+		user = (User) getSession().getAttribute("user");
+		Long id = Long.valueOf(getRequest().getParameter("idUser"));
+		adminService.supprimerUser(id);
+		return SUCCESS;
+	}
+
 	// *********************************************************
 
 	public AdminService getAdminService() {

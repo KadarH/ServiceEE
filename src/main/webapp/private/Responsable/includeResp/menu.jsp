@@ -8,11 +8,11 @@
 	  <div  style="float: left;">
 	<div>
 		<div >
-			<ul class="nav nav-tabs nav-stacked menu2 w3-card-12"> 
-				<li><a href="#" onclick="document.getElementById('formHome').submit();" class="w3-margin">Home </a></li>
-				<li><a href="#" onclick="document.getElementById('formRendezVous').submit();" class="w3-margin">Mes Rendez - vous </a></li>
-				<li><a href="#" onclick="document.getElementById('formEntretien').submit();" class="w3-margin" > Entretiens</a></li>
-				<li><a href="#" onclick="document.getElementById('formProfil').submit();" class="w3-margin" >Mes Informations</a></li>
+			<ul class="nav nav-tabs nav-stacked menu2 "> 
+				<li><a href="#" onclick="document.getElementById('formHome').submit();" class="w3-margin w3-light-blue">Acceuil </a></li>
+				<li><a href="#" onclick="document.getElementById('formProfil').submit();" class="w3-margin  w3-light-blue" >Mon Profil </a></li>
+				<li><a href="#" onclick="document.getElementById('formRendezVous').submit();" class="w3-margin  w3-light-blue">Les Rendez-vous </a></li>
+				<li><a href="#" onclick="document.getElementById('formEntretien').submit();" class="w3-margin  w3-light-blue" >Les Entretiens</a></li>
 				
 			</ul>
 		</div>

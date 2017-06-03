@@ -20,7 +20,8 @@ public class Demande {
 
 	private String message;
 
-	@ManyToOne(cascade = CascadeType.ALL)
+	
+	@ManyToOne
 	@JoinColumn(name = "idUser")
 	private User user;
 	private String type;

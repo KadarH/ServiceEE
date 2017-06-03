@@ -4,8 +4,7 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="d"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-<jsp:include page="/private/Responsable/includeResp/headerColl.jsp"
-	flush="true" />
+<jsp:include page="/private/include/headerColl.jsp"/>
 <script type="text/javascript">
 	$(document).ready(function() {
 		$.subscribe('autocompleteChange', function(event, data) {
@@ -120,4 +119,4 @@
 
 	<!-- end of column four -->
 </div>
-<jsp:include page="/pages/include/footer.jsp" />
+<jsp:include page="/private/include/footer.jsp" />
