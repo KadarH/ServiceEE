@@ -9,8 +9,8 @@
 <div class="w3-card-12 w3-blue-grey w3-animate-opacity">
 
 	<div style="display: flex;">
-		<div class="w3-animate-zoom w3-light-grey">
-			<jsp:include page="includeColl/menu.jsp" />
+		<div class="w3-animate-zoom w3-light-grey w3-padding" >
+			<jsp:include page="includeColl/menu.jsp"  />
 		</div>
 
 
@@ -28,24 +28,23 @@
 
 				<div id="tone" style="overflow-y: scroll; height: 350px;">
 					Vous pouvez ajouter un message à votre demande de rendez-vous : <br />
-					<s:form action="ajouterRendezVous">
+					<s:form action="ajouterRendezVous" cssClass="w3-theme-l2 w3-card-12">
 						<sj:datepicker name="rendezVous.dateRendezVous" zindex="2006"
 							timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
 							timepickerFormat="HH:mm" timepickerShowSecond="true"
 							duration="fast" readonly="true" required="true" 
 							label="Date du rendez vous"></sj:datepicker>
 
-						<s:textfield label="Message" name="rendezVous.message" size="70px"></s:textfield>
+						<s:textfield label="Message" name="rendezVous.message" size="105px"></s:textfield>
 						<sj:autocompleter id="languages" name="x" list="listCollaborateur"
 							required="true" selectBox="true" selectBoxIcon="true"
 							onChangeTopics="autocompleteChange"
 							onFocusTopics="autocompleteFocus"
-							onSelectTopics="autocompleteSelect" label="coll" />
+							onSelectTopics="autocompleteSelect" label="collaborateur" />
 
 						<s:submit value="Declarer un Rendez-vous"></s:submit>
 
 					</s:form>
-					<br>
 					<h2>Renseignement</h2>
 					Un rendez vous sera dans l'etat "false" , jusqu'à ce qu'il se
 					validera par l'utilisateur demandé .

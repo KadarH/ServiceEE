@@ -85,7 +85,6 @@
 						<s:submit value="Declarer un Rendez-vous"></s:submit>
 
 					</s:form>
-					<br>
 					<h2>Renseignement</h2>
 					Un rendez vous sera dans l'etat "false" , jusqu'à ce qu'il se
 					validera par l'utilisateur demandé .
@@ -94,7 +93,7 @@
 				<div id="ttwo" style="overflow-y: scroll; height: 350px;">
 
 					<d:table name="listRendezVous" export="true" style="html"
-						cellspacing="60px"
+						
 						decorator="com.web.responsable.CollaborateurActionDecorator"
 						requestURI="/private/Responsable/listRendezVous" pagesize="30">
 						<d:column property="userdem.nom" title="Nom"></d:column>
@@ -109,7 +108,7 @@
 				<div id="tthree" style="overflow-y: scroll; height: 350px;">
 
 					<d:table name="listRendezVousAcceptee" export="true" style="html"
-						cellspacing="60px"
+						
 						requestURI="/private/Responsable/listRendezVousAcceptee" pagesize="30">
 						<d:column property="userdem.nom" title="Nom"></d:column>
 						<d:column property="userdem.prenom" title="Prenom"></d:column>
