@@ -4,7 +4,7 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="d"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-<jsp:include page="/private/include/headerColl.jsp"/>
+<jsp:include page="/private/include/headerColl.jsp" />
 <script type="text/javascript">
 	$(document).ready(function() {
 		$.subscribe('autocompleteChange', function(event, data) {
@@ -44,7 +44,8 @@
 			<jsp:include page="/private/Responsable/includeResp/menu.jsp" />
 		</div>
 
-		<div class=" homing contact_tab w3-card-12  w3-animate-bottom">
+		<div id="divdt"
+			class=" homing contact_tab w3-card-12  w3-animate-bottom">
 
 
 			<sj:tabbedpanel id="localtabs" cssStyle="max-height:400px">
@@ -55,24 +56,26 @@
 				<sj:tab id="tab3" target="tthree" onclick="action"
 					label="Mes entretiens (Responsable)" />
 
-				<div id="tone" style="overflow: scroll; align-text: center;">
+				<div id="tone" style="overflow: scroll; align-text: center;max-height:350px;">
 					Vous pouvez ajouter un entretien d'evaluation : Vous pouvez ajouter
 					un message à votre demande de rendez-vous : <br />
-					<s:form namespace="/private/Responsable" action="ajouterEntretienResponsable">
+					<s:form namespace="/private/Responsable"
+						action="ajouterEntretienResponsable"
+						cssClass="w3-theme-l2 w3-card-12 ">
 						<sj:datepicker name="entretien.dateEntretien" zindex="2006"
 							timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
 							timepickerFormat="HH:mm" timepickerShowSecond="true"
 							duration="fast" readonly="true" required="true"
-							label="Date de l'entretien"></sj:datepicker>
+							label="Date de l'entretien" ></sj:datepicker>
 
 						<s:textfield label="Description" name="entretien.label"
-							size="70px"></s:textfield>
+							size="100px"></s:textfield>
 						<sj:autocompleter id="languages" name="x" list="listCollaborateur"
 							required="true" selectBox="true" selectBoxIcon="true"
 							onChangeTopics="autocompleteChange"
 							onFocusTopics="autocompleteFocus"
 							onSelectTopics="autocompleteSelect" label="Collaborateur" />
-						
+
 						<s:submit value="Ajouter l'entretien"></s:submit>
 
 					</s:form>
@@ -83,10 +86,10 @@
 
 				</div>
 
-				<div id="ttwo" style="overflow: scroll;height: 350px;">
+				<div id="ttwo" style="overflow: scroll; height: 350px;">
 
 					<d:table name="listEntretienCollaborateur" export="true"
-						style="html" cellspacing="50px"
+						style="html"
 						decorator="com.web.responsable.CollaborateurEntretienDecorator"
 						requestURI="/listAction" pagesize="30">
 						<d:column property="responsable.nom" title="Nom du responsable"></d:column>
@@ -98,12 +101,13 @@
 
 
 				</div>
-				<div id="tthree" style="overflow: scroll; height: 350px;align-text: center;">
+				<div id="tthree"
+					style="overflow: scroll; height: 350px; align-text: center;">
 
 					<d:table name="listEntretienResponsable" export="true" style="html"
-						cellspacing="50px"
 						decorator="com.web.responsable.CollaborateurEntretienDecorator"
-						requestURI="/private/Responsable/listEntretienResponsable" pagesize="20">
+						requestURI="/private/Responsable/listEntretienResponsable"
+						pagesize="20">
 						<d:column property="responsable.nom" title="Nom du responsable"></d:column>
 						<d:column property="responsable.email" title="Email"></d:column>
 						<d:column property="dateEntretien" title="Date" />

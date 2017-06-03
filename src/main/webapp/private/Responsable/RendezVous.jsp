@@ -55,7 +55,7 @@
 
 
 
-		<div class=" homing contact_tab w3-card-12  w3-animate-bottom">
+		<div id="divdt" class=" homing contact_tab w3-card-12  w3-animate-bottom">
 
 
 
@@ -68,14 +68,14 @@
 
 				<div id="tone">
 					Vous pouvez ajouter un message à votre demande de rendez-vous : <br />
-					<s:form namespace="/private/Responsable" action="ajouterRendezVousResponsable">
+					<s:form cssClass="w3-theme-l2 w3-card-12 " namespace="/private/Responsable" action="ajouterRendezVousResponsable">
 						<sj:datepicker name="rendezVous.dateRendezVous" zindex="2006"
 							timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
 							timepickerFormat="HH:mm" timepickerShowSecond="true"
 							duration="fast" readonly="true" required="true"
 							label="Date du rendez vous"></sj:datepicker>
 
-						<s:textfield label="Message" name="rendezVous.message" size="70px"></s:textfield>
+						<s:textfield label="Message" name="rendezVous.message" size="105px"></s:textfield>
 						<sj:autocompleter id="languages" name="x" list="listCollaborateur"
 							required="true" selectBox="true" selectBoxIcon="true"
 							onChangeTopics="autocompleteChange"
