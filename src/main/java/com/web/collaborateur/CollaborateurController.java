@@ -5,6 +5,7 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.springframework.orm.ObjectRetrievalFailureException;
 
 import com.app.boudaa.dao.exceptions.EntityNotFoundException;
 import com.app.business.bo.Demande;
@@ -49,26 +50,40 @@ public class CollaborateurController extends BaseAction {
 
 	// ************************************************************************************
 	public String goToHome() {
-try {
-	user = collaborateurService.findUserByEmail(user.getEmail());
-	getSession().setAttribute("user", user);
-	if(user.getRole().getId() == 1){
-		return "successCollaborateur";
-	}
-	if(user.getRole().getId() == 2){
-		return "successResponsable";
+		try {
+			user = collaborateurService.findUserByEmail(user.getEmail());
+			getSession().setAttribute("user", user);
+			if (user.getRole().getId() == 1) {
+				if (user.getEtat().equals("false"))
+					return "errorCollaborateur1";
+				return "successCollaborateur";
+			}
+			if (user.getRole().getId() == 2) {
+				return "successResponsable";
+
+			}
+			if (user.getRole().getId() == 3) {
+				return "successAdmin";
+			}
+			return "problem";
+		} catch (Exception e) {
+
+			return ERROR;
+		}
 
 	}
-	if(user.getRole().getId() == 3){
-		return "successAdmin";
-	}
-	return "problem";
-} catch (Exception e) {
 
-	return ERROR;
-}
-		
-		
+	public String addCollaborateur() throws EntityNotFoundException {
+		Demande demande = new Demande();
+		demande.setDate(new Date().toString());
+		demande.setEtat(false);
+		demande.setMessage("demande d'ajout");
+		demande.setType("ajout");
+
+		User u = collaborateurService.envoyerInscription(user);
+		demande.setUser(u);
+		collaborateurService.envoyerDemandeAjout(demande);
+		return SUCCESS;
 	}
 
 	public String goToHomeCollaborateur() {
@@ -91,12 +106,16 @@ try {
 		user = (User) getSession().getAttribute("user");
 		TRACER.debug("Methode goToHome appelée");
 		System.out.println(user.getId() + "**********" + user.getEmail());
+		
+		try {
+			listCollaborateur = collaborateurService.getListCollaborateur();
+			listRendezVous = collaborateurService.getListRendezVous(user);
+			listRendezVousAcceptee = collaborateurService.getListRendezVousAcceptee(user);
+			return SUCCESS;
+		} catch (Exception e) {
+			return SUCCESS;
+		}
 
-		listRendezVous = collaborateurService.getListRendezVous(user);
-		listRendezVousAcceptee = collaborateurService.getListRendezVousAcceptee(user);
-		listCollaborateur = collaborateurService.getListCollaborateur();
-		System.out.println(listCollaborateur.get(0));
-		return SUCCESS;
 	}
 
 	public String accepterRendezVous() throws NumberFormatException, EntityNotFoundException {
@@ -168,7 +187,7 @@ try {
 
 	public String modifierProfil() {
 		user = (User) getSession().getAttribute("user");
-		
+
 		collaborateurService.modifierMonProfil(user);
 		getSession().setAttribute("user", user);
 		System.out.println(user);
@@ -178,7 +197,7 @@ try {
 
 	public String modifierPass() {
 		user = (User) getSession().getAttribute("user");
-		
+
 		if (user.getPassword().equals(ancienPass)) {
 			if (pass.equals(newPass)) {
 				collaborateurService.modifierMonProfil(user);

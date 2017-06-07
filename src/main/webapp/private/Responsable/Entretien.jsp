@@ -61,7 +61,7 @@
 					un message à votre demande de rendez-vous : <br />
 					<s:form namespace="/private/Responsable"
 						action="ajouterEntretienResponsable"
-						cssClass="w3-theme-l2 w3-card-12 ">
+						cssClass=" w3-card-12 ">
 						<sj:datepicker name="entretien.dateEntretien" zindex="2006"
 							timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
 							timepickerFormat="HH:mm" timepickerShowSecond="true"

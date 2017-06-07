@@ -2,18 +2,23 @@ package com.app.business.service.impl;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.concurrent.ExecutionException;
+
+import javax.persistence.RollbackException;
+
+import org.springframework.transaction.annotation.Transactional;
 
 import com.app.boudaa.dao.exceptions.EntityNotFoundException;
 import com.app.business.bo.Demande;
 import com.app.business.bo.Entretien;
 import com.app.business.bo.Objectif;
 import com.app.business.bo.RendezVous;
+import com.app.business.bo.Role;
 import com.app.business.bo.User;
 import com.app.business.dao.DemandeDao;
 import com.app.business.dao.EntretienDao;
 import com.app.business.dao.ObjectifDao;
 import com.app.business.dao.RendezVousDao;
+import com.app.business.dao.RoleDao;
 import com.app.business.dao.UserDao;
 import com.app.business.service.CollaborateurService;
 
@@ -24,11 +29,24 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 	private EntretienDao entretienDao;
 	private ObjectifDao objectifDao;
 	private UserDao userDao;
-
+	private RoleDao roleDao;
+	
 	public void envoyerDemandeAjout(Demande demande) {
+		
 		demandeDao.create(demande);	
 	}
 
+	public User envoyerInscription(User user) throws EntityNotFoundException {
+		
+		if(userDao.findByEmail(user.getEmail()) != null){
+			throw new RollbackException();
+		}
+		Role x = roleDao.findById(new Long(1));
+		user.setRole(x);
+		user.setEtat("false");
+		return userDao.create(user);
+	}
+	
 	@Override
 	public void envoyerDemandeResp(Demande demande)  {
 		
@@ -38,8 +56,11 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 	@Override
 	public boolean findIfUserDemande(User user) {
 		try{
-			demandeDao.getEntityByColumn("Demande", "idUser",user.getId()+"");
-			return true;
+			List<Demande> list = demandeDao.getEntityByColumn("Demande", "idUser",user.getId()+"");
+			for(Demande i : list){
+				if(i.getType().equals("resp") &&  i.getEtat()==false) return true;
+			}
+			return false;
 		}
 		catch(Exception e){
 			
@@ -78,7 +99,7 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 			return list;
 	}
 
-	@Override
+	
 	public List<RendezVous> getListRendezVous(User u) {
 		List<RendezVous> l = new ArrayList<RendezVous>();
 		l= rendezVousDao.getEntityByColumn("RendezVous", "idUser_rec", u.getId()+"");
@@ -91,7 +112,7 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 		return list;
 		
 	}
-	@Override
+	
 	public List<RendezVous> getListRendezVousAcceptee(User u) {
 		List<RendezVous> l = new ArrayList<RendezVous>();
 		l= rendezVousDao.getEntityByColumn("RendezVous", "idUser_dem", u.getId()+"");
@@ -185,6 +206,14 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 
 	public void setObjectifDao(ObjectifDao objectifDao) {
 		this.objectifDao = objectifDao;
+	}
+
+	public RoleDao getRoleDao() {
+		return roleDao;
+	}
+
+	public void setRoleDao(RoleDao roleDao) {
+		this.roleDao = roleDao;
 	}
 
 	

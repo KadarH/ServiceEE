@@ -18,20 +18,19 @@ import javax.persistence.Table;
 @Entity
 @Table(name = "ENTRETIEN")
 public class Entretien {
-	
+
 	@Id
 	@GeneratedValue
-	@Column(name="idEntretien")
+	@Column(name = "idEntretien")
 	private Long id;
 	private String label;
 	// autres
 	private String etat;
 	private String dateEntretien;
-	
+
 	@Column
-	@ElementCollection(targetClass=Objectif.class)
+	@ElementCollection(targetClass = Objectif.class)
 	private List<Objectif> listObjectif;
-	
 
 	private User collaborateur;
 
@@ -49,10 +48,10 @@ public class Entretien {
 	public Entretien() {
 		super();
 	}
-	
+
 	@Id
 	@GeneratedValue
-	@Column(name="id")
+	@Column(name = "id")
 	public Long getId() {
 		return id;
 	}
@@ -76,8 +75,8 @@ public class Entretien {
 	public void setEtat(String etat) {
 		this.etat = etat;
 	}
-	
-	@OneToMany(fetch = FetchType.LAZY,cascade=CascadeType.ALL, mappedBy = "entretien")
+
+	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "entretien")
 	public List<Objectif> getListObjectif() {
 		return listObjectif;
 	}
@@ -85,20 +84,18 @@ public class Entretien {
 	public void setListObjectif(List<Objectif> listObjectif) {
 		this.listObjectif = listObjectif;
 	}
-	
-	@ManyToOne( fetch = FetchType.LAZY )
-    @JoinColumn( name = "collaborateur_id", nullable = false )
-    public User getCollaborateur() {
+
+	@ManyToOne
+	public User getCollaborateur() {
 		return collaborateur;
 	}
 
 	public void setCollaborateur(User collaborateur) {
 		this.collaborateur = collaborateur;
 	}
-
-	@ManyToOne( fetch = FetchType.LAZY )
-    @JoinColumn( name = "responsable_id", nullable = false )
-    public User getResponsable() {
+	
+	@ManyToOne
+	public User getResponsable() {
 		return responsable;
 	}
 

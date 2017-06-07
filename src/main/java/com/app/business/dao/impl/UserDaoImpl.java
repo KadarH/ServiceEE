@@ -13,7 +13,12 @@ public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao{
 	@Override
 	public User findByEmail(String email) {
 		
-		return this.getEntityByColumn("User", "email", email).get(0);
+		try {
+			return this.getEntityByColumn("User", "email", email).get(0);
+			
+		} catch (Exception e) {
+			return null;
+		}
 		
 		
 	}

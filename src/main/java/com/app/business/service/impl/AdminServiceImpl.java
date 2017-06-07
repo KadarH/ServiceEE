@@ -73,9 +73,13 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public void confirmerDemandeAjout(String idDemande) throws NumberFormatException, EntityNotFoundException {
+		Demande d = demandeDao.findById(new Long(idDemande));
+		User u = d.getUser();
 		
-		demandeDao.delete(new Long(idDemande));
-		
+		u.setEtat("true");
+		d.setEtat(true);
+		demandeDao.update(d);
+		userDao.update(u);
 	}
 
 	@Override
@@ -87,17 +91,13 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public void confirmerDemandeResponsable(String idDemande) throws NumberFormatException, EntityNotFoundException {
 		
-		User u = demandeDao.findById(new Long(idDemande)).getUser();
-		System.out.println(u.getRole().getLabel());
+		Demande d = demandeDao.findById(new Long(idDemande));
+		User u = d.getUser();
 		Role x = roleDao.findById(new Long(2));
-		System.out.println("piw");
 		u.setRole(x);
-		System.out.println("piwa");
+		d.setEtat(true);
+		demandeDao.update(d);
 		userDao.update(u);
-		System.out.println(u.getRole().getLabel());
-		
-		demandeDao.delete(new Long(idDemande));
-		
 	}
 
 	@Override

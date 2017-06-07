@@ -83,17 +83,25 @@ public class ResponsableController extends BaseAction {
 	public String goToRendezVous() {
 		user = (User) getSession().getAttribute("user");
 		try {
-			listRendezVous = collaborateurService.getListRendezVous(user);
-			listRendezVousAcceptee = collaborateurService.getListRendezVousAcceptee(user);
 			listCollaborateur = collaborateurService.getListCollaborateur();
 			
 		} catch (Exception e) {
-			listRendezVous= new ArrayList<RendezVous>();
-			listRendezVousAcceptee= new ArrayList<RendezVous>();
-			listCollaborateur= new ArrayList<String>();
+			listCollaborateur = new ArrayList<String>();
 		}
 		
-		return SUCCESS;
+		try {
+			listRendezVous = collaborateurService.getListRendezVous(user);
+			
+		} catch (Exception e) {
+			listRendezVous = new ArrayList<RendezVous>();
+		}
+		try {
+			listRendezVousAcceptee = collaborateurService.getListRendezVousAcceptee(user);
+			
+		} catch (Exception e) {
+			listRendezVousAcceptee = new ArrayList<RendezVous>();
+		}
+		return SUCCESS; 
 	}
 
 	public String accepterRendezVous() throws NumberFormatException, EntityNotFoundException {

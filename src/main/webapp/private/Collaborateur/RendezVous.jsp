@@ -28,14 +28,14 @@
 
 				<div id="tone" style="overflow-y: scroll; height: 350px;">
 					Vous pouvez ajouter un message à votre demande de rendez-vous : <br />
-					<s:form action="ajouterRendezVous" cssClass="w3-theme-l2 w3-card-12">
+					<s:form action="ajouterRendezVous" cssClass="w3-card-12">
 						<sj:datepicker name="rendezVous.dateRendezVous" zindex="2006"
 							timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
 							timepickerFormat="HH:mm" timepickerShowSecond="true"
 							duration="fast" readonly="true" required="true" 
 							label="Date du rendez vous"></sj:datepicker>
 
-						<s:textfield label="Message" name="rendezVous.message" size="105px"></s:textfield>
+						<s:textfield label="Message" name="rendezVous.message" size="100px"></s:textfield>
 						<sj:autocompleter id="languages" name="x" list="listCollaborateur"
 							required="true" selectBox="true" selectBoxIcon="true"
 							onChangeTopics="autocompleteChange"

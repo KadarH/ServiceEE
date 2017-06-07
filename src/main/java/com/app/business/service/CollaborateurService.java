@@ -11,9 +11,10 @@ import com.app.business.bo.RendezVous;
 import com.app.business.bo.User;
 
 public interface CollaborateurService {
-
+	
 	public void envoyerDemandeAjout(Demande demande);
 
+	public User envoyerInscription(User user) throws EntityNotFoundException ;
 	public void envoyerDemandeResp(Demande demande);
 
 	public void ajouterRendezVous(RendezVous rendezVous);

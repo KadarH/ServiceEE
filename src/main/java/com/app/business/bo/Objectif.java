@@ -5,7 +5,6 @@ import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
@@ -25,7 +24,6 @@ public class Objectif {
 	private String etat;
 	
 	@ManyToOne(cascade=CascadeType.ALL)
-	@JoinColumn(name="idEntretien")
 	private Entretien entretien ;
 	
 	@OneToOne(cascade=CascadeType.ALL)

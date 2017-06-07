@@ -51,6 +51,7 @@ public class BaseAction extends ActionSupport {
 		session.setAttribute(MESSAGES, lMessages);
 	}
 
+	
 	/**
 	 * allows the access to the http request object
 	 * 

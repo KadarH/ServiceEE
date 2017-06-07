@@ -1,5 +1,6 @@
 package com.app.business.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import com.app.boudaa.dao.impl.GenericDaoImpl;
@@ -17,14 +18,27 @@ public class DemandeDaoImpl extends GenericDaoImpl<Demande, Long> implements Dem
 	@Override
 	public List<Demande> getListDemandeAjout() {
 
-		return this.getEntityByColumn("Demande", "type","ajout" );
-		
+		List<Demande> list = this.getEntityByColumn("Demande", "type","ajout");
+		List<Demande> listaa = new ArrayList<Demande>();
+		for(Demande i :list){
+			if(i.getEtat()==false){
+				listaa.add(i);
+			}
+			else continue;
+		}
+		return listaa;
 	}
 
 	@Override
 	public List<Demande> getListDemandeResp() {
-		return this.getEntityByColumn("Demande", "type","resp");
-		
+		List<Demande> list = this.getEntityByColumn("Demande", "type","resp");
+		List<Demande> listaa = new ArrayList<Demande>();
+		for(Demande i :list){
+			if(i.getEtat()==false){
+				listaa.add(i);
+			}
+		}
+		return listaa;
 	}
 
 }

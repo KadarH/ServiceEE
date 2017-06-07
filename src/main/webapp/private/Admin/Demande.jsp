@@ -31,8 +31,8 @@
 					<d:table name="listDemandeAjout" export="true" id="appStatus"
 						decorator="com.web.admin.AdminActionDecorator"
 						requestURI="/private/Admin/listDemandeAjout" pagesize="30">
-						<d:column property="user.nom" title="Nom"></d:column>
-						<d:column property="user.prenom" title="Prenom"></d:column>
+						<d:column property="user.username" title="Pseudo"></d:column>
+						<d:column property="user.email" title="Email"></d:column>
 						<d:column property="message" title="Message" />
 						<d:column property="date" title="Date " />
 						<d:column property="aj" title="Accepter">
@@ -45,8 +45,8 @@
 					<d:table name="listDemandeResp" export="true" id="appStatus"
 						decorator="com.web.admin.AdminRActionDecorator"
 						requestURI="/private/Admin/listDemandeResp" pagesize="30">
-						<d:column property="user.nom" title="Nom"></d:column>
-						<d:column property="user.prenom" title="Prenom"></d:column>
+						<d:column property="user.username" title="Pseudo"></d:column>
+						<d:column property="user.email" title="Email"></d:column>
 						<d:column property="message" title="Message" />
 						<d:column property="date" title="Date " />
 						<d:column property="aj" title="Accepter">

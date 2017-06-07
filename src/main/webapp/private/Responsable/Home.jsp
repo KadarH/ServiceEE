@@ -28,7 +28,7 @@
 
 				<div id="ttwo"
 					style="overflow: scroll; height: 350px; margin-left: 60px;">
-	<br>
+	
 			<p>Cette page vous concerne en tant que Responsable , vous auriez
 				un menu qui vous donnera les possibilités suivantes :</p>
 			<br>

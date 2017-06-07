@@ -15,26 +15,37 @@
 	<!-- ************************************************************** -->
 	<package name="pub" namespace="/" extends="struts-default">
 
+		<action name="goToHome" class="userAction" method="goToHome">
+			<result name="successCollaborateur" type="redirect">private/Collaborateur/goToHomeCollaborateur
+			</result>
+			<result name="successResponsable" type="redirect">private/Responsable/goToHomeResponsable
+			</result>
 
+			<result name="successAdmin" type="redirect">private/Admin/goToHomeAdmin</result>
+			<result name="errorCollaborateur1">private/ErrorCollaborateur1.jsp</result>
+			<result name="input">/index.jsp</result>
+			<result name="error">/index.jsp</result>
+
+		</action>
 		<action name="logout" class="CollaborateurAction" method="logout">
 			<result name="success">/index.jsp</result>
 			<result name="input">/Error.jsp</result>
+			<result name="error">/Error.jsp</result>
 		</action>
 	</package>
 
 	<package name="privatePackage" namespace="/private" extends="struts-default">
 
 
-		<action name="goToHome" class="CollaborateurAction" method="goToHome">
-			<result name="successCollaborateur" type="redirect">Collaborateur/goToHomeCollaborateur
-			</result>
-			<result name="successResponsable" type="redirect">Responsable/goToHomeResponsable
-			</result>
-			<result name="successAdmin" type="redirect">Admin/goToHomeAdmin</result>
-			<result name="input">/index.jsp</result>
+		
+
+		<action name="addCollaborateur" class="CollaborateurAction"
+			method="addCollaborateur">
 			<result name="error">/index.jsp</result>
+			<result name="success">/index.jsp</result>
 
 		</action>
+
 
 	</package>
 
@@ -68,7 +79,7 @@
 
 		<action name="ajouterRendezVous" class="CollaborateurAction"
 			method="ajouterRendezVous">
-			<result name="success">RendezVous.jsp</result>
+			<result name="success" type="redirect">goToRendezVous</result>
 			<result name="input">/Error.jsp</result>
 		</action>
 		<action name="goToRendezVous" class="CollaborateurAction"
