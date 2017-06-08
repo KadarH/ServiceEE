@@ -29,7 +29,7 @@
 
 
 					<d:table name="listDemandeAjout" export="true" id="appStatus"
-						decorator="com.web.admin.AdminActionDecorator"
+						decorator="com.web.admin.decorator.AdminActionDecorator"
 						requestURI="/private/Admin/listDemandeAjout" pagesize="30">
 						<d:column property="user.username" title="Pseudo"></d:column>
 						<d:column property="user.email" title="Email"></d:column>
@@ -43,7 +43,7 @@
 				<div id="ttwo" style="overflow-y: scroll; height: 350px;">
 
 					<d:table name="listDemandeResp" export="true" id="appStatus"
-						decorator="com.web.admin.AdminRActionDecorator"
+						decorator="com.web.admin.decorator.AdminRActionDecorator"
 						requestURI="/private/Admin/listDemandeResp" pagesize="30">
 						<d:column property="user.username" title="Pseudo"></d:column>
 						<d:column property="user.email" title="Email"></d:column>

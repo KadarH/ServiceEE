@@ -4,25 +4,26 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="d"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 
-<jsp:include page="/private/include/headerColl.jsp"/>
+<jsp:include page="/private/include/headerColl.jsp" />
 
 <div class="w3-card-12 w3-blue-grey w3-animate-opacity">
 
 	<div style="display: flex;">
-		<div class="w3-animate-zoom w3-light-grey w3-padding" >
-			<jsp:include page="includeColl/menu.jsp"  />
+		<div class="w3-animate-zoom w3-light-grey w3-padding">
+			<jsp:include page="includeColl/menu.jsp" />
 		</div>
 
 
 
-		<div id="divdt" class=" homing contact_tab w3-card-12  w3-animate-bottom">
+		<div id="divdt"
+			class=" homing contact_tab w3-card-12  w3-animate-bottom">
 
 
 
 			<sj:tabbedpanel id="localtabs">
 				<sj:tab id="tab1" target="tone" label="Ajouter un rendez-vous" />
 				<sj:tab id="tab2" target="ttwo" onclick="action"
-					label="Liste de rendez vous"/>
+					label="Liste de rendez vous" />
 				<sj:tab id="tab3" target="tthree" onclick="action"
 					label="Liste des rendez vous àcceptés" />
 
@@ -32,10 +33,11 @@
 						<sj:datepicker name="rendezVous.dateRendezVous" zindex="2006"
 							timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
 							timepickerFormat="HH:mm" timepickerShowSecond="true"
-							duration="fast" readonly="true" required="true" 
+							duration="fast" readonly="true" required="true"
 							label="Date du rendez vous"></sj:datepicker>
 
-						<s:textfield label="Message" name="rendezVous.message" size="100px"></s:textfield>
+						<s:textfield label="Message" name="rendezVous.message"
+							size="100px"></s:textfield>
 						<sj:autocompleter id="languages" name="x" list="listCollaborateur"
 							required="true" selectBox="true" selectBoxIcon="true"
 							onChangeTopics="autocompleteChange"
@@ -52,30 +54,31 @@
 				</div>
 				<div id="ttwo" style="overflow-y: scroll; height: 350px;">
 
-					<d:table name="listRendezVous" export="true"
-						 id="appStatus"
-						decorator="com.web.collaborateur.CollaborateurActionDecorator"
+					<d:table name="listRendezVous" export="true" id="appStatus"
+						decorator="com.web.collaborateur.decorator.CollaborateurActionDecorator"
 						requestURI="/private/Collaborateur/listRendezVous" pagesize="30">
-						<d:column property="userdem.nom" title="Nom"></d:column>
-						<d:column property="userdem.prenom" title="Prenom"></d:column>
+						<d:column property="userdem.username" title="Pseudo"></d:column>
 						<d:column property="message" title="Message" />
 						<d:column property="dateRendezVous" title="Date " />
-						<d:column property="aj" title="Action"> </d:column>
+						<d:column property="aj" title="Action">
+						</d:column>
 					</d:table>
 
 
 				</div>
 				<div id="tthree" style="overflow-y: scroll; height: 350px;">
 
-					<d:table name="listRendezVousAcceptee" export="true" 
-						 id="appStatus" cellpadding="100px" 
-						requestURI="/private/Collaborateur/listRendezVousAcceptee" pagesize="30">
-						<d:column property="userdem.nom" title="Nom"></d:column>
-						<d:column property="userdem.prenom" title="Prenom"></d:column>
+					<d:table name="listRendezVousAcceptee" export="true" id="appStatus"
+						cellpadding="100px"
+						requestURI="/private/Collaborateur/listRendezVousAcceptee"
+						pagesize="30">
+						<d:column property="userdem.username" title="Pseudo"></d:column>
 						<d:column property="message" title="Message" />
 						<d:column property="dateRendezVous" title="Date " />
-						<d:column title="Accepté" ><img width="40" height="40" src="/ServiceEE/img/accepter.png"></d:column>
-						</d:table>
+						<d:column title="Accepté">
+							<img width="40" height="40" src="/ServiceEE/img/accepter.png">
+						</d:column>
+					</d:table>
 
 
 				</div>

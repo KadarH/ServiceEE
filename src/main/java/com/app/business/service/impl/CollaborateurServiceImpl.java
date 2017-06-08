@@ -1,11 +1,8 @@
 package com.app.business.service.impl;
 
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
-
-import javax.persistence.RollbackException;
-
-import org.springframework.transaction.annotation.Transactional;
 
 import com.app.boudaa.dao.exceptions.EntityNotFoundException;
 import com.app.business.bo.Demande;
@@ -32,15 +29,15 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 	private RoleDao roleDao;
 	
 	public void envoyerDemandeAjout(Demande demande) {
-		
+		demande.setDate(new Date().toString());
+		demande.setEtat(false);
+		demande.setMessage("demande d'ajout");
+		demande.setType("ajout");
 		demandeDao.create(demande);	
 	}
 
 	public User envoyerInscription(User user) throws EntityNotFoundException {
 		
-		if(userDao.findByEmail(user.getEmail()) != null){
-			throw new RollbackException();
-		}
 		Role x = roleDao.findById(new Long(1));
 		user.setRole(x);
 		user.setEtat("false");
@@ -56,7 +53,7 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 	@Override
 	public boolean findIfUserDemande(User user) {
 		try{
-			List<Demande> list = demandeDao.getEntityByColumn("Demande", "idUser",user.getId()+"");
+			List<Demande> list = demandeDao.getEntityByColumn("Demande", "user_id",user.getId()+"");
 			for(Demande i : list){
 				if(i.getType().equals("resp") &&  i.getEtat()==false) return true;
 			}
@@ -102,7 +99,7 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 	
 	public List<RendezVous> getListRendezVous(User u) {
 		List<RendezVous> l = new ArrayList<RendezVous>();
-		l= rendezVousDao.getEntityByColumn("RendezVous", "idUser_rec", u.getId()+"");
+		l= rendezVousDao.getEntityByColumn("RendezVous", "userrec_id", u.getId()+"");
 		List<RendezVous> list = new ArrayList<RendezVous>();
 		
 		for(RendezVous r : l){
@@ -115,7 +112,7 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 	
 	public List<RendezVous> getListRendezVousAcceptee(User u) {
 		List<RendezVous> l = new ArrayList<RendezVous>();
-		l= rendezVousDao.getEntityByColumn("RendezVous", "idUser_dem", u.getId()+"");
+		l= rendezVousDao.getEntityByColumn("RendezVous", "userdem_id", u.getId()+"");
 		List<RendezVous> list = new ArrayList<RendezVous>();
 		
 		for(RendezVous r : l){
@@ -139,7 +136,7 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 
 	@Override
 	public List<Objectif> getListObjectif(Long idEntretien)throws EntityNotFoundException   {
-		return getEntretien(idEntretien).getListObjectif();
+		return objectifDao.getEntityByColumn("Objectif", "entretien_id", idEntretien+"");
 		
 	}
 

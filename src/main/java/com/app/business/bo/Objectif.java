@@ -1,7 +1,6 @@
 package com.app.business.bo;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -9,36 +8,40 @@ import javax.persistence.ManyToOne;
 import javax.persistence.OneToOne;
 import javax.persistence.Table;
 
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+
 @Entity
-@Table(name="OBJECTIF")
+@Table(name = "OBJECTIF")
 public class Objectif {
 
 	@Id
 	@GeneratedValue
-	@Column(name="idObjectif")
 	private Long id;
 	private String label;
 	private String indicateur;
 	private String delaiRealisation;
 	private String conditionReussite;
 	private String etat;
-	
-	@ManyToOne(cascade=CascadeType.ALL)
-	private Entretien entretien ;
-	
-	@OneToOne(cascade=CascadeType.ALL)
+
+	@ManyToOne
+	@OnDelete(action=OnDeleteAction.CASCADE)
+	private Entretien entretien;
+
+	@OneToOne(cascade = CascadeType.ALL)
 	private Evaluation evaluation;
 
-	
+	// *************************************************
+	// **************** Constructeur ***************
+	// *************************************************
+
 	public Objectif() {
 		super();
 	}
 
-	public Objectif(String label, String etat) {
-		super();
-		this.label = label;
-		this.etat = etat;
-	}
+	// *************************************************
+	// **************** Getters And Setters ***************
+	// *************************************************
 
 	public Long getId() {
 		return id;
@@ -88,8 +91,6 @@ public class Objectif {
 		this.indicateur = indicateur;
 	}
 
-	
-
 	public String getDelaiRealisation() {
 		return delaiRealisation;
 	}
@@ -106,7 +107,29 @@ public class Objectif {
 		this.conditionReussite = conditionReussite;
 	}
 
-	
-	
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Objectif [id=");
+		builder.append(id);
+		builder.append(", label=");
+		builder.append(label);
+		builder.append(", indicateur=");
+		builder.append(indicateur);
+		builder.append(", delaiRealisation=");
+		builder.append(delaiRealisation);
+		builder.append(", conditionReussite=");
+		builder.append(conditionReussite);
+		builder.append(", etat=");
+		builder.append(etat);
+		builder.append(", entretien=");
+		builder.append(entretien);
+		builder.append(", evaluation=");
+		builder.append(evaluation);
+		builder.append("]");
+		return builder.toString();
+	}
 
+	
+	
 }

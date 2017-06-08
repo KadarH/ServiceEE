@@ -3,6 +3,8 @@ package com.web.responsable;
 import java.util.ArrayList;
 import java.util.List;
 
+import org.springframework.security.crypto.codec.Base64;
+
 import com.app.boudaa.dao.exceptions.EntityNotFoundException;
 import com.app.business.bo.Entretien;
 import com.app.business.bo.Evaluation;
@@ -32,7 +34,6 @@ public class ResponsableController extends BaseAction {
 	private String newPass;
 	private String pass;
 	private String x;
-
 	public String goToResponsableHome() {
 
 		user = (User) getSession().getAttribute("user");
@@ -84,24 +85,24 @@ public class ResponsableController extends BaseAction {
 		user = (User) getSession().getAttribute("user");
 		try {
 			listCollaborateur = collaborateurService.getListCollaborateur();
-			
+
 		} catch (Exception e) {
 			listCollaborateur = new ArrayList<String>();
 		}
-		
+
 		try {
 			listRendezVous = collaborateurService.getListRendezVous(user);
-			
+
 		} catch (Exception e) {
 			listRendezVous = new ArrayList<RendezVous>();
 		}
 		try {
 			listRendezVousAcceptee = collaborateurService.getListRendezVousAcceptee(user);
-			
+
 		} catch (Exception e) {
 			listRendezVousAcceptee = new ArrayList<RendezVous>();
 		}
-		return SUCCESS; 
+		return SUCCESS;
 	}
 
 	public String accepterRendezVous() throws NumberFormatException, EntityNotFoundException {
@@ -153,16 +154,19 @@ public class ResponsableController extends BaseAction {
 	}
 
 	public String modifierProfil() {
-		user = (User) getSession().getAttribute("user");
-
-		collaborateurService.modifierMonProfil(user);
-		getSession().setAttribute("user", user);
-		System.out.println(user);
+		User y = (User) getSession().getAttribute("user");
+		y.setNom(user.getNom());
+		y.setPrenom(user.getPrenom());
+		y.setAdresse(user.getAdresse());
+		y.setUsername(user.getUsername());
+		y.setPassword(user.getPassword());
+		collaborateurService.modifierMonProfil(y);
 		return SUCCESS;
 
 	}
 
 	public String goToAjouterObjectif() {
+		user = (User) getSession().getAttribute("user");
 
 		return SUCCESS;
 	}
@@ -297,5 +301,7 @@ public class ResponsableController extends BaseAction {
 	public void setX(String x) {
 		this.x = x;
 	}
+
+	
 
 }

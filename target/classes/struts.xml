@@ -15,7 +15,7 @@
 	<!-- ************************************************************** -->
 	<package name="pub" namespace="/" extends="struts-default">
 
-		<action name="goToHome" class="userAction" method="goToHome">
+		<action name="goToHome" class="CollaborateurAction" method="goToHome">
 			<result name="successCollaborateur" type="redirect">private/Collaborateur/goToHomeCollaborateur
 			</result>
 			<result name="successResponsable" type="redirect">private/Responsable/goToHomeResponsable
@@ -30,24 +30,17 @@
 		<action name="logout" class="CollaborateurAction" method="logout">
 			<result name="success">/index.jsp</result>
 			<result name="input">/Error.jsp</result>
-			<result name="error">/Error.jsp</result>
-		</action>
-	</package>
-
-	<package name="privatePackage" namespace="/private" extends="struts-default">
-
-
-		
-
-		<action name="addCollaborateur" class="CollaborateurAction"
-			method="addCollaborateur">
-			<result name="error">/index.jsp</result>
-			<result name="success">/index.jsp</result>
-
 		</action>
 
+				<action name="addCollaborateur" class="CollaborateurAction"
+					method="addCollaborateur">
+					<result name="error">/index.jsp</result>
+					<result name="success">/index.jsp</result>
+
+				</action>
 
 	</package>
+
 
 	<!-- ************************************************************** -->
 

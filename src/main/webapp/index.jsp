@@ -4,6 +4,9 @@
 <%@ taglib uri="http://displaytag.sf.net" prefix="d"%>
 <%@ taglib prefix="sj" uri="/struts-jquery-tags"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core"%>
+
+
+
 <jsp:include page="/public/headerColl.jsp" flush="true" />
 <link rel="stylesheet" type="text/css" media="screen,projection,print"
 	href="/ServiceEE/css/w3.css" />
@@ -30,9 +33,7 @@
 				</div>
 				<div style="padding: 15px 20px; align-text: center;">
 					<s:form action="/goToHome">
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
-
+						
 						<s:textfield label="Email" name="user.email"
 							cssClass="w3-margin-bottom"></s:textfield>
 						<s:password label="Password" name="user.password"
@@ -53,8 +54,6 @@
 			style="width: 400px; margin-left: 100px">
 
 
-
-
 			<div id="tone" style="padding: 10px 0px; align-text: center;">
 				<div class=" w3-margin w3-padding w3-animate-zoom">
 					<img alt="register" src="/ServiceEE/img/signup.jpeg" height="100px"
@@ -63,9 +62,7 @@
 				<div style="padding: 15px 20px; align-text: center;">
 
 
-					<s:form action="/private/addCollaborateur" cssClass="">
-						<input type="hidden" name="${_csrf.parameterName}"
-							value="${_csrf.token}" />
+					<s:form action="addCollaborateur" cssClass="">
 						<s:textfield label="Username" name="user.username"></s:textfield>
 						<s:textfield label="Email" name="user.email"></s:textfield>
 						<s:password label="Password" name="user.password"></s:password>

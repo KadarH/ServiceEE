@@ -26,7 +26,7 @@
 				<div id="ttwo" style="overflow: scroll;">
 
 					<d:table name="listObjectif" export="true" style="html" 
-					decorator="com.web.collaborateur.CollaborateurObjectifDecorator"
+					decorator="com.web.collaborateur.decorator.CollaborateurObjectifDecorator"
 						requestURI="/private/Collaborateur/listObjectif" pagesize="30">
 						<d:column property="label" title="Description de l'objectif"></d:column>
 						<d:column property="etat" title="Etat de l'objectif"></d:column>

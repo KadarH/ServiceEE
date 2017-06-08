@@ -18,7 +18,7 @@
 		<div class="w3-animate-zoom  w3-light-grey">
 			<jsp:include page="includeResp/menu.jsp" />
 		</div>
-		<div class=" homing contact_tab w3-card-12 w3-animate-bottom">
+		<div id="divdt" class=" homing contact_tab w3-card-12 w3-animate-bottom">
 
 			<sj:tabbedpanel id="localtabs" cssStyle="max-height:450px">
 				<sj:tab id="tab2" target="ttwo" onclick="action"
@@ -27,9 +27,9 @@
 				
 				<div id="ttwo" style="overflow: scroll;height: 350px;">
 
-					<d:table name="listObjectif" export="true" style="html" cellspacing="30px"
-					decorator="com.web.responsable.CollaborateurObjectifDecorator"
-						requestURI="/private/Responsable/listObjectf" pagesize="30">
+					<d:table name="listObjectif" export="true" style="html" 
+					decorator="com.web.responsable.decorator.CollaborateurObjectifDecorator"
+						requestURI="/private/Responsable/listObjectif" pagesize="30">
 						<d:column property="label" title="Description "></d:column>
 						<d:column property="etat" title="Etat "></d:column>
 						<d:column property="delaiRealisation" title="Delai de realisation"></d:column>

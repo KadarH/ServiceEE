@@ -26,9 +26,9 @@
 				<div id="ttwo" style="overflow: scroll;height:350px;margin-left:60px;">
 
 					<d:table name="listEntretien" export="true" style="html" 
-					decorator="com.web.collaborateur.CollaborateurEntretienDecorator"
+					decorator="com.web.collaborateur.decorator.CollaborateurEntretienDecorator"
 						requestURI="/private/Collaborateur/listEntretien" pagesize="30">
-						<d:column property="responsable.nom" title="Nom du responsable"></d:column>
+						<d:column property="responsable.username" title="Pseudo du Responsable"></d:column>
 						<d:column property="responsable.email" title="Email"></d:column>
 						<d:column property="dateEntretien" title="Date de l'entretien" />
 						<d:column property="label" title="Description " />

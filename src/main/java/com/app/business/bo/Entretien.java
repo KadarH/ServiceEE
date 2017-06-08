@@ -1,6 +1,5 @@
 package com.app.business.bo;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
@@ -10,10 +9,12 @@ import javax.persistence.Entity;
 import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "ENTRETIEN")
@@ -21,7 +22,6 @@ public class Entretien {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "idEntretien")
 	private Long id;
 	private String label;
 	// autres
@@ -32,26 +32,26 @@ public class Entretien {
 	@ElementCollection(targetClass = Objectif.class)
 	private List<Objectif> listObjectif;
 
+	@ManyToOne
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private User collaborateur;
 
+	@ManyToOne
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private User responsable;
 
-	// ***************************************
-	public Entretien(String label, String etat, User collaborateur, User responsable) {
-		super();
-		this.label = label;
-		this.etat = etat;
-		this.collaborateur = collaborateur;
-		this.responsable = responsable;
-	}
+	// *************************************************
+	// **************** Constructeur ***************
+	// *************************************************
 
 	public Entretien() {
 		super();
 	}
 
-	@Id
-	@GeneratedValue
-	@Column(name = "id")
+	// *************************************************
+	// **************** Getters And Setters ***************
+	// *************************************************
+
 	public Long getId() {
 		return id;
 	}
@@ -93,7 +93,7 @@ public class Entretien {
 	public void setCollaborateur(User collaborateur) {
 		this.collaborateur = collaborateur;
 	}
-	
+
 	@ManyToOne
 	public User getResponsable() {
 		return responsable;
@@ -110,5 +110,26 @@ public class Entretien {
 	public void setDateEntretien(String dateEntretien) {
 		this.dateEntretien = dateEntretien;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Entretien [id=");
+		builder.append(id);
+		builder.append(", label=");
+		builder.append(label);
+		builder.append(", etat=");
+		builder.append(etat);
+		builder.append(", dateEntretien=");
+		builder.append(dateEntretien);
+		builder.append(", collaborateur=");
+		builder.append(collaborateur);
+		builder.append(", responsable=");
+		builder.append(responsable);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 
 }

@@ -1,4 +1,4 @@
-package com.web.collaborateur;
+package com.web.responsable.decorator;
 
 import org.displaytag.decorator.TableDecorator;
 
@@ -13,7 +13,7 @@ public class CollaborateurActionDecorator extends TableDecorator {
 		RendezVous pro = (RendezVous) getCurrentRowObject();
 		Long id = pro.getId();
 
-		this.aj = "<a href=\"accepterRendezVous?idRendezVous=" + id
+		this.aj = "<a href=\"accepterRendezVousResponsable?idRendezVous=" + id
 				+ "\"><img width='50' height='50' src='/ServiceEE/img/accept.png'></a>";
 
 		return this.aj;

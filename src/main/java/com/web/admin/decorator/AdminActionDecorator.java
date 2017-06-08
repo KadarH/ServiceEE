@@ -1,4 +1,4 @@
-package com.web.admin;
+package com.web.admin.decorator;
 
 import org.displaytag.decorator.TableDecorator;
 

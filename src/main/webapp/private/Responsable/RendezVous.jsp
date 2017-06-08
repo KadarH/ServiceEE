@@ -97,10 +97,9 @@
 				<div id="ttwo" style="overflow-y: scroll; height: 350px;">
 
 					<d:table name="listRendezVous" export="true" style="html"
-						decorator="com.web.responsable.CollaborateurActionDecorator"
+						decorator="com.web.responsable.decorator.CollaborateurActionDecorator"
 						requestURI="/private/Responsable/listRendezVous" pagesize="30">
-						<d:column property="userdem.nom" title="Nom"></d:column>
-						<d:column property="userdem.prenom" title="Prenom"></d:column>
+						<d:column property="userdem.username" title="Pseudo"></d:column>
 						<d:column property="message" title="Message" />
 						<d:column property="dateRendezVous" title="Date " />
 						<d:column property="aj" title="Accepter">
@@ -114,8 +113,7 @@
 					<d:table name="listRendezVousAcceptee" export="true" style="html"
 						requestURI="/private/Responsable/listRendezVousAcceptee"
 						pagesize="30">
-						<d:column property="userdem.nom" title="Nom"></d:column>
-						<d:column property="userdem.prenom" title="Prenom"></d:column>
+						<d:column property="userdem.username" title="Pseudo"></d:column>
 						<d:column property="message" title="Message" />
 						<d:column property="dateRendezVous" title="Date " />
 						<d:column title="Accepté">

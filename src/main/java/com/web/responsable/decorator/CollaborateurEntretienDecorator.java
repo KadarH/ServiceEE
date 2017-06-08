@@ -1,4 +1,4 @@
-package com.web.responsable;
+package com.web.responsable.decorator;
 
 import org.displaytag.decorator.TableDecorator;
 

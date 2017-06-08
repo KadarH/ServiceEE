@@ -40,17 +40,7 @@
 
 					</s:form>
 				</div>
-				<div id="ttwo">
-
-
-					<s:form action="modifierProfil">
-						<s:textfield label="Ancien Mot de passe " name="ancienPass" size="70px"></s:textfield>
-						<s:textfield label="Nouveau Mot de passe " name="pass" size="70px"></s:textfield>
-						<s:textfield label="Confimer le nv mot-passe " name="newPass" size="70px"></s:textfield>
-						<s:submit value="Modifier mon profil"></s:submit>
-
-					</s:form>
-				</div>
+				
 			</sj:tabbedpanel>
 
 

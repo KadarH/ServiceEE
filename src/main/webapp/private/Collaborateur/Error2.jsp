@@ -27,8 +27,8 @@
 				<sj:tab id="tab1" target="tone" label="Effectuer une demande" />
 
 				<div id="tone" style="overflow: scroll; align-text: center;">
-					Erreur !! <br>
-					<h2>Renseignement de l'erreur</h2>
+					
+					<h2>Demande Dejà Envoyée</h2>
 					Vous Avez dejà envoyer une demande d'etre responsable , si vous
 					n'avez pas reçu de reponse , veuillez concater votre responsable en
 					ressource humaine

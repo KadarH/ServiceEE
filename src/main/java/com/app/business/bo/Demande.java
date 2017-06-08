@@ -1,6 +1,5 @@
 package com.app.business.bo;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
@@ -13,35 +12,30 @@ public class Demande {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "idDemande")
 	private Long id;
-
 	private String message;
-
-	@ManyToOne
-	private User user;
 	private String type;
 	private Boolean etat;
 	private String date;
+
+	@ManyToOne
+	private User user;
 
 	public Long getId() {
 		return id;
 	}
 
-	// ****************** CONSTRUCTEURS ******************************
+	// *************************************************
+	// **************** Constructeur ***************
+	// *************************************************
 
 	public Demande() {
-
-	}
-
-	public Demande(String message, User userEm, User userRe, Boolean etat) {
 		super();
-		this.message = message;
-		this.user = userEm;
-		this.etat = etat;
 	}
 
-	// ****************** Getters and setters ******************************
+	// *************************************************
+	// **************** Getters And Setters ***************
+	// *************************************************
 
 	public void setId(Long id) {
 		this.id = id;
@@ -94,5 +88,26 @@ public class Demande {
 	public void setDate(String date) {
 		this.date = date;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("Demande [id=");
+		builder.append(id);
+		builder.append(", message=");
+		builder.append(message);
+		builder.append(", type=");
+		builder.append(type);
+		builder.append(", etat=");
+		builder.append(etat);
+		builder.append(", date=");
+		builder.append(date);
+		builder.append(", user=");
+		builder.append(user);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 
 }

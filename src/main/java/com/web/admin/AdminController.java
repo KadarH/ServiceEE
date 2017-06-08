@@ -81,8 +81,12 @@ public class AdminController extends BaseAction {
 	// *********************************************************
 
 	public String goToCollaborateurs() {
+		try {
+			listCollaborateur = adminService.getListCollaborateur();
 
-		listCollaborateur = adminService.getListCollaborateur();
+		} catch (Exception e) {
+			listCollaborateur = new ArrayList<>();
+		}
 
 		return SUCCESS;
 	}
@@ -90,9 +94,11 @@ public class AdminController extends BaseAction {
 	// *********************************************************
 
 	public String goToResponsables() {
-
-		listResponsable = adminService.getListResponsable();
-
+		try {
+			listResponsable = adminService.getListResponsable();
+		} catch (Exception e) {
+			listResponsable = new ArrayList<>();
+		}
 		return SUCCESS;
 	}
 

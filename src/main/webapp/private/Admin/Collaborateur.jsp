@@ -26,7 +26,7 @@
 				<div id="ttwo" style="overflow: scroll;height:350px;margin-left:60px;">
 
 					<d:table name="listCollaborateur" export="true" style="html" 
-					decorator="com.web.admin.AdminCollaborateurActionDecorator"
+					decorator="com.web.admin.decorator.AdminCollaborateurActionDecorator"
 						requestURI="/private/Admin/listCollaborateur" pagesize="20">
 						<d:column property="nom" title="Nom"></d:column>
 						<d:column property="prenom" title="Prenom"></d:column>

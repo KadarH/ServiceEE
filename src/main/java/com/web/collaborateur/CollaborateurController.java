@@ -5,7 +5,6 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
-import org.springframework.orm.ObjectRetrievalFailureException;
 
 import com.app.boudaa.dao.exceptions.EntityNotFoundException;
 import com.app.business.bo.Demande;
@@ -106,16 +105,27 @@ public class CollaborateurController extends BaseAction {
 		user = (User) getSession().getAttribute("user");
 		TRACER.debug("Methode goToHome appelée");
 		System.out.println(user.getId() + "**********" + user.getEmail());
-		
+
 		try {
 			listCollaborateur = collaborateurService.getListCollaborateur();
-			listRendezVous = collaborateurService.getListRendezVous(user);
-			listRendezVousAcceptee = collaborateurService.getListRendezVousAcceptee(user);
-			return SUCCESS;
+
 		} catch (Exception e) {
-			return SUCCESS;
+			listCollaborateur = new ArrayList<String>();
 		}
 
+		try {
+			listRendezVous = collaborateurService.getListRendezVous(user);
+
+		} catch (Exception e) {
+			listRendezVous = new ArrayList<RendezVous>();
+		}
+		try {
+			listRendezVousAcceptee = collaborateurService.getListRendezVousAcceptee(user);
+
+		} catch (Exception e) {
+			listRendezVousAcceptee = new ArrayList<RendezVous>();
+		}
+		return SUCCESS;
 	}
 
 	public String accepterRendezVous() throws NumberFormatException, EntityNotFoundException {
@@ -139,9 +149,9 @@ public class CollaborateurController extends BaseAction {
 	public String goToObjectifEntretien() throws NumberFormatException, EntityNotFoundException {
 		user = (User) getSession().getAttribute("user");
 		String id = getRequest().getParameter("idEntretien");
-
-		listObjectif = collaborateurService.getListObjectif(new Long(Integer.parseInt(id)));
-
+		Long x = new Long(Integer.parseInt(id));
+		listObjectif = collaborateurService.getListObjectif(x);
+		System.out.println(x);
 		return SUCCESS;
 	}
 
@@ -186,11 +196,14 @@ public class CollaborateurController extends BaseAction {
 	}
 
 	public String modifierProfil() {
-		user = (User) getSession().getAttribute("user");
+		User y = (User) getSession().getAttribute("user");
+		y.setNom(user.getNom());
+		y.setPrenom(user.getPrenom());
+		y.setAdresse(user.getAdresse());
+		y.setUsername(user.getUsername());
+		y.setPassword(user.getPassword());
 
-		collaborateurService.modifierMonProfil(user);
-		getSession().setAttribute("user", user);
-		System.out.println(user);
+		collaborateurService.modifierMonProfil(y);
 		return SUCCESS;
 
 	}

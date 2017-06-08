@@ -1,11 +1,14 @@
 package com.app.business.bo;
 
-import javax.persistence.Column;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
+import org.springframework.format.annotation.DateTimeFormat;
 
 @Entity
 @Table(name = "RENDEZVOUS")
@@ -13,29 +16,32 @@ public class RendezVous {
 
 	@Id
 	@GeneratedValue
-	@Column(name = "idRendezVous")
 	private Long id;
-
 	private String message;
 	private String etat;
 
+	@DateTimeFormat
 	private String dateRendezVous;
 
 	@ManyToOne
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private User userdem;
 
 	@ManyToOne
+	@OnDelete(action=OnDeleteAction.CASCADE)
 	private User userrec;
+
+	// *************************************************
+	// **************** Constructeur ***************
+	// *************************************************
 
 	public RendezVous() {
 		super();
 	}
 
-	public RendezVous(String message, String etat) {
-		super();
-		this.message = message;
-		this.etat = etat;
-	}
+	// *************************************************
+	// **************** Getters And Setters ***************
+	// *************************************************
 
 	public Long getId() {
 		return id;
@@ -84,5 +90,26 @@ public class RendezVous {
 	public void setDateRendezVous(String dateRendezVous) {
 		this.dateRendezVous = dateRendezVous;
 	}
+
+	@Override
+	public String toString() {
+		StringBuilder builder = new StringBuilder();
+		builder.append("RendezVous [id=");
+		builder.append(id);
+		builder.append(", message=");
+		builder.append(message);
+		builder.append(", etat=");
+		builder.append(etat);
+		builder.append(", dateRendezVous=");
+		builder.append(dateRendezVous);
+		builder.append(", userdem=");
+		builder.append(userdem);
+		builder.append(", userrec=");
+		builder.append(userrec);
+		builder.append("]");
+		return builder.toString();
+	}
+	
+	
 
 }

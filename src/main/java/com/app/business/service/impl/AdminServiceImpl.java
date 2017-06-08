@@ -108,14 +108,14 @@ public class AdminServiceImpl implements AdminService {
 
 	@Override
 	public List<User> getListCollaborateur() {
-		return userDao.getEntityByColumn("User", "role_role_id", 1+"");
+		return userDao.getEntityByColumn("User", "role_id", 1+"");
 		
 		
 	}
 
 	@Override
 	public List<User> getListResponsable() {
-		return userDao.getEntityByColumn("User", "role_role_id", 2+"");
+		return userDao.getEntityByColumn("User", "role_id", 2+"");
 		
 	}
 

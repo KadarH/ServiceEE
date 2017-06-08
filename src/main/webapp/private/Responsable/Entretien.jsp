@@ -81,7 +81,7 @@
 					</s:form>
 					<h2>Renseignement</h2>
 					Aprés avoir ajouter un entretien , il va falloir completer des
-					formulaire en but de definir les objectifs et les missions associés
+					formulaires en but de definir les objectifs et les missions associés
 					à cet entretien .
 
 				</div>
@@ -90,9 +90,9 @@
 
 					<d:table name="listEntretienCollaborateur" export="true"
 						style="html"
-						decorator="com.web.responsable.CollaborateurEntretienDecorator"
+						decorator="com.web.responsable.decorator.CollaborateurEntretienDecorator"
 						requestURI="/listAction" pagesize="30">
-						<d:column property="responsable.nom" title="Nom du responsable"></d:column>
+						<d:column property="responsable.username" title="Pseudo du responsable"></d:column>
 						<d:column property="responsable.email" title="Email"></d:column>
 						<d:column property="dateEntretien" title="Date" />
 						<d:column property="label" title="Description " />
@@ -105,10 +105,10 @@
 					style="overflow: scroll; height: 350px; align-text: center;">
 
 					<d:table name="listEntretienResponsable" export="true" style="html"
-						decorator="com.web.responsable.CollaborateurEntretienDecorator"
+						decorator="com.web.responsable.decorator.CollaborateurEntretienDecorator"
 						requestURI="/private/Responsable/listEntretienResponsable"
 						pagesize="20">
-						<d:column property="responsable.nom" title="Nom du responsable"></d:column>
+						<d:column property="responsable.username" title="Nom du Collaborateur"></d:column>
 						<d:column property="responsable.email" title="Email"></d:column>
 						<d:column property="dateEntretien" title="Date" />
 						<d:column property="label" title="Description " />

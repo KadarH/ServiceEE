@@ -27,7 +27,7 @@
 				<div id="ttwo" style="overflow: scroll;height:350px;margin-left:60px;">
 
 					<d:table name="listResponsable" export="true" style="html" 
-					decorator="com.web.admin.AdminResponsableActionDecorator"
+					decorator="com.web.admin.decorator.AdminResponsableActionDecorator"
 						requestURI="/private/Admin/listResponsable" pagesize="20">
 							<d:column property="nom" title="Nom"></d:column>
 						<d:column property="prenom" title="Prenom"></d:column>

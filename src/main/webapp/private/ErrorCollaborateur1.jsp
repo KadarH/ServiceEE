@@ -13,7 +13,7 @@
 <div class="w3-card-12 w3-blue-grey w3-animate-opacity">
 
 	<div style="display: flex;">
-		
+
 
 
 
@@ -25,14 +25,15 @@
 
 				<div id="ttwo"
 					style="overflow: scroll; height: 350px; margin-left: 60px;">
-					<h1>Problème de connexion</h1>
+					<h1>Vous n'avez pas encore le droit d'être Collaborateur</h1>
 					<br>
 					<p>Vous êtes inscrit en tant que collaborateur , Veuillez alors
 						attendre la confirmation de votre demande d'ajout par
 						l'administrateur</p>
 					<br>
-					<p>Si votre demande n'a pas été confirmer d'ici 24 heure , Veuillez contacter votre responsable en ressource humaine </p>
-					
+					<p>Si votre demande n'a pas été confirmer d'ici 24 heure ,
+						Veuillez contacter votre responsable en ressource humaine</p>
+
 				</div>
 			</sj:tabbedpanel>
 		</div>

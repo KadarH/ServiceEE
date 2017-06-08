@@ -1,18 +1,20 @@
 package com.app.business.bo;
 
-import java.util.Date;
 import java.util.List;
 
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.Lob;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
 import javax.persistence.Table;
+
+import org.hibernate.annotations.OnDelete;
+import org.hibernate.annotations.OnDeleteAction;
 
 @Entity
 @Table(name = "USER")
@@ -25,44 +27,50 @@ public class User {
 	private String password;
 	private String nom;
 	private String prenom;
-	private String Adresse;
+	private String adresse;
 	private String etat;
-	private boolean enabled = true;
-	private boolean accountNotExpired = true;
-	private boolean accountNotLocked = true;
-	private Date lastAccessDate;
 
 	@ManyToOne
 	private Role role;
 
-	@OneToMany(mappedBy = "userdem", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@Lob
+	@Column(name = "img")
+	private byte[] img;
+
+	@OneToMany(mappedBy = "userdem", orphanRemoval = true, cascade = { CascadeType.ALL })
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<RendezVous> listRendezVous;
 
-	@OneToMany(mappedBy = "userrec", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "userrec", orphanRemoval = true, cascade = { CascadeType.ALL })
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<RendezVous> listaRendezVous;
 
-	@OneToMany(mappedBy = "responsable", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "responsable", orphanRemoval = true, cascade = { CascadeType.ALL })
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Entretien> listEntretienResp;
 
-	@OneToMany(mappedBy = "collaborateur", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "collaborateur", orphanRemoval = true, cascade = { CascadeType.ALL })
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Entretien> listEntretienColl;
 
-	@OneToMany(mappedBy = "user", cascade = CascadeType.ALL, fetch = FetchType.LAZY)
+	@OneToMany(mappedBy = "user", orphanRemoval = true, cascade = { CascadeType.ALL })
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Demande> listDemande;
-	
 
 	@Column(name = "email", unique = true, nullable = false, length = 100)
 	private String email;
 
-	public User(String username, String password) {
-		super();
-		this.username = username;
-		this.password = password;
-	}
+	// *************************************************
+	// **************** Constructeur ***************
+	// *************************************************
 
 	public User() {
 		super();
 	}
+
+	// *************************************************
+	// **************** Getters And Setters ***************
+	// *************************************************
 
 	public Long getId() {
 		return id;
@@ -105,11 +113,11 @@ public class User {
 	}
 
 	public String getAdresse() {
-		return Adresse;
+		return adresse;
 	}
 
 	public void setAdresse(String adresse) {
-		Adresse = adresse;
+		this.adresse = adresse;
 	}
 
 	public String getEmail() {
@@ -176,36 +184,12 @@ public class User {
 		this.listDemande = listDemande;
 	}
 
-	public boolean isEnabled() {
-		return enabled;
+	public byte[] getImg() {
+		return img;
 	}
 
-	public void setEnabled(boolean enabled) {
-		this.enabled = enabled;
-	}
-
-	public boolean isAccountNotExpired() {
-		return accountNotExpired;
-	}
-
-	public void setAccountNotExpired(boolean accountNotExpired) {
-		this.accountNotExpired = accountNotExpired;
-	}
-
-	public boolean isAccountNotLocked() {
-		return accountNotLocked;
-	}
-
-	public void setAccountNotLocked(boolean accountNotLocked) {
-		this.accountNotLocked = accountNotLocked;
-	}
-
-	public Date getLastAccessDate() {
-		return lastAccessDate;
-	}
-
-	public void setLastAccessDate(Date lastAccessDate) {
-		this.lastAccessDate = lastAccessDate;
+	public void setImg(byte[] img) {
+		this.img = img;
 	}
 
 	@Override
@@ -222,7 +206,7 @@ public class User {
 		builder.append(", prenom=");
 		builder.append(prenom);
 		builder.append(", Adresse=");
-		builder.append(Adresse);
+		builder.append(adresse);
 		builder.append(", etat=");
 		builder.append(etat);
 		builder.append(", role=");
