@@ -1,9 +1,7 @@
-# THE Interviewer 
-
-> ## (Service Entretien Evaluation )
+# THE Interviewer --> (Service Entretien Evaluation )
 
 
-ServiceEE - Interviewer : Application de gestion des entretiens annuels des collaborateurs dans une société de service en ingénierie informatique avec JEE
+ Application web de gestion des entretiens annuels des collaborateurs dans une société de service en ingénierie informatique avec JEE
 
 ![KadaH](src/main/webapp/img/Interviewer.png)
 
