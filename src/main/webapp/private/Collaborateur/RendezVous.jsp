@@ -27,29 +27,42 @@
 				<sj:tab id="tab3" target="tthree" onclick="action"
 					label="Liste des rendez vous àcceptés" />
 
-				<div id="tone" style="overflow-y: scroll; height: 350px;">
+				<div id="tone" style="overflow-y: scroll; height: 350px;"
+					class="w3-padding">
 					Vous pouvez ajouter un message à votre demande de rendez-vous : <br />
 					<s:form action="ajouterRendezVous" cssClass="w3-card-12">
 						<sj:datepicker name="rendezVous.dateRendezVous" zindex="2006"
 							timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
 							timepickerFormat="HH:mm" timepickerShowSecond="true"
 							duration="fast" readonly="true" required="true"
-							label="Date du rendez vous"></sj:datepicker>
+							label="Date "></sj:datepicker>
 
 						<s:textfield label="Message" name="rendezVous.message"
-							size="100px"></s:textfield>
+							size="100px" cssStyle="height:60px;"></s:textfield>
 						<sj:autocompleter id="languages" name="x" list="listCollaborateur"
 							required="true" selectBox="true" selectBoxIcon="true"
 							onChangeTopics="autocompleteChange"
 							onFocusTopics="autocompleteFocus"
-							onSelectTopics="autocompleteSelect" label="collaborateur" />
+							onSelectTopics="autocompleteSelect" label="Membre" />
 
-						<s:submit value="Declarer un Rendez-vous"></s:submit>
+						<s:submit value="Declarer un Rendez-vous"
+							cssClass="w3-centered w3-button w3-green w3-xlarge w3-animate-zoom w3-card-12"></s:submit>
 
 					</s:form>
-					<h2>Renseignement</h2>
-					Un rendez vous sera dans l'etat "false" , jusqu'à ce qu'il se
-					validera par l'utilisateur demandé .
+					
+					<div style="display: flex; width: 300px; margin-bottom: 30px;"
+						class=" w3-card-4 w3-red  ">
+						
+						<img alt="!" src="/ServiceEE/img/attention.jpeg" height="65px"
+							width="65px" class="w3-animate-fading">
+						<h2 class=" w3-margin-left ">Renseignement</h2>
+						
+					</div>
+					
+					<div >
+					<p>Un rendez vous sera dans l'etat "false" , jusqu'à ce qu'il se
+					validera par l'utilisateur demandé .</p>
+					</div>
 
 				</div>
 				<div id="ttwo" style="overflow-y: scroll; height: 350px;">

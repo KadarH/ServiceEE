@@ -25,8 +25,7 @@
 
 			<sj:tabbedpanel id="localtabs">
 				<sj:tab id="tab1" target="tone" label="Information Personnelles :" />
-				<sj:tab id="tab2" target="ttwo" label="Modifier mon mot de passe :" />
-
+				
 				<div id="tone">
 
 
