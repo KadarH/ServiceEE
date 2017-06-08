@@ -1,7 +1,7 @@
 # ServiceEE - Interviewer
 ServiceEE - Interviewer : Application de gestion des entretiens annuels des collaborateurs dans une société de service en ingénierie informatique avec JEE
 
-![KadaH](src/main/webapp/img/Interview.png)
+![KadaH](src/main/webapp/img/Interviewer.png)
 
 # Pourquoi Cette Application 
 
