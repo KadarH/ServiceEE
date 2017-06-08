@@ -32,6 +32,7 @@ public class ResponsableController extends BaseAction {
 	private String newPass;
 	private String pass;
 	private String x;
+
 	public String goToResponsableHome() {
 
 		user = (User) getSession().getAttribute("user");
@@ -62,8 +63,12 @@ public class ResponsableController extends BaseAction {
 	public String goToObjectifEntretien() throws NumberFormatException, EntityNotFoundException {
 		user = (User) getSession().getAttribute("user");
 		String id = getRequest().getParameter("idEntretien");
+		try {
+			listObjectif = collaborateurService.getListObjectif(new Long(Integer.parseInt(id)));
 
-		listObjectif = collaborateurService.getListObjectif(new Long(Integer.parseInt(id)));
+		} catch (Exception e) {
+			listObjectif = new ArrayList<>();
+		}
 
 		return SUCCESS;
 	}
@@ -299,7 +304,5 @@ public class ResponsableController extends BaseAction {
 	public void setX(String x) {
 		this.x = x;
 	}
-
-	
 
 }

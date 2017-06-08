@@ -219,15 +219,18 @@ white
 	</div>
 
 	<div style="display: flex;" class="w3-myfont w3-card-4 w3-light-blue">
-		<div style="margin-left: 15%" class="w3-hover-blue w3-padding ">
+		<div style="margin-left: 5%" class="w3-hover-blue w3-padding ">
 			<a href="#">Page d'acceuil</a>
 		</div>
-		<div style="margin-left: 15%" class="w3-hover-blue w3-padding">
+		<div style="margin-left: 5%" class="w3-hover-blue w3-padding">
 			<a href="#">Page d'aide</a>
 		</div>
-		<div style="margin-left: 15%" class="w3-hover-blue w3-padding">
+		<div style="margin-left: 5%" class="w3-hover-blue w3-padding">
 			<a href="#" onclick="document.getElementById('logoutform').submit();">Se
 				Deconnecter</a>
+		</div>
+<div style="margin-left: 26%" class="w3-hover-blue w3-padding">
+			<a href="#">Hello  | <s:property value="user.role.label"/> | <s:property value="user.username"/> </a>
 		</div>
 
 		<s:form action="/logout" id="logoutform"></s:form>
