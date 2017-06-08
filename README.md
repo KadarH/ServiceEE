@@ -20,6 +20,10 @@ ServiceEE - Interviewer : Application de gestion des entretiens annuels des coll
 
 # Quelque Screens de l'application :
 
+- Page Login + Inscription
+
+![KadaH](src/main/webapp/img/HomeAdmin.png)
+
 - Home Admin 
 
 ![KadaH](src/main/webapp/img/HomeAdmin.png)
