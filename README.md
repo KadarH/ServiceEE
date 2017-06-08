@@ -22,7 +22,7 @@ ServiceEE - Interviewer : Application de gestion des entretiens annuels des coll
 
 - Page Login + Inscription
 
-![KadaH](src/main/webapp/img/HomeAdmin.png)
+![KadaH](src/main/webapp/img/LoginPage.png)
 
 - Home Admin 
 
