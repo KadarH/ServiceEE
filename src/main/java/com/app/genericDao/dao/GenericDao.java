@@ -1,8 +1,8 @@
-package com.app.boudaa.dao;
+package com.app.genericDao.dao;
 
 import java.util.List;
 
-import com.app.boudaa.dao.exceptions.EntityNotFoundException;
+import com.app.genericDao.dao.exceptions.EntityNotFoundException;
 
 /**
  * Generic DAO (Data Access Object) définie les méthodes CRUD communes à tous

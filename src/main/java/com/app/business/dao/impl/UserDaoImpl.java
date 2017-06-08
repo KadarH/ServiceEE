@@ -1,8 +1,8 @@
 package com.app.business.dao.impl;
 
-import com.app.boudaa.dao.impl.GenericDaoImpl;
 import com.app.business.bo.User;
 import com.app.business.dao.UserDao;
+import com.app.genericDao.dao.impl.GenericDaoImpl;
 
 public class UserDaoImpl extends GenericDaoImpl<User, Long> implements UserDao{
 

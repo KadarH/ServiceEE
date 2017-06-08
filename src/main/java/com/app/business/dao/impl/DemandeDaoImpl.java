@@ -3,9 +3,9 @@ package com.app.business.dao.impl;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.app.boudaa.dao.impl.GenericDaoImpl;
 import com.app.business.bo.Demande;
 import com.app.business.dao.DemandeDao;
+import com.app.genericDao.dao.impl.GenericDaoImpl;
 
 public class DemandeDaoImpl extends GenericDaoImpl<Demande, Long> implements DemandeDao{
 

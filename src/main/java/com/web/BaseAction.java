@@ -15,11 +15,15 @@ import com.opensymphony.xwork2.ActionSupport;
  * a basic class for struts action, define some useful methods to access session
  * and request objects
  * 
- * @author BOUDAA
+ * @author kadar
  * 
  */
 public class BaseAction extends ActionSupport {
 
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
 	/** Constante MESSAGES */
 	protected static final String MESSAGES = "messages";
 

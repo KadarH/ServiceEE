@@ -31,7 +31,8 @@
 					<s:form action="ajouterDemande" namespace="/Collaborateur">
 						<s:textfield label="Message " name="demande.message" size="70px" ></s:textfield>
 
-						<s:submit value="Demander d'etre responsable" cssClass="w3-button w3-green w3-xlarge w3-animate-zoom w3-card-12"></s:submit>
+						<s:submit value="Demander d'etre responsable"
+							cssClass="w3-button w3-green w3-xlarge w3-animate-zoom w3-card-12"></s:submit>
 
 					</s:form>
 					<br>

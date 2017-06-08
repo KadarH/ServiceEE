@@ -6,7 +6,6 @@ import java.util.List;
 
 import org.apache.log4j.Logger;
 
-import com.app.boudaa.dao.exceptions.EntityNotFoundException;
 import com.app.business.bo.Demande;
 import com.app.business.bo.Entretien;
 import com.app.business.bo.Evaluation;
@@ -14,6 +13,7 @@ import com.app.business.bo.Objectif;
 import com.app.business.bo.RendezVous;
 import com.app.business.bo.User;
 import com.app.business.service.CollaborateurService;
+import com.app.genericDao.dao.exceptions.EntityNotFoundException;
 import com.web.BaseAction;
 
 public class CollaborateurController extends BaseAction {

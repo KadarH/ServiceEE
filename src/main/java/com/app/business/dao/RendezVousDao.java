@@ -1,9 +1,7 @@
 package com.app.business.dao;
 
-import java.util.List;
-
-import com.app.boudaa.dao.GenericDao;
 import com.app.business.bo.RendezVous;
+import com.app.genericDao.dao.GenericDao;
 
 public interface RendezVousDao extends GenericDao<RendezVous,Long> {
 

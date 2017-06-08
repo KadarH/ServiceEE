@@ -4,7 +4,6 @@ import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
-import com.app.boudaa.dao.exceptions.EntityNotFoundException;
 import com.app.business.bo.Demande;
 import com.app.business.bo.Entretien;
 import com.app.business.bo.Objectif;
@@ -18,6 +17,7 @@ import com.app.business.dao.RendezVousDao;
 import com.app.business.dao.RoleDao;
 import com.app.business.dao.UserDao;
 import com.app.business.service.CollaborateurService;
+import com.app.genericDao.dao.exceptions.EntityNotFoundException;
 
 public class CollaborateurServiceImpl implements CollaborateurService {
 

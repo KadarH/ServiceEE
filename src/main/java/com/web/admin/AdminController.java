@@ -3,7 +3,6 @@ package com.web.admin;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.app.boudaa.dao.exceptions.EntityNotFoundException;
 import com.app.business.bo.Demande;
 import com.app.business.bo.Entretien;
 import com.app.business.bo.Evaluation;
@@ -11,9 +10,15 @@ import com.app.business.bo.Objectif;
 import com.app.business.bo.User;
 import com.app.business.service.AdminService;
 import com.app.business.service.CollaborateurService;
+import com.app.genericDao.dao.exceptions.EntityNotFoundException;
 import com.web.BaseAction;
 
 public class AdminController extends BaseAction {
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = 1L;
+
 	private User user = new User();
 
 	private AdminService adminService;

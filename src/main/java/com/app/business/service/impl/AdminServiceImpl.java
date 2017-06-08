@@ -2,7 +2,6 @@ package com.app.business.service.impl;
 
 import java.util.List;
 
-import com.app.boudaa.dao.exceptions.EntityNotFoundException;
 import com.app.business.bo.Demande;
 import com.app.business.bo.Entretien;
 import com.app.business.bo.Role;
@@ -14,6 +13,7 @@ import com.app.business.dao.RendezVousDao;
 import com.app.business.dao.RoleDao;
 import com.app.business.dao.UserDao;
 import com.app.business.service.AdminService;
+import com.app.genericDao.dao.exceptions.EntityNotFoundException;
 
 public class AdminServiceImpl implements AdminService {
 

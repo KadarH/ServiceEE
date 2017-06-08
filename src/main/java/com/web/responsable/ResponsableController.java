@@ -3,9 +3,6 @@ package com.web.responsable;
 import java.util.ArrayList;
 import java.util.List;
 
-import org.springframework.security.crypto.codec.Base64;
-
-import com.app.boudaa.dao.exceptions.EntityNotFoundException;
 import com.app.business.bo.Entretien;
 import com.app.business.bo.Evaluation;
 import com.app.business.bo.Objectif;
@@ -13,6 +10,7 @@ import com.app.business.bo.RendezVous;
 import com.app.business.bo.User;
 import com.app.business.service.CollaborateurService;
 import com.app.business.service.ResponsableService;
+import com.app.genericDao.dao.exceptions.EntityNotFoundException;
 import com.web.BaseAction;
 
 public class ResponsableController extends BaseAction {

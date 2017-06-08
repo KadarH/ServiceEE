@@ -1,6 +1,5 @@
 package com.app.business.service.impl;
 
-import com.app.boudaa.dao.exceptions.EntityNotFoundException;
 import com.app.business.bo.Entretien;
 import com.app.business.bo.Evaluation;
 import com.app.business.bo.Objectif;
@@ -9,6 +8,7 @@ import com.app.business.dao.ObjectifDao;
 import com.app.business.dao.RendezVousDao;
 import com.app.business.dao.UserDao;
 import com.app.business.service.ResponsableService;
+import com.app.genericDao.dao.exceptions.EntityNotFoundException;
 
 public class ResponsableServiceImpl implements ResponsableService {
 

@@ -1,4 +1,4 @@
-package com.app.boudaa.dao.exceptions;
+package com.app.genericDao.dao.exceptions;
 
 public class EntityNotFoundException extends Exception {
 

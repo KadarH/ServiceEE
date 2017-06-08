@@ -1,4 +1,4 @@
-package com.app.boudaa.dao.impl;
+package com.app.genericDao.dao.impl;
 
 import java.io.Serializable;
 import java.util.ArrayList;
@@ -11,8 +11,8 @@ import org.springframework.orm.ObjectRetrievalFailureException;
 import org.springframework.orm.hibernate4.HibernateTemplate;
 import org.springframework.orm.hibernate4.support.HibernateDaoSupport;
 
-import com.app.boudaa.dao.GenericDao;
-import com.app.boudaa.dao.exceptions.EntityNotFoundException;
+import com.app.genericDao.dao.GenericDao;
+import com.app.genericDao.dao.exceptions.EntityNotFoundException;
 
 /**
  * Classe de base pour tous les DAOs. Elle implémente les méthodes CRUD
