@@ -35,9 +35,9 @@
 					<s:form action="/goToHome">
 						
 						<s:textfield label="Email" name="user.email"
-							cssClass="w3-margin-bottom"></s:textfield>
+							cssClass="w3-margin-bottom" required="true"></s:textfield>
 						<s:password label="Password" name="user.password"
-							cssClass="w3-margin-bottom"></s:password>
+							cssClass="w3-margin-bottom" required="true"></s:password>
 
 						<s:submit
 							cssClass="w3-btn w3-green w3-card-12 w3-padding-12 w3-margin w3-xxlarge w3-centered"
@@ -63,9 +63,9 @@
 
 
 					<s:form action="addCollaborateur" cssClass="">
-						<s:textfield label="Username" name="user.username"></s:textfield>
-						<s:textfield label="Email" name="user.email"></s:textfield>
-						<s:password label="Password" name="user.password"></s:password>
+						<s:textfield label="Username" name="user.username" required="true"></s:textfield>
+						<s:textfield label="Email" name="user.email" required="true"></s:textfield>
+						<s:password label="Password" name="user.password" required="true" ></s:password>
 						<s:submit
 							cssClass="w3-btn w3-green w3-card-12 w3-margin  w3-xxlarge w3-centered"
 							value="Inscription"></s:submit>

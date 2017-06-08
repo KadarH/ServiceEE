@@ -38,7 +38,7 @@
 							label="Date "></sj:datepicker>
 
 						<s:textfield label="Message" name="rendezVous.message"
-							size="100px" cssStyle="height:60px;"></s:textfield>
+							size="100px" cssStyle="height:60px;" ></s:textfield>
 						<sj:autocompleter id="languages" name="x" list="listCollaborateur"
 							required="true" selectBox="true" selectBoxIcon="true"
 							onChangeTopics="autocompleteChange"

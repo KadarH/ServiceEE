@@ -29,7 +29,7 @@
 					ajouter un objectif / mission : <br />
 					<s:form namespace="/private/Responsable" action="ajouterObjectifEntretien">
 						<s:textfield label="Mission " name="objectif.label"
-							size="70px"></s:textfield>
+							size="70px" required="true"></s:textfield>
 						
 						<sj:datepicker name="objectif.delaiRealisation" zindex="2006"
 							timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
@@ -38,9 +38,9 @@
 							label="Delai de Realisation"></sj:datepicker>
 
 						<s:textfield label="Condition de reussite" name="objectif.conditionReussite"
-							size="70px"></s:textfield>
+							size="70px" required="true"></s:textfield>
 						<s:textfield label="Indicateur" name="objectif.indicateur"
-							size="70px"></s:textfield>
+							size="70px" required="true"></s:textfield>
 						
 						<s:submit value="Ajouter l'objectif"></s:submit>
 

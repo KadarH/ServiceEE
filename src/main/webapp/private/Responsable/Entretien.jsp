@@ -69,7 +69,7 @@
 							label="Date de l'entretien" ></sj:datepicker>
 
 						<s:textfield label="Description" name="entretien.label"
-							size="100px"></s:textfield>
+							size="100px" required="true"></s:textfield>
 						<sj:autocompleter id="languages" name="x" list="listCollaborateur"
 							required="true" selectBox="true" selectBoxIcon="true"
 							onChangeTopics="autocompleteChange"

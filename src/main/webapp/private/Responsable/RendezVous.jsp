@@ -78,7 +78,7 @@
 							label="Date du rendez vous"></sj:datepicker>
 
 						<s:textfield label="Message" name="rendezVous.message"
-							size="105px"></s:textfield>
+							size="105px" ></s:textfield>
 						<sj:autocompleter id="languages" name="x" list="listCollaborateur"
 							required="true" selectBox="true" selectBoxIcon="true"
 							onChangeTopics="autocompleteChange"
