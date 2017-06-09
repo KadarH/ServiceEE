@@ -40,6 +40,8 @@ public class AdminController extends BaseAction {
 	}
 
 	public String goToAdminDemande() {
+		user = (User) getSession().getAttribute("user");
+
 		try {
 			listDemandeAjout = adminService.getListDemandeAjout();
 
@@ -77,6 +79,7 @@ public class AdminController extends BaseAction {
 	// *********************************************************
 
 	public String goToAdminEntretien() {
+		user = (User) getSession().getAttribute("user");
 
 		listEntretien = adminService.getListEntretien();
 
@@ -86,6 +89,8 @@ public class AdminController extends BaseAction {
 	// *********************************************************
 
 	public String goToCollaborateurs() {
+		user = (User) getSession().getAttribute("user");
+
 		try {
 			listCollaborateur = adminService.getListCollaborateur();
 
@@ -99,6 +104,8 @@ public class AdminController extends BaseAction {
 	// *********************************************************
 
 	public String goToResponsables() {
+		user = (User) getSession().getAttribute("user");
+
 		try {
 			listResponsable = adminService.getListResponsable();
 		} catch (Exception e) {

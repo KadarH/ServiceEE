@@ -90,6 +90,7 @@ public class CollaborateurServiceImpl implements CollaborateurService {
 	public List<String> getListCollaborateur() {
 		List<String> list = new ArrayList<String>();
 		for(User i : userDao.getAll()){
+			if(i.getRole().getId()!=3)
 			list.add(i.getEmail());
 			
 		}
