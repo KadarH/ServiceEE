@@ -18,6 +18,7 @@ public class Evaluation {
 	private String resultatAnnee;
 	private int niveauAtteintObjectif;
 
+	
 	// *************************************************
 	// **************** Constructeur ***************
 	// *************************************************

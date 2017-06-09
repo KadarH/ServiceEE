@@ -187,6 +187,18 @@
 			<result name="input">/index.jsp</result>
 		</action>
 
+		<action name="goToAjouterEvaluation" class="responsableAction"
+			method="goToAjouterEvaluation">
+			<result name="success">Evaluer.jsp</result>
+			<result name="goToEvaluation">EvaluationDesc.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+		<action name="ajouterEvaluation" class="responsableAction"
+			method="ajouterEvaluation">
+			<result name="success">Evaluation.jsp</result>
+			<result name="input">/index.jsp</result>
+		</action>
+
 		<action name="goToProfil" class="responsableAction" method="goToProfil">
 			<result name="success">Profil.jsp</result>
 			<result name="input">Error2.jsp</result>

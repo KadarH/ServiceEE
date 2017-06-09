@@ -3,10 +3,7 @@ package com.app.business.bo;
 import java.util.List;
 
 import javax.persistence.CascadeType;
-import javax.persistence.Column;
-import javax.persistence.ElementCollection;
 import javax.persistence.Entity;
-import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.Id;
 import javax.persistence.ManyToOne;
@@ -28,8 +25,9 @@ public class Entretien {
 	private String etat;
 	private String dateEntretien;
 
-	@Column
-	@ElementCollection(targetClass = Objectif.class)
+	
+	@OneToMany(mappedBy = "entretien", orphanRemoval = true, cascade = { CascadeType.ALL })
+	@OnDelete(action = OnDeleteAction.CASCADE)
 	private List<Objectif> listObjectif;
 
 	@ManyToOne
@@ -76,7 +74,6 @@ public class Entretien {
 		this.etat = etat;
 	}
 
-	@OneToMany(fetch = FetchType.LAZY, cascade = CascadeType.ALL, mappedBy = "entretien")
 	public List<Objectif> getListObjectif() {
 		return listObjectif;
 	}

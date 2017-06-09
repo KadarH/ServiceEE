@@ -32,7 +32,7 @@ public class ResponsableController extends BaseAction {
 	private String newPass;
 	private String pass;
 	private String x;
-
+	private String evaluationShow="Show Evaluation";
 	public String goToResponsableHome() {
 
 		user = (User) getSession().getAttribute("user");
@@ -78,9 +78,15 @@ public class ResponsableController extends BaseAction {
 		String id = getRequest().getParameter("idObjectif");
 
 		objectif = collaborateurService.getObjectif(new Long(Integer.parseInt(id)));
-
-		evaluation = objectif.getEvaluation();
-
+		if (objectif.getEtat().equals("En cours")){
+			evaluationShow="Evaluer";
+			
+		}
+		else if(objectif.getEtat().equals("Evalué")){
+			evaluationShow="Show Evaluation";
+		}
+		getSession().setAttribute("objectif", objectif);
+		getSession().setAttribute("evaluationShow", evaluationShow);
 		return SUCCESS;
 	}
 
@@ -167,7 +173,29 @@ public class ResponsableController extends BaseAction {
 		return SUCCESS;
 
 	}
-
+	public String goToAjouterEvaluation(){
+	
+		user = (User) getSession().getAttribute("user");
+		Objectif o = (Objectif)getSession().getAttribute("objectif");
+		evaluation= o.getEvaluation();
+		String ev = (String) getSession().getAttribute("evaluationShow");
+		if(ev.equals("Evaluer")){
+			return SUCCESS;
+		}
+		if(ev.equals("Show Evaluation")) return "goToEvaluation";
+		 return INPUT;
+	}
+	public String ajouterEvaluation(){
+		user = (User) getSession().getAttribute("user");
+		
+		
+		Objectif o =(Objectif) getSession().getAttribute("objectif");
+		o.setEtat("Evalué");
+		responsableService.ajouterEvaluation(o, evaluation);
+		
+		return SUCCESS;
+	}
+	
 	public String goToAjouterObjectif() {
 		user = (User) getSession().getAttribute("user");
 
@@ -303,6 +331,14 @@ public class ResponsableController extends BaseAction {
 
 	public void setX(String x) {
 		this.x = x;
+	}
+
+	public String getEvaluationShow() {
+		return evaluationShow;
+	}
+
+	public void setEvaluationShow(String evaluationShow) {
+		this.evaluationShow = evaluationShow;
 	}
 
 }
