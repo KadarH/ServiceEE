@@ -32,12 +32,12 @@
 			<result name="input">/Error.jsp</result>
 		</action>
 
-				<action name="addCollaborateur" class="CollaborateurAction"
-					method="addCollaborateur">
-					<result name="error">/index.jsp</result>
-					<result name="success">/index.jsp</result>
+		<action name="addCollaborateur" class="CollaborateurAction"
+			method="addCollaborateur">
+			<result name="error">/index.jsp</result>
+			<result name="success">/index.jsp</result>
 
-				</action>
+		</action>
 
 	</package>
 
@@ -79,6 +79,11 @@
 			method="goToRendezVous">
 			<result name="success">RendezVous.jsp</result>
 			<result name="input">/index.jsp</result>
+		</action>
+		<action name="goToShowEva" class="CollaborateurAction" method="goToShowEva">
+			<result name="goToEvaluation">EvaluationDesc.jsp</result>
+			<result name="success" >Home.jsp</result>
+			<result name="input" >Home.jsp</result>
 		</action>
 
 		<action name="accepterRendezVous" class="CollaborateurAction"

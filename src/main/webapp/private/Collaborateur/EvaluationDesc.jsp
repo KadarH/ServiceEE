@@ -16,49 +16,44 @@
 		<div class="w3-animate-zoom  w3-light-grey">
 			<jsp:include page="includeColl/menu.jsp" />
 		</div>
-		<div id="divdt"
-			class=" homing contact_tab w3-card-12 w3-animate-bottom">
+		<div class=" homing contact_tab w3-card-12 w3-animate-bottom">
 
 			<sj:tabbedpanel id="localtabs" cssStyle="max-height:450px">
 				<sj:tab id="tab2" target="ttwo" onclick="action"
-					label="Information sur l'evaluation de l'objectif :" />
+					label="Information sur l'objectif :" />
 
 
 				<div id="ttwo" style="overflow: scroll; height: 350px;">
-					<div style="display: flex;">
-						<h2 style="margin-right: 400px;">Statistiques de l'objectif :</h2>
+					<div style="display:flex;">
+						<h2 style="margin-right:400px;">Statistiques de l'Evaluation :</h2>
+						
+						</div>
 
-						<div onclick="document.getElementById('formEvan').submit();"
-							class="w3-button w3-xxLarge w3-green w3-padding w3-margin w3-card-12"><s:property value="evaluationShow"/></div>
-					</div>
-
+					
 					<p class="w3-card-4 w3-margin w3-padding w3-annimate-left">
-						<s:label>Description de l'objectif : </s:label>
-						<s:property value="objectif.label" />
+						<s:label>Cible visée : </s:label>
+						<s:property value="evaluation.cibleVisee" />
 					</p>
 					<p class="w3-card-4 w3-margin w3-padding w3-annimate-left">
-						<s:label>Delai de réalisation : </s:label>
-						<s:property value="objectif.delaiRealisation" />
+						<s:label>Description : </s:label>
+						<s:property value="evaluation.label" />
 					</p>
 					<p class="w3-card-4 w3-margin w3-padding w3-annimate-left">
-						<s:label>Condition de reùssite : </s:label>
-						<s:property value="objectif.conditionReussite" />
+						<s:label>Resultat de l'année ecoulée : </s:label>
+						<s:property value="evaluation.resultatAnnee" />
 					</p>
 					<p class="w3-card-4 w3-margin w3-padding w3-annimate-left">
-						<s:label>Etat de l'objectif : </s:label>
-						<s:property value="objectif.etat" />
+						<s:label>Note : </s:label>
+						<s:property value="evaluation.note" />
 					</p>
-
+					
 				</div>
 			</sj:tabbedpanel>
 
-
 		</div>
-
+	
 	</div>
 
 	<!-- end of column four -->
 </div>
-<form action="goToShowEva" id="formEvan"></form>
-
 <jsp:include page="/private/include/footer.jsp" />

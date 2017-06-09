@@ -34,6 +34,7 @@ public class CollaborateurController extends BaseAction {
 	private String newPass;
 	private String pass;
 	private String x;
+	private String evaluationShow;
 
 	// ************************************************************************************
 
@@ -145,6 +146,7 @@ public class CollaborateurController extends BaseAction {
 		}
 
 	}
+	
 
 	public String goToObjectifEntretien() throws NumberFormatException, EntityNotFoundException {
 		user = (User) getSession().getAttribute("user");
@@ -160,12 +162,30 @@ public class CollaborateurController extends BaseAction {
 		String id = getRequest().getParameter("idObjectif");
 
 		objectif = collaborateurService.getObjectif(new Long(Integer.parseInt(id)));
-
-		evaluation = objectif.getEvaluation();
-
+		if (objectif.getEtat().equals("En cours")){
+			evaluationShow="";
+			
+		}
+		else if(objectif.getEtat().equals("Evalué")){
+			evaluationShow="Show Evaluation";
+		}
+		getSession().setAttribute("objectif", objectif);
+		getSession().setAttribute("evaluationShow", evaluationShow);
 		return SUCCESS;
 	}
+	public String goToShowEva() throws NumberFormatException, EntityNotFoundException {
+		user = (User) getSession().getAttribute("user");
+		Objectif o = (Objectif)getSession().getAttribute("objectif");
+		evaluation= o.getEvaluation();
+		String ev = (String) getSession().getAttribute("evaluationShow");
+		if(ev.equals("")){
+			return SUCCESS;
+		}
+		if(ev.equals("Show Evaluation")) return "goToEvaluation";
+		 return INPUT;
+	}
 
+	
 	public String ajouterDemandeResp() throws EntityNotFoundException {
 
 		user = (User) getSession().getAttribute("user");
@@ -355,6 +375,14 @@ public class CollaborateurController extends BaseAction {
 
 	public void setListRendezVousAcceptee(List<RendezVous> listRendezVousAcceptee) {
 		this.listRendezVousAcceptee = listRendezVousAcceptee;
+	}
+
+	public String getEvaluationShow() {
+		return evaluationShow;
+	}
+
+	public void setEvaluationShow(String evaluationShow) {
+		this.evaluationShow = evaluationShow;
 	}
 
 }

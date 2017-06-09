@@ -14,7 +14,7 @@ ServiceEE - Interviewer : Application de gestion des entretiens annuels des coll
 
 - Installer Java ( JRE / JDK  1.8 )
 - Importer le projet sous Maven .
-- Installer les dependences necessaires à l'aide de Maven Install .
+- Importer les dependences necessaires à l'aide de Maven Update.
 - Deployer le projet sur le serveur d'application Tomcat 8.5 .
 - Definir les ports du serveur Tomcat ( par defaut 8080 HTTP )
 - Lancer l'application.
