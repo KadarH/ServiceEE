@@ -154,20 +154,21 @@ white
 		</div>
 		<div>
 			<p class="w3-myfont w3-animate-zoom">
-				<span class="w3-tag w3-jumbo w3-theme-l3 w3-hover-light-blue">M</span>
-				<span class="w3-tag w3-jumbo w3-theme-l2 w3-hover-light-blue">Y</span>
+				<span class="w3-tag w3-jumbo w3-theme-l3 w3-hover-light-blue">T</span>
+				<span class="w3-tag w3-jumbo w3-theme-l2 w3-hover-light-blue">H</span>
+				<span class="w3-tag w3-jumbo w3-black w3-hover-light-blue">E</span>
 				<span class="w3-tag w3-jumbo "> </span> <span
 					class="w3-tag w3-jumbo "> </span> <span
 					class="w3-tag w3-jumbo w3-theme-l3 w3-hover-light-blue">I</span> <span
 					class="w3-tag w3-jumbo w3-theme-l2 w3-hover-light-blue">N</span> <span
 					class="w3-tag w3-jumbo w3-theme-l1 w3-hover-light-blue">T</span> <span
 					class="w3-tag w3-jumbo w3-theme w3-hover-light-blue">E</span> <span
-					class="w3-tag w3-jumbo w3-theme-d1 w3-hover-light-blue">R</span> <span
+					class="w3-tag w3-jumbo w3-black w3-hover-light-blue">R</span> <span
 					class="w3-tag w3-jumbo w3-theme-d2 w3-hover-light-blue">V</span> <span
 					class="w3-tag w3-jumbo w3-theme-d1 w3-hover-light-blue">I</span> <span
 					class="w3-tag w3-jumbo w3-theme w3-hover-light-blue">E</span> <span
 					class="w3-tag w3-jumbo w3-theme-l1 w3-hover-light-blue">W</span> <span
-					class="w3-tag w3-jumbo w3-theme-l2 w3-hover-light-blue">E</span> <span
+					class="w3-tag w3-jumbo w3-black w3-hover-light-blue">E</span> <span
 					class="w3-tag w3-jumbo w3-theme-l3 w3-hover-light-blue">R</span>
 			</p>
 		</div>

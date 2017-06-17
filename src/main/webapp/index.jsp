@@ -63,6 +63,7 @@
 
 
 					<s:form action="addCollaborateur" cssClass="">
+				
 						<s:textfield label="Username" name="user.username" required="true"></s:textfield>
 						<s:textfield label="Email" name="user.email" required="true"></s:textfield>
 						<s:password label="Password" name="user.password" required="true" ></s:password>

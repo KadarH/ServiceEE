@@ -29,10 +29,11 @@ public class User {
 	private String prenom;
 	private String adresse;
 	private String etat;
-
+	
 	@ManyToOne
 	private Role role;
 
+	private String roleUser;
 	@Lob
 	@Column(name = "img")
 	private byte[] img;
@@ -190,6 +191,15 @@ public class User {
 
 	public void setImg(byte[] img) {
 		this.img = img;
+	}
+
+	public String getRoleUser() {
+		 roleUser = role.getLabel();
+		 return roleUser;
+	}
+
+	public void setRoleUser(String roleUser) {
+		this.roleUser = roleUser;
 	}
 
 	@Override

@@ -59,7 +59,8 @@ public class AdminController extends BaseAction {
 	}
 
 	public String accepterDemandeAjout() throws NumberFormatException, EntityNotFoundException {
-
+		user = (User) getSession().getAttribute("user");
+		
 		String id = getRequest().getParameter("idDemande");
 
 		adminService.confirmerDemandeAjout(id);

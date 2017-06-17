@@ -28,9 +28,7 @@
 					<div style="display: flex;">
 						<h2 style="margin-right: 400px;">Statistiques de l'objectif :</h2>
 
-						<div
-							class="w3-button w3-xxLarge w3-green w3-padding w3-margin w3-card-12">Voir
-							Evaluation</div>
+						
 					</div>
 
 					<p class="w3-card-4 w3-margin w3-padding w3-annimate-left">

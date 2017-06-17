@@ -28,7 +28,7 @@
 				<div id="tone" style="overflow-y: scroll; height: 350px;">
 
 
-					<d:table name="listDemandeAjout" export="true" id="appStatus"
+					<d:table name="listDemandeAjout" export="false" id="appStatus"
 						decorator="com.web.admin.decorator.AdminActionDecorator"
 						requestURI="/private/Admin/listDemandeAjout" pagesize="30">
 						<d:column property="user.username" title="Pseudo"></d:column>
@@ -42,7 +42,7 @@
 				</div>
 				<div id="ttwo" style="overflow-y: scroll; height: 350px;">
 
-					<d:table name="listDemandeResp" export="true" id="appStatus"
+					<d:table name="listDemandeResp" export="false	" id="appStatus"
 						decorator="com.web.admin.decorator.AdminRActionDecorator"
 						requestURI="/private/Admin/listDemandeResp" pagesize="30">
 						<d:column property="user.username" title="Pseudo"></d:column>

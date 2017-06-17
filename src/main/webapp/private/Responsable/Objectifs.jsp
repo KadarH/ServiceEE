@@ -34,7 +34,7 @@
 						<d:column property="etat" title="Etat "></d:column>
 						<d:column property="delaiRealisation" title="Delai de realisation"></d:column>
 						<d:column property="conditionReussite" title="Condition de reussite"></d:column>
-						<d:column property="aj" title="Show Evaluation"></d:column>
+						<d:column property="aj" title="Show"></d:column>
 					</d:table>
 
 

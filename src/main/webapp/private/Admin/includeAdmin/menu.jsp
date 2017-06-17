@@ -9,7 +9,7 @@
 	<div>
 		<div class="w3-padding">
 			<ul class="nav nav-tabs nav-stacked menu2 "> 
-				<li><a href="/ServiceEE/private/Admin/Home.jsp"   class="w3-margin w3-light-blue" >Home </a></li>
+				<li><a href="#" onclick="document.getElementById('form').submit();"   class="w3-margin w3-light-blue" >Home </a></li>
 				<li><a href="#" onclick="document.getElementById('formDemande').submit();"  class="w3-margin w3-light-blue">Demandes </a></li>
 				<li><a href="#" onclick="document.getElementById('formEntretien').submit();" class="w3-margin w3-light-blue">Entretiens </a></li>
 				<li><a href="#" onclick="document.getElementById('formColl').submit();" class="w3-margin w3-light-blue" >Collaborateurs</a></li>
@@ -23,6 +23,10 @@
 
 
 <s:hidden>
+<form action="goToHomeAdmin" id="form" >
+
+
+</form>
 <form action="goToAdminDemande" id="formDemande" >
 
 

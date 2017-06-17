@@ -200,7 +200,7 @@
 		</action>
 		<action name="ajouterEvaluation" class="responsableAction"
 			method="ajouterEvaluation">
-			<result name="success">Evaluation.jsp</result>
+			<result name="success">Home.jsp</result>
 			<result name="input">/index.jsp</result>
 		</action>
 

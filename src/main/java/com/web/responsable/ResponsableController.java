@@ -44,6 +44,8 @@ public class ResponsableController extends BaseAction {
 		user = (User) getSession().getAttribute("user");
 		try {
 			listCollaborateur = collaborateurService.getListCollaborateur();
+			listCollaborateur.remove(user.getEmail());
+
 			listEntretienResponsable = collaborateurService.getListEntretienResponsable(user);
 			listEntretienCollaborateur = collaborateurService.getListEntretienCollaborateur(user);
 			return SUCCESS;
@@ -52,14 +54,7 @@ public class ResponsableController extends BaseAction {
 		}
 	}
 
-	public Entretien getEntretien() {
-		return entretien;
-	}
-
-	public void setEntretien(Entretien entretien) {
-		this.entretien = entretien;
-	}
-
+	
 	public String goToObjectifEntretien() throws NumberFormatException, EntityNotFoundException {
 		user = (User) getSession().getAttribute("user");
 		String id = getRequest().getParameter("idEntretien");
@@ -94,6 +89,7 @@ public class ResponsableController extends BaseAction {
 		user = (User) getSession().getAttribute("user");
 		try {
 			listCollaborateur = collaborateurService.getListCollaborateur();
+			listCollaborateur.remove(user.getEmail());
 
 		} catch (Exception e) {
 			listCollaborateur = new ArrayList<String>();
@@ -115,6 +111,7 @@ public class ResponsableController extends BaseAction {
 	}
 
 	public String accepterRendezVous() throws NumberFormatException, EntityNotFoundException {
+		user = (User) getSession().getAttribute("user");
 		String id = getRequest().getParameter("idRendezVous");
 		collaborateurService.accepterRendezVous(new Long(Integer.parseInt(id)));
 		return SUCCESS;
@@ -339,6 +336,13 @@ public class ResponsableController extends BaseAction {
 
 	public void setEvaluationShow(String evaluationShow) {
 		this.evaluationShow = evaluationShow;
+	}
+	public Entretien getEntretien() {
+		return entretien;
+	}
+
+	public void setEntretien(Entretien entretien) {
+		this.entretien = entretien;
 	}
 
 }

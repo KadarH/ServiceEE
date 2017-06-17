@@ -5,6 +5,8 @@ import java.util.Date;
 import java.util.List;
 
 import org.apache.log4j.Logger;
+import org.apache.struts2.convention.annotation.Action;
+import org.apache.struts2.convention.annotation.Result;
 
 import com.app.business.bo.Demande;
 import com.app.business.bo.Entretien;
@@ -50,6 +52,7 @@ public class CollaborateurController extends BaseAction {
 
 	// ************************************************************************************
 	public String goToHome() {
+
 		try {
 			user = collaborateurService.findUserByEmail(user.getEmail());
 			getSession().setAttribute("user", user);
@@ -109,7 +112,7 @@ public class CollaborateurController extends BaseAction {
 
 		try {
 			listCollaborateur = collaborateurService.getListCollaborateur();
-
+			listCollaborateur.remove(user.getEmail());
 		} catch (Exception e) {
 			listCollaborateur = new ArrayList<String>();
 		}
@@ -130,6 +133,8 @@ public class CollaborateurController extends BaseAction {
 	}
 
 	public String accepterRendezVous() throws NumberFormatException, EntityNotFoundException {
+		user = (User) getSession().getAttribute("user");
+
 		String id = getRequest().getParameter("idRendezVous");
 		collaborateurService.accepterRendezVous(new Long(Integer.parseInt(id)));
 		return SUCCESS;
@@ -146,7 +151,6 @@ public class CollaborateurController extends BaseAction {
 		}
 
 	}
-	
 
 	public String goToObjectifEntretien() throws NumberFormatException, EntityNotFoundException {
 		user = (User) getSession().getAttribute("user");
@@ -162,30 +166,30 @@ public class CollaborateurController extends BaseAction {
 		String id = getRequest().getParameter("idObjectif");
 
 		objectif = collaborateurService.getObjectif(new Long(Integer.parseInt(id)));
-		if (objectif.getEtat().equals("En cours")){
-			evaluationShow="";
-			
-		}
-		else if(objectif.getEtat().equals("Evalué")){
-			evaluationShow="Show Evaluation";
+		if (objectif.getEtat().equals("En cours")) {
+			evaluationShow = "";
+
+		} else if (objectif.getEtat().equals("Evalué")) {
+			evaluationShow = "Show Evaluation";
 		}
 		getSession().setAttribute("objectif", objectif);
 		getSession().setAttribute("evaluationShow", evaluationShow);
 		return SUCCESS;
 	}
+
 	public String goToShowEva() throws NumberFormatException, EntityNotFoundException {
 		user = (User) getSession().getAttribute("user");
-		Objectif o = (Objectif)getSession().getAttribute("objectif");
-		evaluation= o.getEvaluation();
+		Objectif o = (Objectif) getSession().getAttribute("objectif");
+		evaluation = o.getEvaluation();
 		String ev = (String) getSession().getAttribute("evaluationShow");
-		if(ev.equals("")){
+		if (ev.equals("")) {
 			return SUCCESS;
 		}
-		if(ev.equals("Show Evaluation")) return "goToEvaluation";
-		 return INPUT;
+		if (ev.equals("Show Evaluation"))
+			return "goToEvaluation";
+		return INPUT;
 	}
 
-	
 	public String ajouterDemandeResp() throws EntityNotFoundException {
 
 		user = (User) getSession().getAttribute("user");
@@ -241,6 +245,8 @@ public class CollaborateurController extends BaseAction {
 	}
 
 	public String register() {
+		user = (User) getSession().getAttribute("user");
+
 		demande.setMessage("demande d'ajout");
 		demande.setUser(user);
 		demande.setType("ajout");

@@ -25,7 +25,7 @@
 				
 				<div id="ttwo" style="overflow: scroll;">
 
-					<d:table name="listObjectif" export="true" style="html" 
+					<d:table name="listObjectif" export="false" style="html" 
 					decorator="com.web.admin.decorator.AdminObjectifDecorator"
 						requestURI="/private/Admin/listObjectif" pagesize="30">
 						<d:column property="label" title="Description de l'objectif"></d:column>

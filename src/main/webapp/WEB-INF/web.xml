@@ -42,7 +42,6 @@
 			<param-value>false</param-value>
 		</init-param>
 	</filter>
-
 	<filter-mapping>
 		<filter-name>hibernateFilter</filter-name>
 		<url-pattern>/*</url-pattern>

@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@taglib uri="/struts-tags" prefix="s"%>
@@ -30,28 +31,29 @@
 				<div id="tone" style="overflow-y: scroll; height: 350px;"
 					class="w3-padding">
 					Vous pouvez ajouter un message à votre demande de rendez-vous : <br />
-					<s:form action="ajouterRendezVous" cssClass="w3-card-12">
+					<s:form action="ajouterRendezVous" namespace="/private/Collaborateur" cssClass=" w3-border-0">
+						<s:label value="Date Rendez Vous"></s:label>
 						<sj:datepicker name="rendezVous.dateRendezVous" zindex="2006"
 							timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
 							timepickerFormat="HH:mm" timepickerShowSecond="true"
-							duration="fast" readonly="true" required="true"
-							label="Date "></sj:datepicker>
+							minDate="<%new Date();%>" duration="fast" readonly="true"
+							required="true" size=" 90px"></sj:datepicker>
+						<s:label value="Objectif du rendez Vous"></s:label>
 
-						<s:textfield label="Message" name="rendezVous.message"
-							size="100px" cssStyle="height:60px;" ></s:textfield>
+						<s:textfield name="rendezVous.message" size="110px"></s:textfield>
+						<s:label value="Choisissez à qui vous demandez ce rendez-vous"></s:label>
 						<sj:autocompleter id="languages" name="x" list="listCollaborateur"
 							required="true" selectBox="true" selectBoxIcon="true"
 							onChangeTopics="autocompleteChange"
 							onFocusTopics="autocompleteFocus"
-							onSelectTopics="autocompleteSelect" label="Membre" />
-
-						<s:submit value="Declarer un Rendez-vous"
-							cssClass="w3-centered w3-button w3-green w3-xlarge w3-animate-zoom w3-card-12"></s:submit>
+							onSelectTopics="autocompleteSelect" size="110px" />
+						<s:submit value="Demander un Rendez-vous"
+							cssClass="w3-centered w3-button w3-light-blue w3-xlarge w3-animate-zoom w3-card-12"></s:submit>
 
 					</s:form>
 					
 					<div style="display: flex; width: 300px; margin-bottom: 30px;"
-						class=" w3-card-4 w3-red  ">
+						class=" w3-card-4   ">
 						
 						<img alt="!" src="/ServiceEE/img/attention.jpeg" height="65px"
 							width="65px" class="w3-animate-fading">
@@ -67,11 +69,11 @@
 				</div>
 				<div id="ttwo" style="overflow-y: scroll; height: 350px;">
 
-					<d:table name="listRendezVous" export="true" id="appStatus"
+					<d:table name="listRendezVous" export="false" id="appStatus"
 						decorator="com.web.collaborateur.decorator.CollaborateurActionDecorator"
 						requestURI="/private/Collaborateur/listRendezVous" pagesize="30">
 						<d:column property="userdem.username" title="Pseudo"></d:column>
-						<d:column property="message" title="Message" />
+						<d:column property="message" title="Objectif" />
 						<d:column property="dateRendezVous" title="Date " />
 						<d:column property="aj" title="Action">
 						</d:column>
@@ -81,12 +83,12 @@
 				</div>
 				<div id="tthree" style="overflow-y: scroll; height: 350px;">
 
-					<d:table name="listRendezVousAcceptee" export="true" id="appStatus"
+					<d:table name="listRendezVousAcceptee" export="false" id="appStatus"
 						cellpadding="100px"
 						requestURI="/private/Collaborateur/listRendezVousAcceptee"
 						pagesize="30">
 						<d:column property="userdem.username" title="Pseudo"></d:column>
-						<d:column property="message" title="Message" />
+						<d:column property="message" title="Objectif" />
 						<d:column property="dateRendezVous" title="Date " />
 						<d:column title="Accepté">
 							<img width="40" height="40" src="/ServiceEE/img/accepter.png">

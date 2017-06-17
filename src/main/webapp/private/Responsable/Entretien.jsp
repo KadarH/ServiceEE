@@ -108,8 +108,7 @@
 						decorator="com.web.responsable.decorator.CollaborateurEntretienDecorator"
 						requestURI="/private/Responsable/listEntretienResponsable"
 						pagesize="20">
-						<d:column property="responsable.username" title="Nom du Collaborateur"></d:column>
-						<d:column property="responsable.email" title="Email"></d:column>
+						<d:column property="collaborateur.email" title="Email"></d:column>
 						<d:column property="dateEntretien" title="Date" />
 						<d:column property="label" title="Description " />
 						<d:column property="aj" title="Action"></d:column>

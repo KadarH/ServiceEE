@@ -1,3 +1,4 @@
+<%@page import="java.util.Date"%>
 <%@ page contentType="text/html; charset=UTF-8" pageEncoding="UTF-8"%>
 
 <%@taglib uri="/struts-tags" prefix="s"%>
@@ -60,37 +61,40 @@
 
 
 
-			<sj:tabbedpanel id="localtabs">
+			<sj:tabbedpanel id="localtabs" cssStyle="max-height:450px">
 				<sj:tab id="tab1" target="tone" label="Ajouter un rendez-vous" />
 				<sj:tab id="tab2" target="ttwo" onclick="action"
 					label="Liste de rendez vous" />
 				<sj:tab id="tab3" target="tthree" onclick="action"
 					label="Liste des rendez vous àcceptés" />
 
-				<div id="tone">
+				<div id="tone" style="overflow-y: scroll; height: 350px;">
 					Vous pouvez ajouter un message à votre demande de rendez-vous : <br />
-					<s:form cssClass="w3-card-12 " namespace="/private/Responsable"
+					<s:form cssClass="w3-border-0  "
+						namespace="/private/Responsable"
 						action="ajouterRendezVousResponsable">
+						<s:label value="Date Rendez Vous :"></s:label>
 						<sj:datepicker name="rendezVous.dateRendezVous" zindex="2006"
 							timepicker="true" changeYear="true" displayFormat="dd/mm/yy"
 							timepickerFormat="HH:mm" timepickerShowSecond="true"
-							duration="fast" readonly="true" required="true"
-							label="Date du rendez vous"></sj:datepicker>
+							minDate="<%new Date();%>" duration="fast" readonly="true"
+							required="true" size=" 90px"></sj:datepicker>
+						<s:label value="Objectif du rendez Vous :"></s:label>
 
-						<s:textfield label="Message" name="rendezVous.message"
-							size="105px" ></s:textfield>
+						<s:textfield name="rendezVous.message" size="110px"></s:textfield>
+						<s:label value="Choisissez à qui vous demandez ce rendez-vous :"></s:label>
 						<sj:autocompleter id="languages" name="x" list="listCollaborateur"
 							required="true" selectBox="true" selectBoxIcon="true"
 							onChangeTopics="autocompleteChange"
 							onFocusTopics="autocompleteFocus"
-							onSelectTopics="autocompleteSelect" label="coll" />
-						<s:submit value="Declarer un Rendez-vous"
-							cssClass="w3-centered w3-button w3-green w3-xlarge w3-animate-zoom w3-card-12"></s:submit>
+							onSelectTopics="autocompleteSelect" size="90px" />
+						<s:submit value="Demander un Rendez-vous"
+							cssClass="w3-centered w3-button w3-light-blue w3-xlarge w3-animate-zoom w3-card-12"></s:submit>
 
 					</s:form>
 
 					<div style="display: flex; width: 300px; margin-bottom: 30px;"
-						class=" w3-card-4 w3-red  ">
+						class=" w3-card-4   ">
 
 						<img alt="!" src="/ServiceEE/img/attention.jpeg" height="65px"
 							width="65px" class="w3-animate-fading">
@@ -99,8 +103,8 @@
 					</div>
 
 					<div>
-						<p>Un rendez vous sera dans l'etat "false" , jusqu'à ce qu'il
-							se validera par l'utilisateur demandé .</p>
+						<p>Un rendez vous sera dans l'etat non validée , jusqu'à ce
+							qu'il se validera par l'utilisateur demandé .</p>
 					</div>
 				</div>
 				<div id="ttwo" style="overflow-y: scroll; height: 350px;">
@@ -109,6 +113,7 @@
 						decorator="com.web.responsable.decorator.CollaborateurActionDecorator"
 						requestURI="/private/Responsable/listRendezVous" pagesize="30">
 						<d:column property="userdem.username" title="Pseudo"></d:column>
+						<d:column property="userdem.email" title="Pseudo"></d:column>
 						<d:column property="message" title="Message" />
 						<d:column property="dateRendezVous" title="Date " />
 						<d:column property="aj" title="Accepter">
@@ -122,7 +127,8 @@
 					<d:table name="listRendezVousAcceptee" export="true" style="html"
 						requestURI="/private/Responsable/listRendezVousAcceptee"
 						pagesize="30">
-						<d:column property="userdem.username" title="Pseudo"></d:column>
+						<d:column property="userrec.username" title="Pseudo"></d:column>
+						<d:column property="userrec.email" title="Pseudo"></d:column>
 						<d:column property="message" title="Message" />
 						<d:column property="dateRendezVous" title="Date " />
 						<d:column title="Accepté">

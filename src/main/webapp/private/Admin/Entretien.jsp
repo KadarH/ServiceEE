@@ -25,7 +25,7 @@
 				
 				<div id="ttwo" style="overflow: scroll;height:350px;margin-left:60px;">
 
-					<d:table name="listEntretien" export="true" style="html" 
+					<d:table name="listEntretien" export="false" style="html" 
 					decorator="com.web.admin.decorator.AdminEntretienActionDecorator"
 						requestURI="/private/Admin/listEntretien" pagesize="20">
 						<d:column property="responsable.email" title="Email Responsable"></d:column>

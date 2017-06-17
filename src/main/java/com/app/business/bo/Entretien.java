@@ -21,7 +21,6 @@ public class Entretien {
 	@GeneratedValue
 	private Long id;
 	private String label;
-	// autres
 	private String etat;
 	private String dateEntretien;
 

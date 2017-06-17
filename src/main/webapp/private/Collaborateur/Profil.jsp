@@ -33,7 +33,8 @@
 						<s:textfield label="Nom"  name="user.nom" size="70px" required="true"></s:textfield>
 						<s:textfield label="Prenom" name="user.prenom" size="70px" required="true"></s:textfield>
 						<s:textfield label="Adresse" name="user.adresse" size="70px"></s:textfield>
-						<s:textfield label="Pseudo" name="user.username" size="70px" required="true"></s:textfield>
+						<s:textfield label="Pseudo" name="user.username" size="70px"></s:textfield>
+						<s:password label="Password" name="user.password" size="70px" required="true"></s:password>
 						
 						<s:submit value="Modifier mon profil"></s:submit>
 

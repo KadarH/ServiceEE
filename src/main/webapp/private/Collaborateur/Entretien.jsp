@@ -25,7 +25,7 @@
 				
 				<div id="ttwo" style="overflow: scroll;height:350px;margin-left:60px;">
 
-					<d:table name="listEntretien" export="true" style="html" 
+					<d:table name="listEntretien" export="false"  style="html" 
 					decorator="com.web.collaborateur.decorator.CollaborateurEntretienDecorator"
 						requestURI="/private/Collaborateur/listEntretien" pagesize="30">
 						<d:column property="responsable.username" title="Pseudo du Responsable"></d:column>
